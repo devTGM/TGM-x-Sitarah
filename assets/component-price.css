@@ -127,3 +127,8 @@
 .price__badge-sale-custom {
   margin-left: 1rem !important;
 }
+
+/* Hide the default outer sale badge on the product page (large price blocks) to avoid duplication */
+.price--large .price__badge-sale {
+  display: none !important;
+}
