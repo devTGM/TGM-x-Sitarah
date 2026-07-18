@@ -729,6 +729,65 @@
     });
   </script>
 
+  <script>
+    // Remove any third-party app-injected "Size Chart" button/link dynamically
+    (function() {
+      function removeAppSizeChart() {
+        const elements = document.querySelectorAll('a, button, div, span, img');
+        elements.forEach(el => {
+          // Skip our own size chart button and modal content
+          if (el.id === 'ProductPopup-SizeChart' || el.closest('#PopupModal-SizeChart')) {
+            return;
+          }
+          
+          // Match by class/id names commonly used by size chart apps
+          const className = el.className && typeof el.className === 'string' ? el.className.toLowerCase() : '';
+          const idName = el.id && typeof el.id === 'string' ? el.id.toLowerCase() : '';
+          
+          if (
+            className.includes('sizechart') || 
+            className.includes('size-chart') || 
+            className.includes('avada-sc') ||
+            idName.includes('sizechart') || 
+            idName.includes('size-chart') ||
+            idName.includes('avada-sc')
+          ) {
+            el.remove();
+            return;
+          }
+
+          // Match by text content
+          if (el.tagName === 'A' || el.tagName === 'BUTTON' || el.tagName === 'SPAN') {
+            const text = (el.textContent || el.innerText || '').trim().toLowerCase();
+            if (text === 'size chart' || text === 'size-chart') {
+              el.remove();
+            }
+          }
+
+          // Match by icon sources
+          if (el.tagName === 'IMG') {
+            const src = (el.src || '').toLowerCase();
+            if (src.includes('avada') || src.includes('sizechart') || src.includes('size-chart')) {
+              el.remove();
+            }
+          }
+        });
+      }
+
+      // Execute immediately and pool to handle lazy loaded app elements
+      removeAppSizeChart();
+      window.addEventListener('DOMContentLoaded', removeAppSizeChart);
+      window.addEventListener('load', removeAppSizeChart);
+      
+      let runs = 0;
+      const interval = setInterval(() => {
+        removeAppSizeChart();
+        runs++;
+        if (runs > 12) clearInterval(interval);
+      }, 500);
+    })();
+  </script>
+
   {%- liquid
     if product.selected_or_first_available_variant.featured_media
       assign seo_media = product.selected_or_first_available_variant.featured_media
