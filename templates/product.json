@@ -1,1 +1,223 @@
-{"sections":{"main":{"type":"main-product","blocks":{"title":{"type":"title","settings":{}},"sku_rJcMDk":{"type":"sku","disabled":true,"settings":{"text_style":"body"}},"price":{"type":"price","settings":{}},"variant_picker":{"type":"variant_picker","settings":{"picker_type":"button"}},"quantity_selector":{"type":"quantity_selector","settings":{}},"buy_buttons":{"type":"buy_buttons","settings":{"show_dynamic_checkout":true,"show_gift_card_recipient":true}},"razorpay_affordability_widget_affordability_block_ENBKXY":{"type":"shopify:\/\/apps\/razorpay-affordability-widget\/blocks\/affordability-block\/5bf9b115-5933-4c1b-ade0-ef564b250852","settings":{}},"essential_upsell_product_addon_app_block_mLjkYd":{"type":"shopify:\/\/apps\/essential-upsell\/blocks\/product-addon-app-block\/50627fd9-24fd-4250-8614-accc12826d80","settings":{}},"inventory_PcENLf":{"type":"inventory","disabled":true,"settings":{"text_style":"body","inventory_threshold":10,"show_inventory_quantity":true}},"essential_upsell_frequently_bought_together_app_block_VKg6qb":{"type":"shopify:\/\/apps\/essential-upsell\/blocks\/frequently-bought-together-app-block\/50627fd9-24fd-4250-8614-accc12826d80","settings":{}},"essential_upsell_app_block_4VH6bi":{"type":"shopify:\/\/apps\/essential-upsell\/blocks\/app-block\/50627fd9-24fd-4250-8614-accc12826d80","settings":{}},"custom_liquid_bKW7ba":{"type":"custom_liquid","disabled":true,"settings":{"custom_liquid":"✨ Boutique Style<\/p>\n<p>✨ Made on Order<\/p>\n<p>✨ Exclusive Pieces<\/p>\n<style>\n  .offer-text p {\n    margin: 0; \/* Removes extra margin for the paragraph *\/\n  }\n\n  .offer-text small {\n    display: block; \/* Ensures consistent layout *\/\n    margin: 0 0 10px 0; \/* Adjusts spacing between elements *\/\n  }\n<\/style>\n\n<div class=\"offer-text\">\n  <p><strong>Offers:<\/strong><\/p>\n  \n  <small><em>Great Offers awaits on Check-out page.<\/p>\n<p><\/p>\n <\/em> <a href=\"https:\/\/fashion-mishti.myshopify.com\/pages\/offers-terms-and-condition\">T&amp;C<\/a><\/small>\n<\/div>"}},"ns_estimated_delivery_date_nestscale_edd_product_Jp4UHz":{"type":"shopify:\/\/apps\/ns-estimated-delivery-date\/blocks\/nestscale_edd_product\/7446b593-1e01-4150-afbd-7d963204ef10","settings":{}},"description":{"type":"description","settings":{}},"collapsible_tab_PmTcgk":{"type":"collapsible_tab","settings":{"heading":"SHIPPING DETAILS","icon":"truck","content":"<ul><li>Orders are processed within 24 hours of being placed.<\/li><li>We provide Free PAN India Shipping on all PREPAID order.<\/li><li>A flat fee of ₹150 is applied on all COD orders.<\/li><li>Shipping to metro cities can take upto 4-5 working days, and to tier 1 cities may take upto 7-8 working days.<\/li><\/ul>","page":""}},"collapsible_tab_3ixbUY":{"type":"collapsible_tab","settings":{"heading":"RETURNS","icon":"return","content":"<ul><li>We prioritize your shopping experience and are committed to ensuring your satisfaction with your purchase.<\/li><li>We provide exchange\/return within 7 days of the product delivery.<\/li><li>If you are not satisfied with your product, you may return it within 7 days of delivery.<\/li><li>Refunds will be issued in the form of store credit, which can be utilized for future purchases.<\/li><li>Please note that return are not permitted on items purchased at SALE or DISCOUNTED Price.<br\/><\/li><\/ul>","page":""}},"collapsible_tab_mLr77H":{"type":"collapsible_tab","settings":{"heading":"SIZE HELP","icon":"silhouette","content":"<ul><li>At Sitarah, each garment features a unique size chart available on our website.<\/li><li>We kindly advise you to order based on your body measurements.<\/li><li>If you are uncertain about your size, it is recommended to choose one size larger.<\/li><li>Please note that garment measurements may vary by up to half an inch.<br\/><\/li><\/ul>","page":""}},"collapsible_tab_QypKhh":{"type":"collapsible_tab","settings":{"heading":"SPECIFICATION","icon":"shirt","content":"<p>Components: {{ product.metafields.custom._number_of_items_.value }}<\/p><p>Shape: {{ product.metafields.custom._shape_.value }} <\/p><p>Style:{{ product.metafields.custom.style_.value }}<\/p><p>Neck: {{ product.metafields.custom.neck_.value }}<\/p><p>Sleeves<strong>: <\/strong>{{ product.metafields.custom._sleeves_.value }}<\/p><p>Length: {{ product.metafields.custom.length_.value }}<\/p><p>Ornamentation:{{ product.metafields.custom.ornamentation_.value }}<\/p><p>Trousers Pattern: {{ product.metafields.custom.trousers_pattern_.value }}<\/p><p>Trousers Waistband: {{ product.metafields.custom.trousers_waistband_.value }}<\/p><p>Trousers Closure: {{ product.metafields.custom._closure_.value }}<\/p>","page":""}},"collapsible_tab_TxL3XK":{"type":"collapsible_tab","settings":{"heading":"MATERIAL & CARE","icon":"washing","content":"<p>Top Fabric: {{ product.metafields.custom._top_fabric_.value }}<\/p><p>Dupatta Fabric: {{ product.metafields.custom._dupatta_fabric_.value }}<\/p><p>Bottom Fabric: {{ product.metafields.custom._bottom_fabric_.value }}<\/p><p><strong>Wash Care Instructions<\/strong><br\/>We strongly recommend dry cleaning for all our products. Washing with water is at your own risk, and Sitarah will not be responsible for any damage resulting from improper washing.<\/p>","page":""}},"collapsible_tab_Tn4iX6":{"type":"collapsible_tab","settings":{"heading":"DISCLAIMER","icon":"question_mark","content":"<p>Slight colour variations may occur due to external factors beyond our control, such as photogenic conditions or different screen resolutions for different devices. <\/p><p>Celebrity and Influencer pictures may have a variation in the fabric colour as there might be filters used on them, please only refer to our photoshoot pictures for exact colours.<\/p>","page":""}},"share":{"type":"share","settings":{"share_label":"Share"}},"judge_me_reviews_preview_badge_c9VJDJ":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{}},"salepify_free_gift_block_ywUMNx":{"type":"shopify:\/\/apps\/salepify-gifts-upsell\/blocks\/free-gift.block\/f616e94d-36ae-45cb-9d98-57804196c7a7","settings":{}}},"block_order":["title","sku_rJcMDk","price","variant_picker","quantity_selector","buy_buttons","razorpay_affordability_widget_affordability_block_ENBKXY","essential_upsell_product_addon_app_block_mLjkYd","inventory_PcENLf","essential_upsell_frequently_bought_together_app_block_VKg6qb","essential_upsell_app_block_4VH6bi","custom_liquid_bKW7ba","ns_estimated_delivery_date_nestscale_edd_product_Jp4UHz","description","collapsible_tab_PmTcgk","collapsible_tab_3ixbUY","collapsible_tab_mLr77H","collapsible_tab_QypKhh","collapsible_tab_TxL3XK","collapsible_tab_Tn4iX6","share","judge_me_reviews_preview_badge_c9VJDJ","salepify_free_gift_block_ywUMNx"],"custom_css":["h1 {font-size: 25px;}"],"settings":{"enable_sticky_info":true,"color_scheme":"scheme-1","media_size":"large","constrain_to_viewport":false,"media_fit":"contain","gallery_layout":"columns","media_position":"left","image_zoom":"lightbox","mobile_thumbnails":"hide","hide_variants":true,"enable_video_looping":false,"padding_top":12,"padding_bottom":12}},"related-products":{"type":"related-products","settings":{"heading":"Recommended for You","heading_size":"h2","products_to_show":4,"columns_desktop":4,"color_scheme":"background-1","image_ratio":"portrait","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"columns_mobile":"2","padding_top":36,"padding_bottom":28}}},"order":["main","related-products"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "sku_rJcMDk": {
+          "type": "sku",
+          "disabled": true,
+          "settings": {
+            "text_style": "body"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "razorpay_affordability_widget_affordability_block_ENBKXY": {
+          "type": "shopify://apps/razorpay-affordability-widget/blocks/affordability-block/5bf9b115-5933-4c1b-ade0-ef564b250852",
+          "settings": {}
+        },
+        "essential_upsell_product_addon_app_block_mLjkYd": {
+          "type": "shopify://apps/essential-upsell/blocks/product-addon-app-block/50627fd9-24fd-4250-8614-accc12826d80",
+          "settings": {}
+        },
+        "inventory_PcENLf": {
+          "type": "inventory",
+          "disabled": true,
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
+        "essential_upsell_frequently_bought_together_app_block_VKg6qb": {
+          "type": "shopify://apps/essential-upsell/blocks/frequently-bought-together-app-block/50627fd9-24fd-4250-8614-accc12826d80",
+          "settings": {}
+        },
+        "essential_upsell_app_block_4VH6bi": {
+          "type": "shopify://apps/essential-upsell/blocks/app-block/50627fd9-24fd-4250-8614-accc12826d80",
+          "settings": {}
+        },
+        "custom_liquid_bKW7ba": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "✨ Boutique Style</p>\n<p>✨ Made on Order</p>\n<p>✨ Exclusive Pieces</p>\n<style>\n  .offer-text p {\n    margin: 0; /* Removes extra margin for the paragraph */\n  }\n\n  .offer-text small {\n    display: block; /* Ensures consistent layout */\n    margin: 0 0 10px 0; /* Adjusts spacing between elements */\n  }\n</style>\n\n<div class=\"offer-text\">\n  <p><strong>Offers:</strong></p>\n  \n  <small><em>Great Offers awaits on Check-out page.</p>\n<p></p>\n </em> <a href=\"https://fashion-mishti.myshopify.com/pages/offers-terms-and-condition\">T&amp;C</a></small>\n</div>"
+          }
+        },
+        "ns_estimated_delivery_date_nestscale_edd_product_Jp4UHz": {
+          "type": "shopify://apps/ns-estimated-delivery-date/blocks/nestscale_edd_product/7446b593-1e01-4150-afbd-7d963204ef10",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "collapsible_tab_PmTcgk": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "SHIPPING DETAILS",
+            "icon": "truck",
+            "content": "<ul><li>Orders are processed within 24 hours of being placed.</li><li>We provide Free PAN India Shipping on all PREPAID order.</li><li>A flat fee of ₹150 is applied on all COD orders.</li><li>Shipping to metro cities can take upto 4-5 working days, and to tier 1 cities may take upto 7-8 working days.</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_3ixbUY": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "RETURNS",
+            "icon": "return",
+            "content": "<ul><li>We prioritize your shopping experience and are committed to ensuring your satisfaction with your purchase.</li><li>We provide exchange/return within 7 days of the product delivery.</li><li>If you are not satisfied with your product, you may return it within 7 days of delivery.</li><li>Refunds will be issued in the form of store credit, which can be utilized for future purchases.</li><li>Please note that return are not permitted on items purchased at SALE or DISCOUNTED Price.<br/></li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_mLr77H": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "SIZE HELP",
+            "icon": "silhouette",
+            "content": "<ul><li>At Sitarah, each garment features a unique size chart available on our website.</li><li>We kindly advise you to order based on your body measurements.</li><li>If you are uncertain about your size, it is recommended to choose one size larger.</li><li>Please note that garment measurements may vary by up to half an inch.<br/></li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_QypKhh": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "SPECIFICATION",
+            "icon": "shirt",
+            "content": "<p>Components: {{ product.metafields.custom._number_of_items_.value }}</p><p>Shape: {{ product.metafields.custom._shape_.value }} </p><p>Style:{{ product.metafields.custom.style_.value }}</p><p>Neck: {{ product.metafields.custom.neck_.value }}</p><p>Sleeves<strong>: </strong>{{ product.metafields.custom._sleeves_.value }}</p><p>Length: {{ product.metafields.custom.length_.value }}</p><p>Ornamentation:{{ product.metafields.custom.ornamentation_.value }}</p><p>Trousers Pattern: {{ product.metafields.custom.trousers_pattern_.value }}</p><p>Trousers Waistband: {{ product.metafields.custom.trousers_waistband_.value }}</p><p>Trousers Closure: {{ product.metafields.custom._closure_.value }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_TxL3XK": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "MATERIAL & CARE",
+            "icon": "washing",
+            "content": "<p>Top Fabric: {{ product.metafields.custom._top_fabric_.value }}</p><p>Dupatta Fabric: {{ product.metafields.custom._dupatta_fabric_.value }}</p><p>Bottom Fabric: {{ product.metafields.custom._bottom_fabric_.value }}</p><p><strong>Wash Care Instructions</strong><br/>We strongly recommend dry cleaning for all our products. Washing with water is at your own risk, and Sitarah will not be responsible for any damage resulting from improper washing.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_Tn4iX6": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "DISCLAIMER",
+            "icon": "question_mark",
+            "content": "<p>Slight colour variations may occur due to external factors beyond our control, such as photogenic conditions or different screen resolutions for different devices. </p><p>Celebrity and Influencer pictures may have a variation in the fabric colour as there might be filters used on them, please only refer to our photoshoot pictures for exact colours.</p>",
+            "page": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "judge_me_reviews_preview_badge_c9VJDJ": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "salepify_free_gift_block_ywUMNx": {
+          "type": "shopify://apps/tek-labs-gifts-upsell/blocks/free-gift.block/f616e94d-36ae-45cb-9d98-57804196c7a7",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "sku_rJcMDk",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "razorpay_affordability_widget_affordability_block_ENBKXY",
+        "essential_upsell_product_addon_app_block_mLjkYd",
+        "inventory_PcENLf",
+        "essential_upsell_frequently_bought_together_app_block_VKg6qb",
+        "essential_upsell_app_block_4VH6bi",
+        "custom_liquid_bKW7ba",
+        "ns_estimated_delivery_date_nestscale_edd_product_Jp4UHz",
+        "description",
+        "collapsible_tab_PmTcgk",
+        "collapsible_tab_3ixbUY",
+        "collapsible_tab_mLr77H",
+        "collapsible_tab_QypKhh",
+        "collapsible_tab_TxL3XK",
+        "collapsible_tab_Tn4iX6",
+        "share",
+        "judge_me_reviews_preview_badge_c9VJDJ",
+        "salepify_free_gift_block_ywUMNx"
+      ],
+      "custom_css": [
+        "h1 {font-size: 25px;}"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "large",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "columns",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Recommended for You",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products"
+  ]
+}
