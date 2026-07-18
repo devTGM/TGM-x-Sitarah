@@ -101,14 +101,12 @@
         "template--21720340824375__4862cca1-87c2-43ba-be8e-985e5ed256c5-slide-1",
         "slide_KifMHx"
       ],
-      "custom_css": [
-        "@media only screen and (max-width: 700px) {{display: none; }}"
-      ],
+      "custom_css": [],
       "settings": {
         "transparent_header": true,
-        "transparent_header_color": "#ffffff",
+        "transparent_header_color": "#FFFFFF",
         "logo_filter": "brightness(0) invert(1)",
-        "height_desktop": 65,
+        "height_desktop": 80,
         "height_mobile": 85,
         "auto_rotate": true,
         "change_slides_speed": 5,
