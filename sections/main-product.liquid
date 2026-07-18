@@ -578,7 +578,117 @@
     </modal-dialog>
   {%- endfor -%}
 
+  <modal-dialog id="PopupModal-SizeChart" class="product-popup-modal">
+    <div
+      role="dialog"
+      aria-label="Size Chart"
+      aria-modal="true"
+      class="product-popup-modal__content"
+      tabindex="-1"
+      style="max-width: 600px; width: 90%;"
+    >
+      <button
+        id="ModalClose-SizeChart"
+        type="button"
+        class="product-popup-modal__toggle"
+        aria-label="{{ 'accessibility.close' | t }}"
+      >
+        {% render 'icon-close' %}
+      </button>
+      <div class="product-popup-modal__content-info" style="padding: 2.5rem 2rem;">
+        <h2 class="h1" style="margin-top: 0; text-align: center; margin-bottom: 2rem;">Size Guide</h2>
+        <div class="size-chart-table-wrapper" style="overflow-x: auto; margin-top: 1rem;">
+          <p style="text-align: center;"><strong style="font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.1rem; color: rgb(var(--color-foreground));">Upper Wear Size Guide</strong></p>
+          <table style="border-collapse: collapse; width: 100%; text-align: center; margin-bottom: 3rem; font-size: 1.3rem;" border="1" cellpadding="10">
+            <thead>
+              <tr style="background-color: rgba(var(--color-foreground), 0.05);">
+                <th><strong>UPPER WEAR</strong></th>
+                <th><strong>XS</strong></th>
+                <th><strong>S</strong></th>
+                <th><strong>M</strong></th>
+                <th><strong>L</strong></th>
+                <th><strong>XL</strong></th>
+                <th><strong>XXL</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>BUST</strong></td>
+                <td>32</td>
+                <td>34</td>
+                <td>36</td>
+                <td>38</td>
+                <td>40</td>
+                <td>42</td>
+              </tr>
+              <tr>
+                <td><strong>WAIST</strong></td>
+                <td>30</td>
+                <td>32</td>
+                <td>34</td>
+                <td>36</td>
+                <td>38</td>
+                <td>40</td>
+              </tr>
+              <tr>
+                <td><strong>HIPS</strong></td>
+                <td>34</td>
+                <td>36</td>
+                <td>38</td>
+                <td>40</td>
+                <td>42</td>
+                <td>44</td>
+              </tr>
+            </tbody>
+          </table>
 
+          <p style="text-align: center;"><strong style="font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.1rem; color: rgb(var(--color-foreground));">Bottom Wear Size Guide</strong></p>
+          <table style="border-collapse: collapse; width: 100%; text-align: center; font-size: 1.3rem;" border="1" cellpadding="10">
+            <thead>
+              <tr style="background-color: rgba(var(--color-foreground), 0.05);">
+                <th><strong>BOTTOM WEAR</strong></th>
+                <th><strong>XS</strong></th>
+                <th><strong>S</strong></th>
+                <th><strong>M</strong></th>
+                <th><strong>L</strong></th>
+                <th><strong>XL</strong></th>
+                <th><strong>XXL</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>LENGTH</strong></td>
+                <td>38</td>
+                <td>38</td>
+                <td>38</td>
+                <td>38</td>
+                <td>38</td>
+                <td>38</td>
+              </tr>
+              <tr>
+                <td><strong>WAIST</strong></td>
+                <td>26</td>
+                <td>28</td>
+                <td>30</td>
+                <td>32</td>
+                <td>34</td>
+                <td>36</td>
+              </tr>
+              <tr>
+                <td><strong>HIPS</strong></td>
+                <td>36</td>
+                <td>38</td>
+                <td>40</td>
+                <td>42</td>
+                <td>44</td>
+                <td>46</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </modal-dialog>
 
   {%- if product.media.size > 0 -%}
     <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>
