@@ -3579,3 +3579,23 @@ details-disclosure > details {
 }
 
 .full-unstyled-link:hover {text-decoration: unset !important;}
+
+/* Hide Avada Size Chart injected elements */
+.avada-size-chart,
+.avada-sc-button,
+.avada-sizechart,
+.avada-sc-link,
+.avada-sizechart-inline-link,
+[class*="avada-size-chart"],
+[class*="avada-sizechart"],
+[class*="avada-sc-"],
+[class*="avada-sc"],
+[class*="avadasc"],
+[id*="avada-size-chart"],
+[id*="avada-sizechart"],
+[id*="avada-sc"],
+a[href*="avada"],
+img[src*="avada"],
+iframe[src*="avada"] {
+  display: none !important;
+}
