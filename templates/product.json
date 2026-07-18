@@ -78,6 +78,7 @@
         },
         "ns_estimated_delivery_date_nestscale_edd_product_Jp4UHz": {
           "type": "shopify://apps/ns-estimated-delivery-date/blocks/nestscale_edd_product/7446b593-1e01-4150-afbd-7d963204ef10",
+          "disabled": true,
           "settings": {}
         },
         "description": {
