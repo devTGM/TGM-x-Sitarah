@@ -182,6 +182,22 @@ html.slideshow-transparent-header .sitarah-slideshow-section {
   z-index: 1;
 }
 
+/* ── Full-banner clickable link ── */
+.sitarah-slideshow__full-link {
+  position: absolute;
+  inset: 0;
+  z-index: 3;           /* above overlay, below buttons */
+  display: block;
+  cursor: pointer;
+  /* no background – purely a hit area */
+}
+
+/* Raise CTA buttons above the full-cover link */
+.sitarah-slideshow__buttons {
+  position: relative;
+  z-index: 4;
+}
+
 /* ── Content ── */
 .sitarah-slideshow__content {
   position: absolute;
@@ -513,6 +529,15 @@ html.slideshow-transparent-header .sitarah-slideshow-section {
           class="sitarah-slideshow__overlay"
           style="background: {{ block.settings.overlay_color }}; opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};"
         ></div>
+
+        {%- comment -%}──── FULL-BANNER LINK (optional) ────{%- endcomment -%}
+        {%- if block.settings.banner_link != blank -%}
+          <a
+            href="{{ block.settings.banner_link }}"
+            class="sitarah-slideshow__full-link"
+            aria-label="{{ block.settings.heading | strip_html | default: 'View' | escape }}"
+          ></a>
+        {%- endif -%}
 
         {%- comment -%}──── CONTENT ────{%- endcomment -%}
         <div class="sitarah-slideshow__content sitarah-slideshow__content--{{ block.settings.box_align }}">
@@ -902,6 +927,16 @@ html.slideshow-transparent-header .sitarah-slideshow-section {
         },
         {
           "type": "header",
+          "content": "Banner Link"
+        },
+        {
+          "type": "url",
+          "id": "banner_link",
+          "label": "Banner link (entire slide)",
+          "info": "Makes the whole slide clickable. Buttons still work independently above this."
+        },
+        {
+          "type": "header",
           "content": "Buttons"
         },
         {
@@ -1005,6 +1040,16 @@ html.slideshow-transparent-header .sitarah-slideshow-section {
             { "value": "bottom-right",  "label": "Bottom right" }
           ],
           "default": "bottom-left"
+        },
+        {
+          "type": "header",
+          "content": "Banner Link"
+        },
+        {
+          "type": "url",
+          "id": "banner_link",
+          "label": "Banner link (entire slide)",
+          "info": "Makes the whole slide clickable. Buttons still work independently above this."
         },
         {
           "type": "header",
