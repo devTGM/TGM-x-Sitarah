@@ -111,7 +111,7 @@
         "sticky_header_type": "reduce-logo-size",
         "show_line_separator": true,
         "color_scheme": "accent-2",
-        "menu_color_scheme": "accent-2",
+        "menu_color_scheme": "background-2",
         "enable_country_selector": false,
         "enable_language_selector": false,
         "mobile_logo_position": "center",
