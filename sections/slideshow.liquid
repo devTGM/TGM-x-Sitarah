@@ -12,17 +12,18 @@
 
 {%- style -%}
 /* ════════════════════════════════════════════════════════════
-   TRANSPARENT HEADER – ALL ELEMENTS including submenu triggers
+   TRANSPARENT HEADER – stays in flow after announcement bar
+   The hero banner slides UP behind it via negative margin-top
    ════════════════════════════════════════════════════════════ */
+
+/* Keep section-header in normal flow so it renders BELOW the
+   announcement bar.  We only make its background transparent. */
 .slideshow-transparent-header .section-header {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  width: 100%;
+  position: sticky;           /* keep default sticky, don't go absolute */
   z-index: 100;
   background: transparent !important;
   border-bottom: none !important;
   margin-bottom: 0 !important;
-  height: auto;
 }
 .slideshow-transparent-header .header-wrapper {
   background: transparent !important;
@@ -91,17 +92,31 @@ html.slideshow-transparent-header details > summary svg polyline,
 
 /* ════════════════════════════════════════════════════════════
    BANNER WRAPPER
+   Pull the banner UP by the header's height so it sits flush
+   behind the transparent header, but does NOT overlap the
+   announcement bar (which pushes the header down naturally).
    ════════════════════════════════════════════════════════════ */
 .sitarah-slideshow {
   position: relative;
   width: 100%;
-  /* Prevent the section from adding extra space below */
   display: block;
   overflow: hidden;
   background: #000;
-  /* Use svh for mobile browsers that include the browser chrome in vh */
   height: {{ section.settings.height_desktop }}vh;
   height: {{ section.settings.height_desktop }}svh;
+}
+/* Pull banner up behind the transparent header */
+.slideshow-transparent-header ~ * .sitarah-slideshow-section,
+.slideshow-transparent-header + .sitarah-slideshow-section,
+body .sitarah-slideshow-section {
+  margin-top: 0;
+}
+.slideshow-transparent-header .section-header + .shopify-section .sitarah-slideshow {
+  margin-top: 0;
+}
+/* Negative margin trick: slide this section up behind the header */
+html.slideshow-transparent-header .sitarah-slideshow-section {
+  margin-top: calc(-1 * var(--header-height, 72px));
 }
 @media screen and (max-width: 749px) {
   .sitarah-slideshow {
@@ -109,10 +124,8 @@ html.slideshow-transparent-header details > summary svg polyline,
     height: {{ section.settings.height_mobile }}svh;
   }
 }
-/* Ensure the Shopify section wrapper itself has no margin/padding */
-.sitarah-slideshow-section,
-.section.sitarah-slideshow-section {
-  margin: 0 !important;
+/* Ensure the Shopify section wrapper itself has no extra padding */
+.sitarah-slideshow-section {
   padding: 0 !important;
 }
 
@@ -168,9 +181,9 @@ html.slideshow-transparent-header details > summary svg polyline,
   z-index: 2;
   display: flex;
   flex-direction: column;
-  /* Top padding accounts for header height so content is never hidden behind it.
-     80px is a safe default; Shopify sets --header-height via JS for sticky headers. */
-  padding: max(80px, calc(var(--header-height, 80px) + 1rem)) max(3rem, calc((100vw - 1400px) / 2 + 3rem)) 3rem;
+  /* The banner slides up behind the transparent header.
+     Top padding = header height so text is never hidden under the nav. */
+  padding: calc(var(--header-height, 72px) + 1rem) max(3rem, calc((100vw - 1400px) / 2 + 3rem)) 3rem;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -189,7 +202,7 @@ html.slideshow-transparent-header details > summary svg polyline,
     align-items: center !important;
     justify-content: flex-end !important;
     text-align: center !important;
-    padding: max(70px, calc(var(--header-height, 70px) + 0.5rem)) 1.25rem 5rem;
+    padding: calc(var(--header-height, 60px) + 0.5rem) 1.25rem 5rem;
   }
 }
 
