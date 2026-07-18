@@ -95,6 +95,17 @@
     margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
   }
 
+  /* ---- Transparent hero banner mode ---- */
+  .hero-banner-transparent-header .section-header {
+    position: absolute;
+    width: 100%;
+    margin-bottom: 0;
+    /* Pull header up by its own height so hero sits flush to viewport top */
+  }
+  .hero-banner-transparent-header .sitarah-hero-section {
+    margin-top: 0 !important;
+  }
+
   @media screen and (min-width: 750px) {
     .section-header {
       margin-bottom: {{ section.settings.margin_bottom }}px;

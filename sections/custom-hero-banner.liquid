@@ -1,0 +1,1069 @@
+{%- style -%}
+  /* ============================================================
+     CUSTOM HERO BANNER – Sitarah
+     Transparent header + Image/Video Slideshow (up to 10 slides)
+  ============================================================ */
+
+  /* --- Transparent Header overlay when hero is first section --- */
+  .hero-banner-transparent-header .section-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: transparent !important;
+  }
+  .hero-banner-transparent-header .header-wrapper {
+    background: transparent !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+  .hero-banner-transparent-header .header__heading-link,
+  .hero-banner-transparent-header .header__icon,
+  .hero-banner-transparent-header .header__menu-item,
+  .hero-banner-transparent-header .list-menu__item,
+  .hero-banner-transparent-header .header__menu-item span,
+  .hero-banner-transparent-header nav a {
+    color: {{ section.settings.transparent_header_text_color }} !important;
+  }
+  .hero-banner-transparent-header .header__icon svg path,
+  .hero-banner-transparent-header .header__icon svg circle {
+    stroke: {{ section.settings.transparent_header_text_color }};
+    fill: {{ section.settings.transparent_header_text_color }};
+  }
+  .hero-banner-transparent-header .header-wrapper--border-bottom {
+    border-bottom: none !important;
+  }
+  /* Logo colour swap on transparent header */
+  .hero-banner-transparent-header .header__heading-logo {
+    filter: {{ section.settings.logo_filter }};
+  }
+
+  /* --- Wrapper --- */
+  .sitarah-hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .sitarah-hero,
+  .sitarah-hero__track,
+  .sitarah-hero__slide {
+    height: {{ section.settings.slide_height_desktop }}vh;
+  }
+
+  @media screen and (max-width: 749px) {
+    .sitarah-hero,
+    .sitarah-hero__track,
+    .sitarah-hero__slide {
+      height: {{ section.settings.slide_height_mobile }}vh;
+    }
+  }
+
+  /* --- Slider track --- */
+  .sitarah-hero__track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.9s cubic-bezier(0.77, 0, 0.18, 1);
+    will-change: transform;
+  }
+
+  .sitarah-hero__slide {
+    position: relative;
+    min-width: 100%;
+    flex: 0 0 100%;
+    overflow: hidden;
+  }
+
+  /* --- Media (image / video) --- */
+  .sitarah-hero__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sitarah-hero__media img,
+  .sitarah-hero__media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  /* Mobile image: shown on small screens */
+  .sitarah-hero__img--mobile {
+    display: none;
+  }
+  @media screen and (max-width: 749px) {
+    .sitarah-hero__img--desktop {
+      display: none;
+    }
+    .sitarah-hero__img--mobile {
+      display: block;
+    }
+  }
+
+  /* --- Overlay --- */
+  .sitarah-hero__overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /* --- Content --- */
+  .sitarah-hero__content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: {{ section.settings.content_align_h }};
+    justify-content: {{ section.settings.content_align_v }};
+    padding: 2rem max(3rem, calc((100vw - 1400px) / 2 + 3rem));
+    text-align: {{ section.settings.text_align }};
+    z-index: 2;
+  }
+
+  @media screen and (max-width: 749px) {
+    .sitarah-hero__content {
+      align-items: center;
+      justify-content: flex-end;
+      text-align: center;
+      padding: 2rem 1.5rem 4rem;
+    }
+  }
+
+  .sitarah-hero__eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin: 0 0 0.75rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s 0.2s ease, transform 0.6s 0.2s ease;
+  }
+
+  .sitarah-hero__heading {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+    max-width: 18ch;
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.7s 0.35s ease, transform 0.7s 0.35s ease;
+  }
+
+  .sitarah-hero__subheading {
+    font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+    line-height: 1.6;
+    margin: 0 0 2rem;
+    max-width: 50ch;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s 0.5s ease, transform 0.6s 0.5s ease;
+  }
+
+  .sitarah-hero__buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s 0.65s ease, transform 0.6s 0.65s ease;
+  }
+
+  @media screen and (max-width: 749px) {
+    .sitarah-hero__heading { max-width: 100%; }
+    .sitarah-hero__subheading { max-width: 100%; }
+    .sitarah-hero__buttons { justify-content: center; }
+  }
+
+  /* Animate in on active slide */
+  .sitarah-hero__slide--active .sitarah-hero__eyebrow,
+  .sitarah-hero__slide--active .sitarah-hero__heading,
+  .sitarah-hero__slide--active .sitarah-hero__subheading,
+  .sitarah-hero__slide--active .sitarah-hero__buttons {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --- CTA Buttons --- */
+  .sitarah-hero__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    border-radius: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  }
+  .sitarah-hero__btn:hover { transform: translateY(-2px); }
+  .sitarah-hero__btn--primary {
+    background: #fff;
+    color: #111;
+    border-color: #fff;
+  }
+  .sitarah-hero__btn--primary:hover {
+    background: transparent;
+    color: #fff;
+  }
+  .sitarah-hero__btn--secondary {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255,255,255,0.7);
+  }
+  .sitarah-hero__btn--secondary:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: #fff;
+  }
+
+  /* --- Navigation arrows --- */
+  .sitarah-hero__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s, transform 0.3s;
+    padding: 0;
+  }
+  .sitarah-hero__arrow:hover {
+    background: rgba(255,255,255,0.28);
+    transform: translateY(-50%) scale(1.08);
+  }
+  .sitarah-hero__arrow--prev { left: 1.5rem; }
+  .sitarah-hero__arrow--next { right: 1.5rem; }
+  .sitarah-hero__arrow svg { width: 20px; height: 20px; }
+
+  @media screen and (max-width: 749px) {
+    .sitarah-hero__arrow {
+      width: 38px;
+      height: 38px;
+    }
+    .sitarah-hero__arrow--prev { left: 0.75rem; }
+    .sitarah-hero__arrow--next { right: 0.75rem; }
+  }
+
+  {% if section.blocks.size < 2 %}
+  .sitarah-hero__arrow,
+  .sitarah-hero__dots,
+  .sitarah-hero__progress {
+    display: none !important;
+  }
+  {% endif %}
+
+  /* --- Dot indicators --- */
+  .sitarah-hero__dots {
+    position: absolute;
+    bottom: 1.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .sitarah-hero__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.3s, width 0.4s cubic-bezier(0.34,1.56,0.64,1), border-radius 0.4s;
+    flex-shrink: 0;
+  }
+
+  .sitarah-hero__dot--active {
+    background: #fff;
+    width: 28px;
+    border-radius: 4px;
+  }
+
+  /* --- Progress bar (auto-rotate indicator) --- */
+  .sitarah-hero__progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: rgba(255,255,255,0.25);
+    width: 100%;
+    z-index: 10;
+    overflow: hidden;
+  }
+  .sitarah-hero__progress-bar {
+    height: 100%;
+    background: rgba(255,255,255,0.85);
+    width: 0%;
+    transition: width linear;
+  }
+
+  /* --- Autoplay pause button --- */
+  .sitarah-hero__pause {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 10;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background 0.3s;
+  }
+  .sitarah-hero__pause:hover { background: rgba(255,255,255,0.25); }
+  .sitarah-hero__pause svg { width: 14px; height: 14px; }
+  .sitarah-hero__pause .icon-play { display: none; }
+  .sitarah-hero__pause.is-paused .icon-pause { display: none; }
+  .sitarah-hero__pause.is-paused .icon-play { display: block; }
+{%- endstyle -%}
+
+{%- if section.settings.transparent_header -%}
+  <script>
+    document.documentElement.classList.add('hero-banner-transparent-header');
+  </script>
+{%- endif -%}
+
+<div
+  class="sitarah-hero"
+  id="SitarahHero-{{ section.id }}"
+  data-autoplay="{{ section.settings.auto_rotate }}"
+  data-speed="{{ section.settings.change_speed | times: 1000 }}"
+  aria-label="Hero banner"
+  role="region"
+>
+  {%- comment %} Slider track {%- endcomment %}
+  <div class="sitarah-hero__track" id="SitarahTrack-{{ section.id }}">
+    {%- for block in section.blocks -%}
+      {%- assign is_active = false -%}
+      {%- if forloop.first -%}{%- assign is_active = true -%}{%- endif -%}
+
+      <div
+        class="sitarah-hero__slide{% if is_active %} sitarah-hero__slide--active{% endif %}"
+        id="SitarahSlide-{{ section.id }}-{{ forloop.index }}"
+        {{ block.shopify_attributes }}
+        aria-label="Slide {{ forloop.index }} of {{ forloop.length }}"
+        role="group"
+      >
+        {%- comment %} ---- MEDIA ---- {%- endcomment %}
+        <div class="sitarah-hero__media">
+          {%- if block.type == 'video_slide' -%}
+            {%- comment %} VIDEO SLIDE {%- endcomment %}
+            {%- if block.settings.video != blank -%}
+              {{
+                block.settings.video
+                | video_tag:
+                  autoplay: true,
+                  loop: true,
+                  muted: true,
+                  playsinline: true,
+                  class: 'sitarah-hero__video'
+              }}
+            {%- else -%}
+              {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          {%- else -%}
+            {%- comment %} IMAGE SLIDE {%- endcomment %}
+            {%- assign desktop_img = block.settings.desktop_image -%}
+            {%- assign mobile_img = block.settings.mobile_image -%}
+
+            {%- if desktop_img != blank -%}
+              {%- comment %} Desktop image (hidden on mobile if mobile img exists) {%- endcomment %}
+              <img
+                class="sitarah-hero__img--desktop"
+                src="{{ desktop_img | image_url: width: 2000 }}"
+                srcset="
+                  {{ desktop_img | image_url: width: 750 }} 750w,
+                  {{ desktop_img | image_url: width: 1100 }} 1100w,
+                  {{ desktop_img | image_url: width: 1500 }} 1500w,
+                  {{ desktop_img | image_url: width: 2000 }} 2000w,
+                  {{ desktop_img | image_url: width: 3000 }} 3000w
+                "
+                sizes="100vw"
+                alt="{{ desktop_img.alt | escape | default: block.settings.heading }}"
+                width="{{ desktop_img.width }}"
+                height="{{ desktop_img.height }}"
+                {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+              >
+
+              {%- if mobile_img != blank -%}
+                {%- comment %} Dedicated mobile image {%- endcomment %}
+                <img
+                  class="sitarah-hero__img--mobile"
+                  src="{{ mobile_img | image_url: width: 750 }}"
+                  srcset="
+                    {{ mobile_img | image_url: width: 375 }} 375w,
+                    {{ mobile_img | image_url: width: 550 }} 550w,
+                    {{ mobile_img | image_url: width: 750 }} 750w
+                  "
+                  sizes="100vw"
+                  alt="{{ mobile_img.alt | escape | default: block.settings.heading }}"
+                  width="{{ mobile_img.width }}"
+                  height="{{ mobile_img.height }}"
+                  {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+                >
+              {%- else -%}
+                {%- comment %} Fallback: reuse desktop image, optimised for mobile via CSS {%- endcomment %}
+                <img
+                  class="sitarah-hero__img--mobile"
+                  src="{{ desktop_img | image_url: width: 750 }}"
+                  srcset="
+                    {{ desktop_img | image_url: width: 375 }} 375w,
+                    {{ desktop_img | image_url: width: 550 }} 550w,
+                    {{ desktop_img | image_url: width: 750 }} 750w
+                  "
+                  sizes="100vw"
+                  alt="{{ desktop_img.alt | escape | default: block.settings.heading }}"
+                  width="{{ desktop_img.width }}"
+                  height="{{ desktop_img.height }}"
+                  {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+                >
+              {%- endif -%}
+            {%- else -%}
+              {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+
+        {%- comment %} ---- OVERLAY ---- {%- endcomment %}
+        <div
+          class="sitarah-hero__overlay"
+          style="background: {{ block.settings.overlay_color }}; opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};"
+        ></div>
+
+        {%- comment %} ---- CONTENT ---- {%- endcomment %}
+        <div class="sitarah-hero__content">
+          {%- if block.settings.eyebrow != blank -%}
+            <p
+              class="sitarah-hero__eyebrow"
+              style="color: {{ block.settings.text_color }};"
+            >
+              {{ block.settings.eyebrow | escape }}
+            </p>
+          {%- endif -%}
+
+          {%- if block.settings.heading != blank -%}
+            {%- if forloop.first and request.page_type == 'index' -%}
+              <h1
+                class="sitarah-hero__heading"
+                style="color: {{ block.settings.text_color }};"
+              >
+                {{ block.settings.heading }}
+              </h1>
+            {%- else -%}
+              <h2
+                class="sitarah-hero__heading"
+                style="color: {{ block.settings.text_color }};"
+              >
+                {{ block.settings.heading }}
+              </h2>
+            {%- endif -%}
+          {%- endif -%}
+
+          {%- if block.settings.subheading != blank -%}
+            <p
+              class="sitarah-hero__subheading"
+              style="color: {{ block.settings.text_color }};"
+            >
+              {{ block.settings.subheading | escape }}
+            </p>
+          {%- endif -%}
+
+          {%- if block.settings.button_1_label != blank or block.settings.button_2_label != blank -%}
+            <div class="sitarah-hero__buttons">
+              {%- if block.settings.button_1_label != blank -%}
+                <a
+                  href="{{ block.settings.button_1_link | default: '#' }}"
+                  class="sitarah-hero__btn sitarah-hero__btn--primary"
+                >
+                  {{ block.settings.button_1_label | escape }}
+                </a>
+              {%- endif -%}
+              {%- if block.settings.button_2_label != blank -%}
+                <a
+                  href="{{ block.settings.button_2_link | default: '#' }}"
+                  class="sitarah-hero__btn sitarah-hero__btn--secondary"
+                >
+                  {{ block.settings.button_2_label | escape }}
+                </a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.blocks.size > 1 -%}
+    {%- comment %} Prev arrow {%- endcomment %}
+    <button
+      class="sitarah-hero__arrow sitarah-hero__arrow--prev"
+      aria-label="Previous slide"
+      data-hero-prev
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+
+    {%- comment %} Next arrow {%- endcomment %}
+    <button
+      class="sitarah-hero__arrow sitarah-hero__arrow--next"
+      aria-label="Next slide"
+      data-hero-next
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+
+    {%- comment %} Dot nav {%- endcomment %}
+    <div class="sitarah-hero__dots" role="tablist" aria-label="Slide navigation">
+      {%- for block in section.blocks -%}
+        <button
+          class="sitarah-hero__dot{% if forloop.first %} sitarah-hero__dot--active{% endif %}"
+          data-hero-dot="{{ forloop.index0 }}"
+          role="tab"
+          aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+          aria-label="Go to slide {{ forloop.index }}"
+        ></button>
+      {%- endfor -%}
+    </div>
+
+    {%- comment %} Autoplay pause/play {%- endcomment %}
+    {%- if section.settings.auto_rotate -%}
+      <button class="sitarah-hero__pause" aria-label="Pause slideshow" data-hero-pause>
+        <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor">
+          <rect x="6" y="4" width="4" height="16" rx="1"/>
+          <rect x="14" y="4" width="4" height="16" rx="1"/>
+        </svg>
+        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="5 3 19 12 5 21 5 3"/>
+        </svg>
+      </button>
+    {%- endif -%}
+
+    {%- comment %} Progress bar {%- endcomment %}
+    {%- if section.settings.auto_rotate -%}
+      <div class="sitarah-hero__progress" aria-hidden="true">
+        <div class="sitarah-hero__progress-bar" id="SitarahProgress-{{ section.id }}"></div>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  const hero = document.getElementById('SitarahHero-{{ section.id }}');
+  if (!hero) return;
+
+  const track       = hero.querySelector('.sitarah-hero__track');
+  const slides      = Array.from(hero.querySelectorAll('.sitarah-hero__slide'));
+  const dots        = Array.from(hero.querySelectorAll('[data-hero-dot]'));
+  const prevBtn     = hero.querySelector('[data-hero-prev]');
+  const nextBtn     = hero.querySelector('[data-hero-next]');
+  const pauseBtn    = hero.querySelector('[data-hero-pause]');
+  const progressBar = hero.querySelector('.sitarah-hero__progress-bar');
+
+  const total       = slides.length;
+  const autoplay    = hero.dataset.autoplay === 'true';
+  const speed       = parseInt(hero.dataset.speed, 10) || 5000;
+
+  let current  = 0;
+  let timer    = null;
+  let paused   = false;
+  let progTimer = null;
+
+  function goTo(index) {
+    // Clamp
+    index = (index + total) % total;
+
+    slides[current].classList.remove('sitarah-hero__slide--active');
+    dots[current]?.classList.remove('sitarah-hero__dot--active');
+    dots[current]?.setAttribute('aria-selected', 'false');
+
+    current = index;
+
+    track.style.transform = `translateX(-${current * 100}%)`;
+
+    slides[current].classList.add('sitarah-hero__slide--active');
+    dots[current]?.classList.add('sitarah-hero__dot--active');
+    dots[current]?.setAttribute('aria-selected', 'true');
+
+    // Restart progress bar
+    if (autoplay && !paused && progressBar) {
+      startProgress();
+    }
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  /* ---- Auto-rotation ---- */
+  function startTimer() {
+    clearInterval(timer);
+    if (!autoplay || paused) return;
+    timer = setInterval(next, speed);
+  }
+
+  function stopTimer() {
+    clearInterval(timer);
+  }
+
+  /* ---- Progress bar animation ---- */
+  function startProgress() {
+    if (!progressBar) return;
+    clearTimeout(progTimer);
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '0%';
+    // Force reflow
+    void progressBar.offsetWidth;
+    progressBar.style.transition = `width ${speed}ms linear`;
+    progressBar.style.width = '100%';
+  }
+
+  /* ---- Init ---- */
+  function init() {
+    slides[0].classList.add('sitarah-hero__slide--active');
+    if (autoplay && total > 1) {
+      startTimer();
+      startProgress();
+    }
+  }
+
+  /* ---- Pause on hover / focus ---- */
+  hero.addEventListener('mouseenter', () => {
+    if (autoplay) {
+      stopTimer();
+      if (progressBar) {
+        const computed = getComputedStyle(progressBar).width;
+        const parentWidth = progressBar.parentElement.offsetWidth;
+        const pct = (parseFloat(computed) / parentWidth) * 100;
+        progressBar.style.transition = 'none';
+        progressBar.style.width = pct + '%';
+      }
+    }
+  });
+  hero.addEventListener('mouseleave', () => {
+    if (autoplay && !paused) {
+      startTimer();
+      startProgress();
+    }
+  });
+
+  /* ---- Buttons ---- */
+  prevBtn?.addEventListener('click', () => { stopTimer(); prev(); startTimer(); });
+  nextBtn?.addEventListener('click', () => { stopTimer(); next(); startTimer(); });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      stopTimer();
+      goTo(parseInt(dot.dataset.heroDot, 10));
+      startTimer();
+    });
+  });
+
+  pauseBtn?.addEventListener('click', () => {
+    paused = !paused;
+    pauseBtn.classList.toggle('is-paused', paused);
+    pauseBtn.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
+    if (paused) {
+      stopTimer();
+      if (progressBar) {
+        const computed = getComputedStyle(progressBar).width;
+        const parentWidth = progressBar.parentElement.offsetWidth;
+        const pct = (parseFloat(computed) / parentWidth) * 100;
+        progressBar.style.transition = 'none';
+        progressBar.style.width = pct + '%';
+      }
+    } else {
+      startTimer();
+      startProgress();
+    }
+  });
+
+  /* ---- Touch / Swipe ---- */
+  let touchStartX = 0;
+  let touchEndX   = 0;
+  hero.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  hero.addEventListener('touchend',   (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      stopTimer();
+      diff > 0 ? next() : prev();
+      startTimer();
+    }
+  }, { passive: true });
+
+  /* ---- Keyboard ---- */
+  hero.setAttribute('tabindex', '0');
+  hero.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft')  { stopTimer(); prev(); startTimer(); }
+    if (e.key === 'ArrowRight') { stopTimer(); next(); startTimer(); }
+  });
+
+  /* ---- Shopify theme editor live reload ---- */
+  document.addEventListener('shopify:block:select', (e) => {
+    const slide = e.target.closest('.sitarah-hero__slide');
+    if (!slide) return;
+    const idx = slides.indexOf(slide);
+    if (idx !== -1) { stopTimer(); goTo(idx); }
+  });
+
+  init();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "tag": "section",
+  "class": "sitarah-hero-section",
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "transparent_header",
+      "label": "Transparent header over banner",
+      "default": true,
+      "info": "Makes the site header transparent so it floats over this banner."
+    },
+    {
+      "type": "color",
+      "id": "transparent_header_text_color",
+      "label": "Header text & icon colour (transparent mode)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "logo_filter",
+      "label": "Logo colour filter (transparent mode)",
+      "options": [
+        { "value": "none", "label": "Original" },
+        { "value": "brightness(0) invert(1)", "label": "White" },
+        { "value": "brightness(0)", "label": "Black" }
+      ],
+      "default": "brightness(0) invert(1)"
+    },
+    {
+      "type": "header",
+      "content": "Banner Layout"
+    },
+    {
+      "type": "range",
+      "id": "slide_height_desktop",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Banner height – Desktop",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "slide_height_mobile",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Banner height – Mobile",
+      "default": 85
+    },
+    {
+      "type": "select",
+      "id": "content_align_h",
+      "label": "Content horizontal align",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "flex-start"
+    },
+    {
+      "type": "select",
+      "id": "content_align_v",
+      "label": "Content vertical align",
+      "options": [
+        { "value": "flex-start", "label": "Top" },
+        { "value": "center", "label": "Middle" },
+        { "value": "flex-end", "label": "Bottom" }
+      ],
+      "default": "flex-end"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Auto-Rotation"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Enable auto-rotation",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "change_speed",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "unit": "s",
+      "label": "Rotation interval",
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_slide",
+      "name": "Image Slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Images"
+        },
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Desktop image",
+          "info": "Recommended: 2000×1000px or wider. Used on all screens if no mobile image is set."
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image (optional)",
+          "info": "Recommended: 750×1100px portrait. Falls back to desktop image if left blank."
+        },
+        {
+          "type": "header",
+          "content": "Overlay"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Overlay colour",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "label": "Overlay opacity",
+          "default": 35
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text colour",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow text",
+          "placeholder": "New Collection"
+        },
+        {
+          "type": "richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "<p>Crafted with Purpose</p>"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "placeholder": "Discover our latest collection"
+        },
+        {
+          "type": "header",
+          "content": "Buttons"
+        },
+        {
+          "type": "text",
+          "id": "button_1_label",
+          "label": "Primary button label",
+          "placeholder": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_1_link",
+          "label": "Primary button link"
+        },
+        {
+          "type": "text",
+          "id": "button_2_label",
+          "label": "Secondary button label",
+          "placeholder": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "button_2_link",
+          "label": "Secondary button link"
+        }
+      ]
+    },
+    {
+      "type": "video_slide",
+      "name": "Video Slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Video"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video file",
+          "info": "Upload an MP4 video. It will autoplay, loop, and muted for best browser compatibility."
+        },
+        {
+          "type": "header",
+          "content": "Overlay"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Overlay colour",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "label": "Overlay opacity",
+          "default": 30
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text colour",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow text",
+          "placeholder": "New Collection"
+        },
+        {
+          "type": "richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "<p>Crafted with Purpose</p>"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "placeholder": "Discover our latest collection"
+        },
+        {
+          "type": "header",
+          "content": "Buttons"
+        },
+        {
+          "type": "text",
+          "id": "button_1_label",
+          "label": "Primary button label",
+          "placeholder": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_1_link",
+          "label": "Primary button link"
+        },
+        {
+          "type": "text",
+          "id": "button_2_label",
+          "label": "Secondary button label",
+          "placeholder": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "button_2_link",
+          "label": "Secondary button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner",
+      "blocks": [
+        {
+          "type": "image_slide",
+          "settings": {
+            "heading": "<p>Welcome to Sitarah</p>",
+            "subheading": "Discover our curated collection",
+            "button_1_label": "Shop Now",
+            "overlay_opacity": 35
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
