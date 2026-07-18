@@ -344,8 +344,12 @@ a.product__text {
   margin-bottom: 1.5rem;
 }
 
-.product__title > * {
+.product__title > *,
+.product__title h1,
+.product__title h2,
+.product__title a {
   margin: 0;
+  font-weight: 600 !important;
 }
 
 .product__title > a {

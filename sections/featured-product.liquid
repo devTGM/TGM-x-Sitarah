@@ -180,6 +180,7 @@
                     <span>{{ 'products.product.volume_pricing.note' | t }}</span>
                   </div>
                 {%- endif -%}
+                {%- comment -%}
                 {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
                   <div class="product__tax caption rte">
                     {%- if cart.taxes_included -%}
@@ -190,6 +191,7 @@
                     {%- endif -%}
                   </div>
                 {%- endif -%}
+                {%- endcomment -%}
                 {%- if product != blank -%}
                   <div {{ block.shopify_attributes }}>
                     {%- form 'product', product -%}
