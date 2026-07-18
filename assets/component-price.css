@@ -104,3 +104,26 @@
   text-transform: uppercase;
   color: rgba(var(--color-foreground), 0.7);
 }
+
+/* Custom % OFF Badge in Brand Colors (Deep Wine/Maroon #58021e & Soft Pink #f8e6eb) */
+.price__badge-sale-custom,
+.price .price__badge-sale {
+  background-color: #f8e6eb !important;
+  color: #58021e !important;
+  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+  padding: 0.3rem 0.8rem !important;
+  border-radius: 4px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.05rem;
+  border: none !important;
+  text-transform: uppercase;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.price__badge-sale-custom {
+  margin-left: 1rem !important;
+}
