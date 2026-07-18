@@ -12,7 +12,7 @@
 
 {%- style -%}
 /* ════════════════════════════════════════════════════════════
-   TRANSPARENT HEADER – covers ALL possible nav / icon elements
+   TRANSPARENT HEADER – ALL ELEMENTS including submenu triggers
    ════════════════════════════════════════════════════════════ */
 .slideshow-transparent-header .section-header {
   position: absolute;
@@ -20,8 +20,8 @@
   width: 100%;
   z-index: 100;
   background: transparent !important;
+  border-bottom: none !important;
   margin-bottom: 0 !important;
-  /* Stop it pushing the banner down */
   height: auto;
 }
 .slideshow-transparent-header .header-wrapper {
@@ -30,29 +30,37 @@
   box-shadow: none !important;
 }
 
-/* ── ALL text in the header bar ── */
+/* ── Regular nav links (no submenu) ── */
 .slideshow-transparent-header .header__heading-link,
 .slideshow-transparent-header .header__heading-link span,
 .slideshow-transparent-header .header__heading-link .h2,
 .slideshow-transparent-header .header__icon,
-.slideshow-transparent-header .header__menu-item,
-.slideshow-transparent-header .header__menu-item span,
-.slideshow-transparent-header .header__menu-item summary,
+.slideshow-transparent-header .header__active-menu-item,
 .slideshow-transparent-header .list-menu__item--link,
-.slideshow-transparent-header .list-menu__item,
-.slideshow-transparent-header .list-menu__item span,
 .slideshow-transparent-header .link--text,
 .slideshow-transparent-header nav a,
-.slideshow-transparent-header nav summary,
-.slideshow-transparent-header nav span,
-.slideshow-transparent-header .header__inline-menu a,
-.slideshow-transparent-header .header__inline-menu span,
-.slideshow-transparent-header .header__inline-menu summary,
-.slideshow-transparent-header .header__active-menu-item {
+.slideshow-transparent-header .header__inline-menu a {
   color: {{ section.settings.transparent_header_color }} !important;
 }
 
-/* ── ALL SVG icons (cart, search, account, caret) ── */
+/* ── Submenu triggers: <details> > <summary> (e.g. COLLECTIONS, CATEGORIES, OCCASION)
+      Use html. prefix for maximum specificity to beat theme color-scheme overrides ── */
+html.slideshow-transparent-header .header__menu-item,
+html.slideshow-transparent-header summary.header__menu-item,
+html.slideshow-transparent-header summary.list-menu__item,
+html.slideshow-transparent-header details > summary,
+html.slideshow-transparent-header details > summary > span,
+html.slideshow-transparent-header header-menu > details > summary,
+html.slideshow-transparent-header header-menu > details > summary > span,
+html.slideshow-transparent-header .header__inline-menu details > summary,
+html.slideshow-transparent-header .header__inline-menu details > summary > span,
+html.slideshow-transparent-header .header__inline-menu details > summary .header__active-menu-item,
+html.slideshow-transparent-header .mega-menu details > summary,
+html.slideshow-transparent-header .mega-menu details > summary > span {
+  color: {{ section.settings.transparent_header_color }} !important;
+}
+
+/* ── ALL SVG icons: cart, search, account + caret arrows on submenu items ── */
 .slideshow-transparent-header .header__icon svg path,
 .slideshow-transparent-header .header__icon svg circle,
 .slideshow-transparent-header .header__icon svg polyline,
@@ -61,9 +69,13 @@
 .slideshow-transparent-header .header__inline-menu svg path,
 .slideshow-transparent-header .header__inline-menu svg polyline,
 .slideshow-transparent-header .header__inline-menu svg line,
+html.slideshow-transparent-header header-menu svg path,
+html.slideshow-transparent-header header-menu svg polyline,
+html.slideshow-transparent-header details > summary svg path,
+html.slideshow-transparent-header details > summary svg polyline,
 .slideshow-transparent-header .icon-caret {
   stroke: {{ section.settings.transparent_header_color }} !important;
-  fill: none;
+  fill: none !important;
 }
 
 /* ── Cart count bubble ── */
