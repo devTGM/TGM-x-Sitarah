@@ -1692,7 +1692,12 @@ a.product__text {
 .avada-sizechart,
 .avada-sc-link,
 [class*="avada-size-chart"],
+[class*="avada-sizechart"],
 [class*="avada-sc-"],
-[id*="avada-size-chart"] {
+[class*="avada-sc"],
+[class*="avadasc"],
+[id*="avada-size-chart"],
+[id*="avada-sizechart"],
+[id*="avada-sc"] {
   display: none !important;
 }
