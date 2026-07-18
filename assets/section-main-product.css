@@ -1608,3 +1608,80 @@ a.product__text {
     border: none;
   }
 }
+
+/* --- Clean Size Variant & Size Chart Styling --- */
+.product-form__input--size {
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 0 2rem 0 !important;
+}
+
+.product-form__input--size legend.form__label {
+  margin-bottom: 0 !important;
+  display: block;
+}
+
+.product-form__input--size .form__label-wrapper {
+  margin-bottom: 1rem;
+}
+
+/* Radio label (unchecked size variant) */
+.product-form__input--size input[type='radio'] + label {
+  border: none !important;
+  background-color: transparent !important;
+  color: rgb(var(--color-foreground)) !important;
+  border-radius: 0 !important;
+  min-width: 4.5rem;
+  height: 4.5rem;
+  padding: 0 !important;
+  margin: 0 1.2rem 1.2rem 0 !important;
+  font-size: 1.4rem;
+  font-weight: 500;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: none !important;
+}
+
+.product-form__input--size input[type='radio'] + label:before {
+  display: none !important; /* Hide default pills shadow/borders */
+}
+
+/* Hover state */
+.product-form__input--size input[type='radio'] + label:hover {
+  background-color: rgba(var(--color-foreground), 0.08) !important;
+}
+
+/* Checked state (solid black box, white bold text) */
+.product-form__input--size input[type='radio']:checked + label {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+  box-shadow: none !important;
+}
+
+/* Size chart table modal styling */
+.size-chart-table-wrapper table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+  margin-top: 1rem;
+}
+
+.size-chart-table-wrapper th,
+.size-chart-table-wrapper td {
+  padding: 1.2rem;
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+  vertical-align: middle;
+}
+
+.size-chart-table-wrapper th {
+  font-weight: bold;
+  background-color: rgba(var(--color-foreground), 0.05);
+}
+
+.size-chart-table-wrapper td strong {
+  font-weight: 600;
+}

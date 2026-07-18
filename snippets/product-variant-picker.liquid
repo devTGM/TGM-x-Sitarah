@@ -22,8 +22,26 @@
       {{ block.shopify_attributes }}
     >
       {%- for option in product.options_with_values -%}
-        <fieldset class="js product-form__input">
-          <legend class="form__label">{{ option.name }}</legend>
+        {%- assign option_name_downcase = option.name | downcase -%}
+        <fieldset class="js product-form__input{% if option_name_downcase == 'size' %} product-form__input--size{% endif %}">
+          {%- if option_name_downcase == 'size' -%}
+            <div class="form__label-wrapper" style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 0.8rem;">
+              <legend class="form__label" style="margin: 0; padding: 0;">{{ option.name }}</legend>
+              <modal-opener data-modal="#PopupModal-SizeChart">
+                <button
+                  id="ProductPopup-SizeChart"
+                  class="product-popup-modal__button link"
+                  type="button"
+                  aria-haspopup="dialog"
+                  style="font-size: 1.3rem; letter-spacing: 0.05rem; text-decoration: underline; text-underline-offset: 0.3rem; cursor: pointer; background: none; border: none; padding: 0; color: rgba(var(--color-foreground), 0.75); min-height: unset;"
+                >
+                  Size Chart
+                </button>
+              </modal-opener>
+            </div>
+          {%- else -%}
+            <legend class="form__label">{{ option.name }}</legend>
+          {%- endif -%}
           {% render 'product-variant-options', product: product, option: option, block: block %}
         </fieldset>
       {%- endfor -%}
