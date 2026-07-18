@@ -1685,3 +1685,14 @@ a.product__text {
 .size-chart-table-wrapper td strong {
   font-weight: 600;
 }
+
+/* Hide Avada Size Chart injected elements */
+.avada-size-chart,
+.avada-sc-button,
+.avada-sizechart,
+.avada-sc-link,
+[class*="avada-size-chart"],
+[class*="avada-sc-"],
+[id*="avada-size-chart"] {
+  display: none !important;
+}
