@@ -11,7 +11,9 @@
 {%- endcomment -%}
 
 {%- style -%}
-/* ── Transparent header when this slideshow is used as hero ── */
+/* ════════════════════════════════════════════════════════════
+   TRANSPARENT HEADER – covers ALL possible nav / icon elements
+   ════════════════════════════════════════════════════════════ */
 .slideshow-transparent-header .section-header {
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -19,39 +21,87 @@
   z-index: 100;
   background: transparent !important;
   margin-bottom: 0 !important;
+  /* Stop it pushing the banner down */
+  height: auto;
 }
 .slideshow-transparent-header .header-wrapper {
   background: transparent !important;
   border-bottom: none !important;
   box-shadow: none !important;
 }
+
+/* ── ALL text in the header bar ── */
 .slideshow-transparent-header .header__heading-link,
+.slideshow-transparent-header .header__heading-link span,
+.slideshow-transparent-header .header__heading-link .h2,
 .slideshow-transparent-header .header__icon,
+.slideshow-transparent-header .header__menu-item,
+.slideshow-transparent-header .header__menu-item span,
+.slideshow-transparent-header .header__menu-item summary,
 .slideshow-transparent-header .list-menu__item--link,
-.slideshow-transparent-header nav a {
+.slideshow-transparent-header .list-menu__item,
+.slideshow-transparent-header .list-menu__item span,
+.slideshow-transparent-header .link--text,
+.slideshow-transparent-header nav a,
+.slideshow-transparent-header nav summary,
+.slideshow-transparent-header nav span,
+.slideshow-transparent-header .header__inline-menu a,
+.slideshow-transparent-header .header__inline-menu span,
+.slideshow-transparent-header .header__inline-menu summary,
+.slideshow-transparent-header .header__active-menu-item {
   color: {{ section.settings.transparent_header_color }} !important;
 }
+
+/* ── ALL SVG icons (cart, search, account, caret) ── */
 .slideshow-transparent-header .header__icon svg path,
 .slideshow-transparent-header .header__icon svg circle,
 .slideshow-transparent-header .header__icon svg polyline,
-.slideshow-transparent-header .header__icon svg rect {
-  stroke: {{ section.settings.transparent_header_color }};
+.slideshow-transparent-header .header__icon svg rect,
+.slideshow-transparent-header .header__icon svg line,
+.slideshow-transparent-header .header__inline-menu svg path,
+.slideshow-transparent-header .header__inline-menu svg polyline,
+.slideshow-transparent-header .header__inline-menu svg line,
+.slideshow-transparent-header .icon-caret {
+  stroke: {{ section.settings.transparent_header_color }} !important;
+  fill: none;
 }
+
+/* ── Cart count bubble ── */
+.slideshow-transparent-header .cart-count-bubble {
+  background: {{ section.settings.transparent_header_color }} !important;
+  color: #000 !important;
+}
+
+/* ── Logo filter ── */
 .slideshow-transparent-header .header__heading-logo {
   filter: {{ section.settings.logo_filter }};
 }
-.slideshow-transparent-header .section-header ~ * .section-header { position: sticky; }
 
-/* ── Wrapper ── */
+/* ════════════════════════════════════════════════════════════
+   BANNER WRAPPER
+   ════════════════════════════════════════════════════════════ */
 .sitarah-slideshow {
   position: relative;
   width: 100%;
+  /* Prevent the section from adding extra space below */
+  display: block;
   overflow: hidden;
   background: #000;
+  /* Use svh for mobile browsers that include the browser chrome in vh */
   height: {{ section.settings.height_desktop }}vh;
+  height: {{ section.settings.height_desktop }}svh;
 }
 @media screen and (max-width: 749px) {
-  .sitarah-slideshow { height: {{ section.settings.height_mobile }}vh; }
+  .sitarah-slideshow {
+    height: {{ section.settings.height_mobile }}vh;
+    height: {{ section.settings.height_mobile }}svh;
+  }
+}
+/* Ensure the Shopify section wrapper itself has no margin/padding */
+.sitarah-slideshow-section,
+.section.sitarah-slideshow-section {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* ── Track ── */
@@ -106,7 +156,11 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  padding: 2rem max(3rem, calc((100vw - 1400px) / 2 + 3rem));
+  /* Top padding accounts for header height so content is never hidden behind it.
+     80px is a safe default; Shopify sets --header-height via JS for sticky headers. */
+  padding: max(80px, calc(var(--header-height, 80px) + 1rem)) max(3rem, calc((100vw - 1400px) / 2 + 3rem)) 3rem;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 .sitarah-slideshow__content--top-left    { align-items: flex-start; justify-content: flex-start; text-align: left; }
 .sitarah-slideshow__content--top-center  { align-items: center;     justify-content: flex-start; text-align: center; }
@@ -123,7 +177,7 @@
     align-items: center !important;
     justify-content: flex-end !important;
     text-align: center !important;
-    padding: 1.5rem 1.25rem 5rem;
+    padding: max(70px, calc(var(--header-height, 70px) + 0.5rem)) 1.25rem 5rem;
   }
 }
 
@@ -636,7 +690,7 @@
 {
   "name": "t:sections.slideshow.name",
   "tag": "section",
-  "class": "section",
+  "class": "section sitarah-slideshow-section",
   "max_blocks": 10,
   "settings": [
     {
