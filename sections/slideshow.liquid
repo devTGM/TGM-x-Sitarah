@@ -92,7 +92,7 @@ html.slideshow-transparent-header details > summary svg polyline,
 
 /* ════════════════════════════════════════════════════════════
    BANNER WRAPPER
-   Pull the banner UP by the header's height so it sits flush
+   Pull the banner UP by the header’s height so it sits flush
    behind the transparent header, but does NOT overlap the
    announcement bar (which pushes the header down naturally).
    ════════════════════════════════════════════════════════════ */
@@ -102,29 +102,24 @@ html.slideshow-transparent-header details > summary svg polyline,
   display: block;
   overflow: hidden;
   background: #000;
+  /* dvh = dynamic viewport height (excludes browser chrome on mobile) */
   height: {{ section.settings.height_desktop }}vh;
-  height: {{ section.settings.height_desktop }}svh;
+  height: {{ section.settings.height_desktop }}dvh;
 }
-/* Pull banner up behind the transparent header */
-.slideshow-transparent-header ~ * .sitarah-slideshow-section,
-.slideshow-transparent-header + .sitarah-slideshow-section,
-body .sitarah-slideshow-section {
-  margin-top: 0;
-}
-.slideshow-transparent-header .section-header + .shopify-section .sitarah-slideshow {
-  margin-top: 0;
-}
-/* Negative margin trick: slide this section up behind the header */
-html.slideshow-transparent-header .sitarah-slideshow-section {
-  margin-top: calc(-1 * var(--header-height, 72px));
-}
+
 @media screen and (max-width: 749px) {
   .sitarah-slideshow {
     height: {{ section.settings.height_mobile }}vh;
-    height: {{ section.settings.height_mobile }}svh;
+    height: {{ section.settings.height_mobile }}dvh;
   }
 }
-/* Ensure the Shopify section wrapper itself has no extra padding */
+
+/* Negative margin-top: pull banner up behind the transparent header */
+html.slideshow-transparent-header .sitarah-slideshow-section {
+  margin-top: calc(-1 * var(--header-height, 72px));
+}
+
+/* Ensure no extra padding on the Shopify section wrapper */
 .sitarah-slideshow-section {
   padding: 0 !important;
 }
@@ -146,24 +141,37 @@ html.slideshow-transparent-header .sitarah-slideshow-section {
   overflow: hidden;
 }
 
-/* ── Media ── */
+/* ── Media wrapper ── */
 .sitarah-slideshow__media {
   position: absolute;
   inset: 0;
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
+
+/* All images and videos fill the media wrapper completely */
 .sitarah-slideshow__media img,
-.sitarah-slideshow__media video {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center;
+.sitarah-slideshow__media video,
+.sitarah-slideshow__media picture {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   display: block;
 }
-/* Mobile / Desktop image swap */
-.sitarah-slideshow__img--mobile { display: none; }
-@media screen and (max-width: 749px) {
-  .sitarah-slideshow__img--desktop { display: none; }
-  .sitarah-slideshow__img--mobile  { display: block; }
+.sitarah-slideshow__media img {
+  object-fit: cover;
+  object-position: center center;
+}
+.sitarah-slideshow__media video {
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* picture element itself must be a block that fills the wrapper */
+.sitarah-slideshow__media picture {
+  display: block;
 }
 
 /* ── Overlay ── */
@@ -438,57 +446,62 @@ html.slideshow-transparent-header .sitarah-slideshow-section {
             {%- assign mimg = block.settings.mobile_image -%}
 
             {%- if dimg != blank -%}
-              {%- comment -%} Desktop image {%- endcomment -%}
-              <img
-                class="sitarah-slideshow__img--desktop"
-                src="{{ dimg | image_url: width: 2000 }}"
-                srcset="
-                  {{ dimg | image_url: width: 750 }} 750w,
-                  {{ dimg | image_url: width: 1100 }} 1100w,
-                  {{ dimg | image_url: width: 1500 }} 1500w,
-                  {{ dimg | image_url: width: 2000 }} 2000w,
-                  {{ dimg | image_url: width: 3000 }} 3000w
-                "
-                sizes="100vw"
-                alt="{{ dimg.alt | escape | default: block.settings.heading }}"
-                width="{{ dimg.width }}"
-                height="{{ dimg.height }}"
-                {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
-              >
+              {%- comment -%}
+                Use <picture> + <source media> for native browser-level
+                mobile/desktop image switching. The browser picks the correct
+                source BEFORE downloading — no CSS tricks, no flicker.
+                If no mobile image is set, the desktop image is served to mobile
+                too (at an optimised smaller resolution).
+              {%- endcomment -%}
+              <picture>
+                {%- if mimg != blank -%}
+                  {%- comment -%} Dedicated mobile image ≤ 749px {%- endcomment -%}
+                  <source
+                    media="(max-width: 749px)"
+                    srcset="
+                      {{ mimg | image_url: width: 375 }} 375w,
+                      {{ mimg | image_url: width: 550 }} 550w,
+                      {{ mimg | image_url: width: 750 }} 750w,
+                      {{ mimg | image_url: width: 1100 }} 1100w
+                    "
+                    sizes="100vw"
+                  >
+                {%- else -%}
+                  {%- comment -%} Fallback: desktop image optimised for mobile {%- endcomment -%}
+                  <source
+                    media="(max-width: 749px)"
+                    srcset="
+                      {{ dimg | image_url: width: 375 }} 375w,
+                      {{ dimg | image_url: width: 550 }} 550w,
+                      {{ dimg | image_url: width: 750 }} 750w,
+                      {{ dimg | image_url: width: 1100 }} 1100w
+                    "
+                    sizes="100vw"
+                  >
+                {%- endif -%}
 
-              {%- comment -%} Mobile image (dedicated or fallback) {%- endcomment -%}
-              {%- if mimg != blank -%}
-                <img
-                  class="sitarah-slideshow__img--mobile"
-                  src="{{ mimg | image_url: width: 750 }}"
+                {%- comment -%} Desktop image ≥ 750px {%- endcomment -%}
+                <source
+                  media="(min-width: 750px)"
                   srcset="
-                    {{ mimg | image_url: width: 375 }} 375w,
-                    {{ mimg | image_url: width: 550 }} 550w,
-                    {{ mimg | image_url: width: 750 }} 750w
+                    {{ dimg | image_url: width: 1100 }} 1100w,
+                    {{ dimg | image_url: width: 1500 }} 1500w,
+                    {{ dimg | image_url: width: 2000 }} 2000w,
+                    {{ dimg | image_url: width: 3000 }} 3000w
                   "
                   sizes="100vw"
-                  alt="{{ mimg.alt | escape | default: block.settings.heading }}"
-                  width="{{ mimg.width }}"
-                  height="{{ mimg.height }}"
-                  {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
                 >
-              {%- else -%}
-                {%- comment -%} Optimised desktop image served to mobile {%- endcomment -%}
+
+                {%- comment -%} Fallback img tag (required inside picture) {%- endcomment -%}
                 <img
-                  class="sitarah-slideshow__img--mobile"
-                  src="{{ dimg | image_url: width: 750 }}"
-                  srcset="
-                    {{ dimg | image_url: width: 375 }} 375w,
-                    {{ dimg | image_url: width: 550 }} 550w,
-                    {{ dimg | image_url: width: 750 }} 750w
-                  "
-                  sizes="100vw"
+                  src="{{ dimg | image_url: width: 1500 }}"
                   alt="{{ dimg.alt | escape | default: block.settings.heading }}"
                   width="{{ dimg.width }}"
                   height="{{ dimg.height }}"
+                  style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;"
                   {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
                 >
-              {%- endif -%}
+              </picture>
             {%- else -%}
               {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
             {%- endif -%}
