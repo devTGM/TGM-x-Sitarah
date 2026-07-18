@@ -112,10 +112,10 @@
       "custom_css": [],
       "settings": {
         "transparent_header": true,
-        "transparent_header_color": "#FFFFFF",
+        "transparent_header_color": "#ffffff",
         "logo_filter": "brightness(0) invert(1)",
         "height_desktop": 80,
-        "height_mobile": 70,
+        "height_mobile": 65,
         "auto_rotate": true,
         "change_slides_speed": 5,
         "accessibility_info": ""
