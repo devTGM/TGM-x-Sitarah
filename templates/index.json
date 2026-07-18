@@ -32,6 +32,7 @@
         "slide_F7XhLz": {
           "type": "slide",
           "settings": {
+            "desktop_image": "shopify://shop_images/chandrika.png",
             "overlay_color": "#000000",
             "overlay_opacity": 35,
             "text_color": "#ffffff",
@@ -104,119 +105,13 @@
       "custom_css": [],
       "settings": {
         "transparent_header": true,
-        "transparent_header_color": "#FFFFFF",
+        "transparent_header_color": "#ffffff",
         "logo_filter": "brightness(0) invert(1)",
         "height_desktop": 80,
         "height_mobile": 85,
         "auto_rotate": true,
         "change_slides_speed": 5,
         "accessibility_info": ""
-      }
-    },
-    "slideshow_qm9dmT": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_KyhPVF": {
-          "type": "slide",
-          "settings": {
-            "overlay_color": "#000000",
-            "overlay_opacity": 35,
-            "text_color": "#ffffff",
-            "eyebrow": "",
-            "heading": "",
-            "subheading": "",
-            "box_align": "middle-center",
-            "button_1_label": "",
-            "button_1_link": "",
-            "button_2_label": "",
-            "button_2_link": ""
-          }
-        },
-        "slide_7tUp37": {
-          "type": "slide",
-          "settings": {
-            "overlay_color": "#000000",
-            "overlay_opacity": 35,
-            "text_color": "#ffffff",
-            "eyebrow": "",
-            "heading": "",
-            "subheading": "",
-            "box_align": "middle-center",
-            "button_1_label": "",
-            "button_1_link": "",
-            "button_2_label": "",
-            "button_2_link": ""
-          }
-        },
-        "slide_b7tbVR": {
-          "type": "slide",
-          "settings": {
-            "overlay_color": "#000000",
-            "overlay_opacity": 35,
-            "text_color": "#ffffff",
-            "eyebrow": "",
-            "heading": "",
-            "subheading": "",
-            "box_align": "middle-center",
-            "button_1_label": "",
-            "button_1_link": "",
-            "button_2_label": "",
-            "button_2_link": ""
-          }
-        },
-        "slide_3P7FEn": {
-          "type": "slide",
-          "settings": {
-            "overlay_color": "#000000",
-            "overlay_opacity": 35,
-            "text_color": "#ffffff",
-            "eyebrow": "",
-            "heading": "",
-            "subheading": "",
-            "box_align": "middle-center",
-            "button_1_label": "",
-            "button_1_link": "",
-            "button_2_label": "",
-            "button_2_link": ""
-          }
-        },
-        "slide_pzRFyi": {
-          "type": "slide",
-          "settings": {
-            "overlay_color": "#000000",
-            "overlay_opacity": 35,
-            "text_color": "#ffffff",
-            "eyebrow": "",
-            "heading": "",
-            "subheading": "",
-            "box_align": "middle-center",
-            "button_1_label": "",
-            "button_1_link": "",
-            "button_2_label": "",
-            "button_2_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_KyhPVF",
-        "slide_7tUp37",
-        "slide_b7tbVR",
-        "slide_3P7FEn",
-        "slide_pzRFyi"
-      ],
-      "disabled": true,
-      "custom_css": [
-        "@media screen and (min-width: 750px) {.hero, slideshow-component {display: none; }}"
-      ],
-      "settings": {
-        "transparent_header": true,
-        "transparent_header_color": "#ffffff",
-        "logo_filter": "brightness(0) invert(1)",
-        "height_desktop": 100,
-        "height_mobile": 85,
-        "auto_rotate": true,
-        "change_slides_speed": 5,
-        "accessibility_info": "Slideshow about our brand"
       }
     },
     "featured_collection_hegMgT": {
@@ -691,7 +586,6 @@
   },
   "order": [
     "4862cca1-87c2-43ba-be8e-985e5ed256c5",
-    "slideshow_qm9dmT",
     "featured_collection_hegMgT",
     "featured_collection_nDBKaj",
     "175738555978e112fd",
