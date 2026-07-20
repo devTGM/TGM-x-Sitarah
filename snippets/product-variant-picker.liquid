@@ -48,7 +48,8 @@
 
       {%- assign has_size_option = false -%}
       {%- for option in product.options_with_values -%}
-        {%- if option.name | downcase == 'size' -%}
+        {%- assign option_name_lower = option.name | downcase -%}
+        {%- if option_name_lower == 'size' -%}
           {%- assign has_size_option = true -%}
         {%- endif -%}
       {%- endfor -%}
