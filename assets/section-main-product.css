@@ -1877,11 +1877,11 @@ a.product__text {
 
 .delivery-timeline__line {
   position: absolute;
-  top: 21px;
-  left: 15%;
-  right: 15%;
-  height: 1px;
-  background-color: rgba(var(--color-foreground), 0.2);
+  top: 22px;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background-color: rgba(var(--color-foreground), 0.25);
   z-index: 0;
 }
 
@@ -1899,12 +1899,14 @@ a.product__text {
   height: 44px;
   border-radius: 50%;
   border: 1.5px solid rgb(var(--color-foreground));
-  background-color: var(--gradient-background, #ffffff);
+  background-color: var(--gradient-background, rgb(var(--color-background, 255, 255, 255)));
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
   color: rgb(var(--color-foreground));
+  position: relative;
+  z-index: 2;
 }
 
 .delivery-timeline__date {
