@@ -54,6 +54,7 @@
         },
         "razorpay_affordability_widget_affordability_block_ENBKXY": {
           "type": "shopify://apps/razorpay-affordability-widget/blocks/affordability-block/5bf9b115-5933-4c1b-ade0-ef564b250852",
+          "disabled": true,
           "settings": {}
         },
         "essential_upsell_product_addon_app_block_mLjkYd": {
@@ -91,7 +92,10 @@
         },
         "description": {
           "type": "description",
-          "settings": {}
+          "settings": {
+            "heading": "DESCRIPTION",
+            "icon": "clipboard"
+          }
         },
         "collapsible_tab_PmTcgk": {
           "type": "collapsible_tab",
