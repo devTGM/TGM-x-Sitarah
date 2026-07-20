@@ -3599,3 +3599,121 @@ img[src*="avada"],
 iframe[src*="avada"] {
   display: none !important;
 }
+
+/* ==========================================================================
+   GLOBAL BUTTON HOVER EFFECTS SYSTEM
+   ========================================================================== */
+
+/* Primary CTAs & Standard Action Buttons */
+.button,
+.button--primary,
+.product-form__submit,
+.cart__checkout-button,
+.cart-drawer__checkout-button,
+.quick-add__submit,
+.shopify-challenge__button,
+.customer button,
+button[type='submit'],
+input[type='submit'],
+.shopify-payment-button__button--unbranded {
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+              background-color 0.25s ease,
+              color 0.25s ease,
+              box-shadow 0.25s ease,
+              border-color 0.25s ease,
+              opacity 0.25s ease !important;
+  will-change: transform;
+}
+
+.button:not([disabled]):hover,
+.button--primary:not([disabled]):hover,
+.product-form__submit:not([disabled]):hover,
+.cart__checkout-button:not([disabled]):hover,
+.cart-drawer__checkout-button:not([disabled]):hover,
+.quick-add__submit:not([disabled]):hover,
+.shopify-challenge__button:not([disabled]):hover,
+.customer button:not([disabled]):hover,
+button[type='submit']:not([disabled]):hover,
+input[type='submit']:not([disabled]):hover,
+.shopify-payment-button__button--unbranded:not([disabled]):hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16) !important;
+  opacity: 0.94;
+}
+
+.button:not([disabled]):active,
+.button--primary:not([disabled]):active,
+.product-form__submit:not([disabled]):active,
+.cart__checkout-button:not([disabled]):active,
+.shopify-payment-button__button--unbranded:not([disabled]):active {
+  transform: translateY(-1px) scale(0.99);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Secondary & Outline Buttons */
+.button--secondary {
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+              background-color 0.25s ease,
+              color 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.25s ease !important;
+}
+
+.button--secondary:not([disabled]):hover {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+  border-color: #121212 !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.14) !important;
+}
+
+/* Branded Shopify Buy It Now Payment Buttons */
+.shopify-payment-button__button--branded {
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.25s ease,
+              filter 0.25s ease !important;
+}
+
+.shopify-payment-button__button--branded:not([disabled]):hover {
+  transform: translateY(-3px) scale(1.01);
+  filter: brightness(1.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16) !important;
+}
+
+/* Icon & Navigation Buttons */
+.slider-button,
+.quantity__button,
+.modal__close-button,
+.drawer__close,
+.header__icon {
+  transition: transform 0.25s ease, color 0.25s ease, background-color 0.25s ease !important;
+}
+
+.slider-button:not([disabled]):hover,
+.quantity__button:not([disabled]):hover,
+.modal__close-button:hover,
+.drawer__close:hover {
+  transform: scale(1.15);
+  color: rgb(var(--color-foreground)) !important;
+}
+
+/* Size Variant Pill Labels */
+.product-form__input--size input[type='radio'] + label {
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease !important;
+}
+
+.product-form__input--size input[type='radio'] + label:hover {
+  transform: translateY(-2px);
+  border-color: #000000 !important;
+}
+
+/* Text Link & Modal Trigger Buttons */
+.product-popup-modal__button,
+.underlined-link {
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+.product-popup-modal__button:hover {
+  opacity: 0.75;
+  transform: translateY(-1px);
+}
