@@ -1855,7 +1855,7 @@ a.product__text {
   padding: 1.8rem 1.5rem;
   margin-top: 1.8rem;
   margin-bottom: 1.8rem;
-  border: 1px solid #121212;
+  border: 1px solid #e0e0e0;
 }
 
 .delivery-timeline__header {
@@ -1884,37 +1884,33 @@ a.product__text {
   z-index: 1;
 }
 
-/* Discrete Line Connector Between Icons */
+/* Subtle Light-Grey Line Connector Matching Reference Image */
 .delivery-timeline__line-connector {
   flex: 1;
-  height: 1.5px;
-  background-color: #d1d1d1;
-  margin-top: 21px;
-  margin-left: 10px;
-  margin-right: 10px;
+  height: 1px;
+  background-color: #e2e2e2;
+  margin-top: 22px;
+  margin-left: 12px;
+  margin-right: 12px;
   position: relative;
   overflow: hidden;
-  border-radius: 1px;
 }
 
-/* Travelling Lightning Beam Animation */
+/* Subtle Light Shimmer Beam */
 .delivery-timeline__line-connector::after {
   content: '';
   position: absolute;
   top: 0;
   left: -100%;
-  width: 70%;
+  width: 60%;
   height: 100%;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(18, 18, 18, 0.4) 30%,
-    #121212 50%,
-    rgba(18, 18, 18, 0.4) 70%,
+    rgba(255, 255, 255, 0.8) 50%,
     transparent 100%
   );
-  box-shadow: 0 0 6px #121212;
-  animation: timelineLightningBeam 2.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  animation: timelineLightningBeam 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes timelineLightningBeam {
@@ -1949,7 +1945,7 @@ a.product__text {
 
 .delivery-timeline__label {
   font-size: 1.1rem;
-  color: #666666;
+  color: #777777;
   font-weight: 400;
   line-height: 1.2;
 }
