@@ -1850,12 +1850,12 @@ a.product__text {
 /* Delivery Timeline Widget */
 .delivery-timeline-box {
   display: block;
-  background-color: #f7f7f7;
+  background-color: transparent;
   border-radius: 8px;
   padding: 1.8rem 1.5rem;
   margin-top: 1.8rem;
   margin-bottom: 1.8rem;
-  border: 1px solid rgba(var(--color-foreground), 0.06);
+  border: 1px solid rgba(var(--color-foreground), 0.18);
 }
 
 .delivery-timeline__header {
@@ -1881,7 +1881,7 @@ a.product__text {
   left: 15%;
   right: 15%;
   height: 1px;
-  background-color: #d8d8d8;
+  background-color: rgba(var(--color-foreground), 0.2);
   z-index: 0;
 }
 
@@ -1898,14 +1898,13 @@ a.product__text {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1.5px solid #222222;
-  background-color: #ffffff;
+  border: 1.5px solid rgb(var(--color-foreground));
+  background-color: var(--gradient-background, #ffffff);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
-  color: #222222;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  color: rgb(var(--color-foreground));
 }
 
 .delivery-timeline__date {
