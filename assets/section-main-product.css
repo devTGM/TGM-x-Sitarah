@@ -1875,33 +1875,42 @@ a.product__text {
   width: 100%;
 }
 
-/* Base Solid Line */
-.delivery-timeline__line {
-  position: absolute;
-  top: 21px;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  background-color: #cccccc;
-  z-index: 0;
+.delivery-timeline__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 0 0 auto;
+  z-index: 1;
+}
+
+/* Discrete Line Connector Between Icons */
+.delivery-timeline__line-connector {
+  flex: 1;
+  height: 1.5px;
+  background-color: #d1d1d1;
+  margin-top: 21px;
+  margin-left: 10px;
+  margin-right: 10px;
+  position: relative;
   overflow: hidden;
-  border-radius: 2px;
+  border-radius: 1px;
 }
 
 /* Travelling Lightning Beam Animation */
-.delivery-timeline__line::after {
+.delivery-timeline__line-connector::after {
   content: '';
   position: absolute;
   top: 0;
-  left: -80%;
+  left: -100%;
   width: 70%;
   height: 100%;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(18, 18, 18, 0.3) 20%,
+    rgba(18, 18, 18, 0.4) 30%,
     #121212 50%,
-    rgba(18, 18, 18, 0.3) 80%,
+    rgba(18, 18, 18, 0.4) 70%,
     transparent 100%
   );
   box-shadow: 0 0 6px #121212;
@@ -1910,20 +1919,11 @@ a.product__text {
 
 @keyframes timelineLightningBeam {
   0% {
-    left: -70%;
+    left: -100%;
   }
   100% {
     left: 100%;
   }
-}
-
-.delivery-timeline__step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  flex: 1;
-  z-index: 1;
 }
 
 .delivery-timeline__icon {
@@ -1931,14 +1931,12 @@ a.product__text {
   height: 44px;
   border-radius: 50%;
   border: 1.5px solid #121212;
-  background-color: #fdf2f2;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
   color: #121212;
-  position: relative;
-  z-index: 2;
 }
 
 .delivery-timeline__date {
