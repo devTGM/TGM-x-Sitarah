@@ -74,6 +74,7 @@
         class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
       >
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
+        {%- assign has_rendered_product_tabs = false -%}
 
         {%- for block in section.blocks -%}
           {%- case block.type -%}
@@ -173,25 +174,82 @@
                   {%- endif -%}
                 {%- endif -%}
               </p>
-            {%- when 'description' -%}
-              {%- if product.description != blank -%}
-                <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
-                  <details id="Details-{{ block.id }}-{{ section.id }}">
-                    <summary>
-                      <div class="summary__title">
-                        {% render 'icon-accordion', icon: block.settings.icon | default: 'clipboard' %}
-                        <h2 class="h4 accordion__title inline-richtext">
-                          {{ block.settings.heading | default: 'DESCRIPTION' }}
-                        </h2>
-                      </div>
-                      {% render 'icon-caret' %}
-                    </summary>
-                    <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                      {{ product.description }}
+            {%- when 'description', 'collapsible_tab' -%}
+              {%- unless has_rendered_product_tabs -%}
+                {%- assign has_rendered_product_tabs = true -%}
+                <product-tabs class="product-tabs quick-add-hidden">
+                  <div class="product-tabs__nav-wrapper">
+                    <div class="product-tabs__nav" role="tablist">
+                      {%- assign tab_count = 0 -%}
+                      {%- for tab_block in section.blocks -%}
+                        {%- if tab_block.type == 'description' or tab_block.type == 'collapsible_tab' -%}
+                          {%- assign tab_title = '' -%}
+                          {%- assign tab_has_content = false -%}
+
+                          {%- if tab_block.type == 'description' -%}
+                            {%- if product.description != blank -%}
+                              {%- assign tab_title = tab_block.settings.heading | default: 'DESCRIPTION' -%}
+                              {%- assign tab_has_content = true -%}
+                            {%- endif -%}
+                          {%- elsif tab_block.type == 'collapsible_tab' -%}
+                            {%- assign tab_content_check = tab_block.settings.content | append: tab_block.settings.page.content | strip_html | strip -%}
+                            {%- if tab_content_check != blank or tab_block.settings.content != blank or tab_block.settings.page.content != blank -%}
+                              {%- assign tab_title = tab_block.settings.heading | default: tab_block.settings.page.title -%}
+                              {%- assign tab_has_content = true -%}
+                            {%- endif -%}
+                          {%- endif -%}
+
+                          {%- if tab_has_content -%}
+                            {%- assign tab_count = tab_count | plus: 1 -%}
+                            <button
+                              type="button"
+                              class="product-tabs__btn{% if tab_count == 1 %} is-active{% endif %}"
+                              role="tab"
+                              aria-selected="{% if tab_count == 1 %}true{% else %}false{% endif %}"
+                              aria-controls="ProductTabPanel-{{ tab_block.id }}-{{ section.id }}"
+                              id="ProductTabBtn-{{ tab_block.id }}-{{ section.id }}"
+                              data-tab-id="ProductTabPanel-{{ tab_block.id }}-{{ section.id }}"
+                              {{ tab_block.shopify_attributes }}
+                            >
+                              {{ tab_title }}
+                            </button>
+                          {%- endif -%}
+                        {%- endif -%}
+                      {%- endfor -%}
                     </div>
-                  </details>
-                </div>
-              {%- endif -%}
+                  </div>
+
+                  <div class="product-tabs__panels">
+                    {%- assign panel_count = 0 -%}
+                    {%- for tab_block in section.blocks -%}
+                      {%- if tab_block.type == 'description' or tab_block.type == 'collapsible_tab' -%}
+                        {%- assign tab_content = '' -%}
+
+                        {%- if tab_block.type == 'description' -%}
+                          {%- if product.description != blank -%}
+                            {%- assign tab_content = product.description -%}
+                          {%- endif -%}
+                        {%- elsif tab_block.type == 'collapsible_tab' -%}
+                          {%- assign tab_content = tab_block.settings.content | append: tab_block.settings.page.content -%}
+                        {%- endif -%}
+
+                        {%- if tab_content != blank -%}
+                          {%- assign panel_count = panel_count | plus: 1 -%}
+                          <div
+                            class="product-tabs__panel rte{% if panel_count == 1 %} is-active{% endif %}"
+                            id="ProductTabPanel-{{ tab_block.id }}-{{ section.id }}"
+                            role="tabpanel"
+                            aria-labelledby="ProductTabBtn-{{ tab_block.id }}-{{ section.id }}"
+                            {% unless panel_count == 1 %}hidden{% endunless %}
+                          >
+                            {{ tab_content }}
+                          </div>
+                        {%- endif -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                </product-tabs>
+              {%- endunless -%}
             {%- when 'sku' -%}
               <p
                 class="product__sku no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
@@ -203,24 +261,6 @@
               </p>
             {%- when 'custom_liquid' -%}
               {{ block.settings.custom_liquid }}
-            {%- when 'collapsible_tab' -%}
-              <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
-                <details id="Details-{{ block.id }}-{{ section.id }}">
-                  <summary>
-                    <div class="summary__title">
-                      {% render 'icon-accordion', icon: block.settings.icon %}
-                      <h2 class="h4 accordion__title inline-richtext">
-                        {{ block.settings.heading | default: block.settings.page.title }}
-                      </h2>
-                    </div>
-                    {% render 'icon-caret' %}
-                  </summary>
-                  <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                    {{ block.settings.content }}
-                    {{ block.settings.page.content }}
-                  </div>
-                </details>
-              </div>
             {%- when 'quantity_selector' -%}
               <div
                 id="Quantity-Form-{{ section.id }}"
@@ -799,6 +839,43 @@
         if (runs > 12) clearInterval(interval);
       }, 500);
     })();
+  </script>
+
+  <script>
+    class ProductTabs extends HTMLElement {
+      connectedCallback() {
+        this.buttons = Array.from(this.querySelectorAll('.product-tabs__btn'));
+        this.panels = Array.from(this.querySelectorAll('.product-tabs__panel'));
+
+        this.buttons.forEach((button) => {
+          button.addEventListener('click', () => this.switchTab(button));
+        });
+      }
+
+      switchTab(selectedButton) {
+        const targetPanelId = selectedButton.getAttribute('data-tab-id');
+
+        this.buttons.forEach((btn) => {
+          const isSelected = btn === selectedButton;
+          btn.classList.toggle('is-active', isSelected);
+          btn.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+        });
+
+        this.panels.forEach((panel) => {
+          const isTarget = panel.id === targetPanelId;
+          panel.classList.toggle('is-active', isTarget);
+          if (isTarget) {
+            panel.removeAttribute('hidden');
+          } else {
+            panel.setAttribute('hidden', '');
+          }
+        });
+      }
+    }
+
+    if (!customElements.get('product-tabs')) {
+      customElements.define('product-tabs', ProductTabs);
+    }
   </script>
 
   {%- liquid

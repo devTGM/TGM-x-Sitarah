@@ -1731,3 +1731,118 @@ a.product__text {
 .whatsapp-size-banner svg {
   flex-shrink: 0;
 }
+
+/* Horizontal Product Tabs */
+.product-tabs {
+  display: block;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.product-tabs__nav-wrapper {
+  position: relative;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.15);
+  margin-bottom: 2rem;
+}
+
+.product-tabs__nav {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0;
+}
+
+.product-tabs__nav::-webkit-scrollbar {
+  display: none;
+}
+
+.product-tabs__btn {
+  background: transparent;
+  border: none;
+  padding: 0 0 1.2rem 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.45);
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+  line-height: 1.2;
+}
+
+.product-tabs__btn:hover {
+  color: rgba(var(--color-foreground), 0.8);
+}
+
+.product-tabs__btn.is-active {
+  color: rgb(var(--color-foreground));
+  font-weight: 700;
+}
+
+.product-tabs__btn.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: rgb(var(--color-foreground));
+}
+
+.product-tabs__panels {
+  position: relative;
+}
+
+.product-tabs__panel {
+  display: none;
+  animation: productTabFadeIn 0.25s ease;
+}
+
+.product-tabs__panel.is-active {
+  display: block;
+}
+
+@keyframes productTabFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-tabs__panel.rte {
+  font-size: 1.35rem;
+  line-height: 1.6;
+  color: rgba(var(--color-foreground), 0.85);
+}
+
+.product-tabs__panel.rte p {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+}
+
+.product-tabs__panel.rte p:last-child {
+  margin-bottom: 0;
+}
+
+.product-tabs__panel.rte ul {
+  padding-left: 2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.product-tabs__panel.rte li {
+  margin-bottom: 0.5rem;
+}
