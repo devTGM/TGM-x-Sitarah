@@ -52,6 +52,19 @@
             "max_days": 7
           }
         },
+        "coupons_offers": {
+          "type": "coupons_offers",
+          "settings": {
+            "heading": "Coupons & Offers",
+            "button_text": "Copy Code",
+            "offer_1_text": "Get 10% OFF on Prepaid Orders",
+            "offer_1_code": "PREPAID10",
+            "offer_2_text": "Flat ₹150 OFF on Orders Above ₹2999",
+            "offer_2_code": "SAVE150",
+            "offer_3_text": "Free Shipping on All Prepaid Orders",
+            "offer_3_code": "FREESHIP"
+          }
+        },
         "razorpay_affordability_widget_affordability_block_ENBKXY": {
           "type": "shopify://apps/razorpay-affordability-widget/blocks/affordability-block/5bf9b115-5933-4c1b-ade0-ef564b250852",
           "disabled": true,
@@ -174,6 +187,7 @@
         "quantity_selector",
         "buy_buttons",
         "delivery_timeline",
+        "coupons_offers",
         "razorpay_affordability_widget_affordability_block_ENBKXY",
         "essential_upsell_product_addon_app_block_mLjkYd",
         "inventory_PcENLf",
