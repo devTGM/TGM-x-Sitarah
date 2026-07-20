@@ -1855,7 +1855,7 @@ a.product__text {
   padding: 1.8rem 1.5rem;
   margin-top: 1.8rem;
   margin-bottom: 1.8rem;
-  border: 1px solid rgba(var(--color-foreground), 0.18);
+  border: 1px solid #121212;
 }
 
 .delivery-timeline__header {
@@ -1863,7 +1863,7 @@ a.product__text {
   font-weight: 600;
   text-align: center;
   margin-bottom: 1.8rem;
-  color: rgb(var(--color-foreground));
+  color: #121212;
   letter-spacing: 0.02rem;
 }
 
@@ -1875,14 +1875,46 @@ a.product__text {
   width: 100%;
 }
 
+/* Base Solid Line */
 .delivery-timeline__line {
   position: absolute;
-  top: 22px;
-  left: 20px;
-  right: 20px;
+  top: 21px;
+  left: 10%;
+  right: 10%;
   height: 2px;
-  background-color: rgba(var(--color-foreground), 0.25);
+  background-color: #cccccc;
   z-index: 0;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+/* Travelling Lightning Beam Animation */
+.delivery-timeline__line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(18, 18, 18, 0.3) 20%,
+    #121212 50%,
+    rgba(18, 18, 18, 0.3) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 6px #121212;
+  animation: timelineLightningBeam 2.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes timelineLightningBeam {
+  0% {
+    left: -70%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 .delivery-timeline__step {
@@ -1898,13 +1930,13 @@ a.product__text {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1.5px solid rgb(var(--color-foreground));
-  background-color: var(--gradient-background, rgb(var(--color-background, 255, 255, 255)));
+  border: 1.5px solid #121212;
+  background-color: #fdf2f2;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
-  color: rgb(var(--color-foreground));
+  color: #121212;
   position: relative;
   z-index: 2;
 }
@@ -1912,14 +1944,14 @@ a.product__text {
 .delivery-timeline__date {
   font-size: 1.3rem;
   font-weight: 700;
-  color: rgb(var(--color-foreground));
+  color: #121212;
   margin-bottom: 0.3rem;
   line-height: 1.2;
 }
 
 .delivery-timeline__label {
   font-size: 1.1rem;
-  color: rgba(var(--color-foreground), 0.65);
+  color: #666666;
   font-weight: 400;
   line-height: 1.2;
 }
