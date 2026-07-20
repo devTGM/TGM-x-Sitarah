@@ -1846,3 +1846,79 @@ a.product__text {
 .product-tabs__panel.rte li {
   margin-bottom: 0.5rem;
 }
+
+/* Delivery Timeline Widget */
+.delivery-timeline-box {
+  display: block;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  padding: 1.8rem 1.5rem;
+  margin-top: 1.8rem;
+  margin-bottom: 1.8rem;
+  border: 1px solid rgba(var(--color-foreground), 0.06);
+}
+
+.delivery-timeline__header {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.8rem;
+  color: rgb(var(--color-foreground));
+  letter-spacing: 0.02rem;
+}
+
+.delivery-timeline__track {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+}
+
+.delivery-timeline__line {
+  position: absolute;
+  top: 21px;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background-color: #d8d8d8;
+  z-index: 0;
+}
+
+.delivery-timeline__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  z-index: 1;
+}
+
+.delivery-timeline__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid #222222;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: #222222;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.delivery-timeline__date {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: rgb(var(--color-foreground));
+  margin-bottom: 0.3rem;
+  line-height: 1.2;
+}
+
+.delivery-timeline__label {
+  font-size: 1.1rem;
+  color: rgba(var(--color-foreground), 0.65);
+  font-weight: 400;
+  line-height: 1.2;
+}

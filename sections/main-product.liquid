@@ -261,6 +261,60 @@
               </p>
             {%- when 'custom_liquid' -%}
               {{ block.settings.custom_liquid }}
+            {%- when 'delivery_timeline' -%}
+              <delivery-timeline
+                class="delivery-timeline-box quick-add-hidden"
+                data-min-days="{{ block.settings.min_days | default: 5 }}"
+                data-max-days="{{ block.settings.max_days | default: 7 }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- if block.settings.heading != blank -%}
+                  <div class="delivery-timeline__header">
+                    {{ block.settings.heading }}
+                  </div>
+                {%- endif -%}
+                <div class="delivery-timeline__track">
+                  <div class="delivery-timeline__line"></div>
+
+                  <div class="delivery-timeline__step">
+                    <div class="delivery-timeline__icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        <polyline points="9 15 11 17 15 13"></polyline>
+                      </svg>
+                    </div>
+                    <span class="delivery-timeline__date" data-step="order">...</span>
+                    <span class="delivery-timeline__label">Order Today</span>
+                  </div>
+
+                  <div class="delivery-timeline__step">
+                    <div class="delivery-timeline__icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                      </svg>
+                    </div>
+                    <span class="delivery-timeline__date" data-step="shipping">...</span>
+                    <span class="delivery-timeline__label">Shipping</span>
+                  </div>
+
+                  <div class="delivery-timeline__step">
+                    <div class="delivery-timeline__icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="3" width="15" height="13"></rect>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                      </svg>
+                    </div>
+                    <span class="delivery-timeline__date" data-step="delivery">...</span>
+                    <span class="delivery-timeline__label">Delivery</span>
+                  </div>
+                </div>
+              </delivery-timeline>
             {%- when 'quantity_selector' -%}
               <div
                 id="Quantity-Form-{{ section.id }}"
@@ -878,6 +932,71 @@
     }
   </script>
 
+  <script>
+    class DeliveryTimeline extends HTMLElement {
+      connectedCallback() {
+        const minDays = parseInt(this.dataset.minDays || '5', 10);
+        const maxDays = parseInt(this.dataset.maxDays || '7', 10);
+
+        const today = new Date();
+        
+        // Step 1: Order Today
+        const orderDateEl = this.querySelector('[data-step="order"]');
+        if (orderDateEl) {
+          orderDateEl.textContent = this.formatDateWithOrdinal(today);
+        }
+
+        // Step 2: Shipping (Tomorrow)
+        const shipDate = new Date(today);
+        shipDate.setDate(today.getDate() + 1);
+        const shipDateEl = this.querySelector('[data-step="shipping"]');
+        if (shipDateEl) {
+          shipDateEl.textContent = this.formatDateWithOrdinal(shipDate);
+        }
+
+        // Step 3: Delivery Range (minDays to maxDays)
+        const minDeliveryDate = new Date(today);
+        minDeliveryDate.setDate(today.getDate() + minDays);
+
+        const maxDeliveryDate = new Date(today);
+        maxDeliveryDate.setDate(today.getDate() + maxDays);
+
+        const deliveryDateEl = this.querySelector('[data-step="delivery"]');
+        if (deliveryDateEl) {
+          deliveryDateEl.textContent = this.formatRange(minDeliveryDate, maxDeliveryDate);
+        }
+      }
+
+      formatDateWithOrdinal(date) {
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const month = months[date.getMonth()];
+        const day = date.getDate();
+        const suffix = (day >= 11 && day <= 13) ? 'th' : ['th', 'st', 'nd', 'rd'][day % 10] || 'th';
+        return `${month} ${day}${suffix}`;
+      }
+
+      formatRange(minDate, maxDate) {
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const minMonth = months[minDate.getMonth()];
+        const maxMonth = months[maxDate.getMonth()];
+        const minDay = minDate.getDate();
+        const maxDay = maxDate.getDate();
+        const minSuffix = (minDay >= 11 && minDay <= 13) ? 'th' : ['th', 'st', 'nd', 'rd'][minDay % 10] || 'th';
+        const maxSuffix = (maxDay >= 11 && maxDay <= 13) ? 'th' : ['th', 'st', 'nd', 'rd'][maxDay % 10] || 'th';
+
+        if (minMonth === maxMonth) {
+          return `${minMonth} ${minDay}${minSuffix} - ${maxDay}${maxSuffix}`;
+        } else {
+          return `${minMonth} ${minDay}${minSuffix} - ${maxMonth} ${maxDay}${maxSuffix}`;
+        }
+      }
+    }
+
+    if (!customElements.get('delivery-timeline')) {
+      customElements.define('delivery-timeline', DeliveryTimeline);
+    }
+  </script>
+
   {%- liquid
     if product.selected_or_first_available_variant.featured_media
       assign seo_media = product.selected_or_first_available_variant.featured_media
@@ -983,6 +1102,31 @@
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
       "limit": 1
+    },
+    {
+      "type": "delivery_timeline",
+      "name": "Delivery Timeline",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Delivery within 5-7 days",
+          "label": "Heading"
+        },
+        {
+          "type": "number",
+          "id": "min_days",
+          "default": 5,
+          "label": "Minimum Delivery Days"
+        },
+        {
+          "type": "number",
+          "id": "max_days",
+          "default": 7,
+          "label": "Maximum Delivery Days"
+        }
+      ]
     },
     {
       "type": "sku",

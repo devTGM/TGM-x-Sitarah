@@ -44,6 +44,14 @@
             "show_gift_card_recipient": true
           }
         },
+        "delivery_timeline": {
+          "type": "delivery_timeline",
+          "settings": {
+            "heading": "Delivery within 5-7 days",
+            "min_days": 5,
+            "max_days": 7
+          }
+        },
         "razorpay_affordability_widget_affordability_block_ENBKXY": {
           "type": "shopify://apps/razorpay-affordability-widget/blocks/affordability-block/5bf9b115-5933-4c1b-ade0-ef564b250852",
           "settings": {}
@@ -161,6 +169,7 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "delivery_timeline",
         "razorpay_affordability_widget_affordability_block_ENBKXY",
         "essential_upsell_product_addon_app_block_mLjkYd",
         "inventory_PcENLf",
