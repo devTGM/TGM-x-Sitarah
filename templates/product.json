@@ -47,7 +47,7 @@
         "delivery_timeline": {
           "type": "delivery_timeline",
           "settings": {
-            "heading": "Delivery within 5-7 days",
+            "heading": "",
             "min_days": 5,
             "max_days": 7
           }
