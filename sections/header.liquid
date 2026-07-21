@@ -409,12 +409,16 @@
 
       if (this.predictiveSearch && this.predictiveSearch.isOpen) return;
 
-      if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
+      if (scrollTop > 20) {
         this.header.classList.add('scrolled-past-header');
+      } else {
+        this.header.classList.remove('scrolled-past-header');
+      }
+
+      if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
         if (this.preventHide) return;
         requestAnimationFrame(this.hide.bind(this));
       } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
-        this.header.classList.add('scrolled-past-header');
         if (!this.preventReveal) {
           requestAnimationFrame(this.reveal.bind(this));
         } else {
@@ -427,7 +431,6 @@
           requestAnimationFrame(this.hide.bind(this));
         }
       } else if (scrollTop <= this.headerBounds.top) {
-        this.header.classList.remove('scrolled-past-header');
         requestAnimationFrame(this.reset.bind(this));
       }
 
