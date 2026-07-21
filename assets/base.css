@@ -2429,14 +2429,15 @@ input[type='checkbox'] {
   color: rgb(var(--color-foreground));
 }
 
-.header__heading-link .h2 {
-  line-height: 1;
-  color: rgba(var(--color-foreground), 0.75);
-}
-
 .header__heading-logo {
   height: auto;
   max-width: 100%;
+  filter: invert(9%) sepia(90%) saturate(3600%) hue-rotate(325deg) brightness(85%) contrast(105%) !important;
+}
+
+.header__heading-link,
+.header__heading-link .h2 {
+  color: #58021e !important;
 }
 
 .header__heading-logo-wrapper {
@@ -2806,16 +2807,19 @@ details[open] > .header__menu-item .icon-caret {
 
 .header__submenu {
   transition: opacity var(--duration-default) ease, transform var(--duration-default) ease;
+  background-color: #f3f3f3 !important;
+  border: 1px solid #e0e0e0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
 }
 
 .global-settings-popup,
 .header__submenu.global-settings-popup {
-  border-radius: var(--popup-corner-radius);
-  border-color: rgba(var(--color-foreground), var(--popup-border-opacity));
+  border-radius: 0;
+  border-color: #e0e0e0;
   border-style: solid;
-  border-width: var(--popup-border-width);
-  box-shadow: var(--popup-shadow-horizontal-offset) var(--popup-shadow-vertical-offset) var(--popup-shadow-blur-radius)
-    rgba(var(--color-shadow), var(--popup-shadow-opacity));
+  border-width: 1px;
+  background-color: #f3f3f3 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   z-index: -1;
 }
 
@@ -2824,9 +2828,9 @@ details[open] > .header__menu-item .icon-caret {
 }
 
 .header__submenu .header__submenu {
-  background-color: rgba(var(--color-foreground), 0.03);
-  padding: 1rem 0;
-  margin: 1rem 0;
+  background-color: #e8e8e8 !important;
+  padding: 0.8rem 0;
+  margin: 0.5rem 0;
 }
 
 .header__submenu .header__menu-item:after {
@@ -2835,11 +2839,18 @@ details[open] > .header__menu-item .icon-caret {
 
 .header__submenu .header__menu-item {
   justify-content: space-between;
-  padding: 0.8rem 2rem;
+  padding: 0.6rem 2rem;
+  color: #555555 !important;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  transition: color 0.2s ease;
 }
 
 .header__submenu .header__menu-item:hover {
-  text-decoration-line: underline;
+  color: #58021e !important;
+  text-decoration-line: none;
 }
 
 .header__menu-item .icon-caret {
