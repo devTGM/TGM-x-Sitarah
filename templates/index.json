@@ -206,7 +206,7 @@
         "title_hover_color": "#58021e",
         "padding_top": 36,
         "padding_bottom": 36,
-        "padding_side": 32,
+        "padding_side": 8,
         "padding_side_mobile": 20
       }
     },
