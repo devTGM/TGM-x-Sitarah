@@ -121,6 +121,8 @@
         "logo_filter": "brightness(0) invert(1)",
         "height_desktop": 80,
         "height_mobile": 80,
+        "slide_height_desktop": 80,
+        "slide_height_mobile": 80,
         "auto_rotate": true,
         "change_slides_speed": 5,
         "accessibility_info": ""

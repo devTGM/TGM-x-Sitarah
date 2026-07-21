@@ -85,14 +85,16 @@
   .sitarah-hero,
   .sitarah-hero__track,
   .sitarah-hero__slide {
-    height: {{ section.settings.slide_height_desktop }}vh;
+    height: {{ section.settings.slide_height_desktop | default: 80 }}vh;
+    height: {{ section.settings.slide_height_desktop | default: 80 }}dvh;
   }
 
   @media screen and (max-width: 749px) {
     .sitarah-hero,
     .sitarah-hero__track,
     .sitarah-hero__slide {
-      height: {{ section.settings.slide_height_mobile }}vh;
+      height: {{ section.settings.slide_height_mobile | default: 80 }}vh;
+      height: {{ section.settings.slide_height_mobile | default: 80 }}dvh;
     }
   }
 

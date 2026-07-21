@@ -103,14 +103,14 @@ html.slideshow-transparent-header details > summary svg polyline,
   overflow: hidden;
   background: #000;
   /* dvh = dynamic viewport height (excludes browser chrome on mobile) */
-  height: {{ section.settings.height_desktop }}vh;
-  height: {{ section.settings.height_desktop }}dvh;
+  height: {{ section.settings.height_desktop | default: 80 }}vh;
+  height: {{ section.settings.height_desktop | default: 80 }}dvh;
 }
 
 @media screen and (max-width: 749px) {
   .sitarah-slideshow {
-    height: {{ section.settings.height_mobile }}vh;
-    height: {{ section.settings.height_mobile }}dvh;
+    height: {{ section.settings.height_mobile | default: 80 }}vh;
+    height: {{ section.settings.height_mobile | default: 80 }}dvh;
   }
 }
 
