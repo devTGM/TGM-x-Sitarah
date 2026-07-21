@@ -19,10 +19,11 @@
   height: 100%;
   width: 440px !important;
   max-width: 94vw !important;
-  padding: 0 !important;
+  padding: 0 0 80px 0 !important;
   background-color: #ffffff !important;
   border-left: 1px solid rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
@@ -66,30 +67,11 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
   transform: translateX(0);
 }
 
-/* Scrollable middle section */
-cart-drawer-items.cart-drawer__scrollable-body {
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-
-cart-drawer-items.cart-drawer__scrollable-body form {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Sticky footer pinned to bottom */
-.cart-drawer__sticky-footer {
-  flex-shrink: 0;
-  border-top: 1px solid #f0f0f0;
-  background-color: #ffffff;
-  position: sticky;
-  bottom: 0;
-  z-index: 10;
+cart-drawer-items.is-empty .drawer__inner {
+  display: grid;
+  grid-template-rows: 1fr;
+  align-items: center;
+  padding: 0;
 }
 
 .drawer__header {
@@ -119,6 +101,11 @@ cart-drawer-items.cart-drawer__scrollable-body form {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.drawer__close svg {
+  width: 20px;
+  height: 20px;
 }
 
 /* 1. Top Shipping Bar */

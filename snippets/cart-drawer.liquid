@@ -97,8 +97,6 @@
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
-        {% else %}
-          class="cart-drawer__scrollable-body"
         {% endif %}
       >
         <form
@@ -272,7 +270,7 @@
         </form>
       </cart-drawer-items>
 
-      <div class="drawer__footer cart-drawer__sticky-footer">
+      <div class="drawer__footer">
         {%- if cart != empty -%}
           <!-- Sitarah Multi-Tier Progress Bar (Free Shipping ₹4999, Free Gift ₹7999) -->
           {%- liquid
