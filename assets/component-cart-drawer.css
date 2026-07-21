@@ -525,6 +525,35 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
   background-color: #25D366;
   border-color: #25D366;
   color: #ffffff;
+  animation: milestonePop 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.cart-progress__milestone.is-unlocked .cart-progress__badge-top {
+  animation: badgeGlow 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes milestonePop {
+  0% {
+    transform: scale(0.5);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.8);
+  }
+  50% {
+    transform: scale(1.35);
+    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.4);
+  }
+}
+
+@keyframes badgeGlow {
+  0% {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  }
+  100% {
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.6);
+  }
 }
 
 .cart-progress__dot {

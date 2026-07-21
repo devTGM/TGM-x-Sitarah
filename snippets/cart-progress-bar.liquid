@@ -1,5 +1,5 @@
 {%- comment -%}
-  Renders Multi-Tier Cart Progress Bar
+  Renders Multi-Tier Cart Progress Bar with Completion & Confetti Animations
   Milestones:
   - Free Shipping: ₹ 4,999 (499900 paise)
   - Free Gift: ₹ 7,999 (799900 paise)
@@ -57,7 +57,11 @@
   endif
 -%}
 
-<div class="cart-progress-container">
+<cart-progress-bar
+  class="cart-progress-container"
+  data-is-gift-unlocked="{% if is_gift_unlocked %}true{% else %}false{% endif %}"
+  data-is-shipping-unlocked="{% if is_shipping_unlocked %}true{% else %}false{% endif %}"
+>
   <!-- Top Banner -->
   <div class="cart-progress__subbanner">
     ✦ FREE SHIPPING ON ORDERS ABOVE ₹4,999 ✦
@@ -115,4 +119,92 @@
 
     </div>
   </div>
-</div>
+</cart-progress-bar>
+
+<script>
+  (function() {
+    class CartProgressBar extends HTMLElement {
+      connectedCallback() {
+        const isGiftUnlocked = this.dataset.isGiftUnlocked === 'true';
+        if (isGiftUnlocked && !window._sitarahConfettiFired) {
+          window._sitarahConfettiFired = true;
+          this.triggerConfetti();
+        } else if (!isGiftUnlocked) {
+          window._sitarahConfettiFired = false;
+        }
+      }
+
+      triggerConfetti() {
+        const canvas = document.createElement('canvas');
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100vw';
+        canvas.style.height = '100vh';
+        canvas.style.pointerEvents = 'none';
+        canvas.style.zIndex = '9999999';
+        document.body.appendChild(canvas);
+
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const colors = ['#58021e', '#25D366', '#f8e6eb', '#ffd700', '#ffffff', '#e63946'];
+        const particles = [];
+        const count = 90;
+
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: canvas.width / 2 + (Math.random() - 0.5) * 300,
+            y: canvas.height * 0.25 + (Math.random() - 0.5) * 100,
+            vx: (Math.random() - 0.5) * 14,
+            vy: (Math.random() - 0.85) * 16,
+            size: Math.random() * 9 + 4,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * 360,
+            rSpeed: (Math.random() - 0.5) * 12,
+            opacity: 1
+          });
+        }
+
+        const startTime = Date.now();
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          const elapsed = Date.now() - startTime;
+
+          particles.forEach((p) => {
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.38;
+            p.rotation += p.rSpeed;
+            if (elapsed > 1800) {
+              p.opacity -= 0.035;
+            }
+
+            if (p.opacity > 0) {
+              ctx.save();
+              ctx.translate(p.x, p.y);
+              ctx.rotate((p.rotation * Math.PI) / 180);
+              ctx.globalAlpha = Math.max(0, p.opacity);
+              ctx.fillStyle = p.color;
+              ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 1.4);
+              ctx.restore();
+            }
+          });
+
+          if (elapsed < 3000) {
+            requestAnimationFrame(animate);
+          } else {
+            if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+    }
+
+    if (!customElements.get('cart-progress-bar')) {
+      customElements.define('cart-progress-bar', CartProgressBar);
+    }
+  })();
+</script>
