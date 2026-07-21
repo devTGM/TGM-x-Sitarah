@@ -1,8 +1,9 @@
 {%- comment -%}
   Renders Multi-Tier Cart Progress Bar with Completion & Confetti Animations
   Milestones:
-  - Free Shipping: ₹ 4,999 (499900 paise)
-  - Free Gift: ₹ 7,999 (799900 paise)
+  - Start: ₹ 0 (0%)
+  - Free Shipping: ₹ 4,999 (50%)
+  - Free Gift: ₹ 7,999 (100%)
 {%- endcomment -%}
 
 {%- liquid
@@ -11,8 +12,13 @@
 
   assign cart_total = cart.total_price
 
+  assign is_start_unlocked = false
   assign is_shipping_unlocked = false
   assign is_gift_unlocked = false
+
+  if cart_total > 0
+    assign is_start_unlocked = true
+  endif
 
   if cart_total >= threshold_shipping
     assign is_shipping_unlocked = true
@@ -79,6 +85,21 @@
       <!-- Base Track & Fill -->
       <div class="cart-progress__track">
         <div class="cart-progress__fill" style="width: {{ progress_percent }}%;"></div>
+      </div>
+
+      <!-- Node 0: Starting Point at 0% -->
+      <div class="cart-progress__milestone cart-progress__milestone--start{% if is_start_unlocked %} is-unlocked{% endif %}">
+        <div class="cart-progress__badge-top">START</div>
+        <div class="cart-progress__node">
+          {%- if is_start_unlocked -%}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          {%- else -%}
+            <span class="cart-progress__dot"></span>
+          {%- endif -%}
+        </div>
+        <div class="cart-progress__badge-bottom">₹0</div>
       </div>
 
       <!-- Node 1: Free Shipping at 50% -->

@@ -410,19 +410,22 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 /* Multi-Tier Cart Progress Bar */
 .cart-progress-container {
   display: block;
-  width: 100%;
-  margin-bottom: 0.5rem;
+  width: auto;
+  margin: 1.2rem 1.4rem;
+  border-radius: 12px;
+  border: 1px solid rgba(88, 2, 30, 0.12);
   overflow: hidden;
+  box-shadow: 0 4px 16px rgba(88, 2, 30, 0.05);
 }
 
 .cart-progress__subbanner {
-  background-color: #58021e;
+  background: linear-gradient(135deg, #58021e 0%, #3e0115 100%);
   color: #ffffff;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   text-align: center;
-  padding: 0.65rem 1rem;
-  letter-spacing: 0.06rem;
+  padding: 0.7rem 1rem;
+  letter-spacing: 0.08rem;
   text-transform: uppercase;
 }
 
@@ -441,8 +444,8 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 }
 
 .cart-progress__widget {
-  background-color: #f8e6eb;
-  padding: 3.8rem 2.8rem 3.2rem 2.8rem;
+  background-color: #fcf0f3;
+  padding: 3.8rem 2.8rem 3.4rem 2.8rem;
 }
 
 .cart-progress__track-wrapper {
@@ -470,7 +473,7 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 
 .cart-progress__fill {
   height: 100%;
-  background-color: #121212;
+  background: linear-gradient(90deg, #58021e 0%, #121212 100%);
   border-radius: 20px;
   transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -483,6 +486,10 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
   flex-direction: column;
   align-items: center;
   z-index: 2;
+}
+
+.cart-progress__milestone--start {
+  left: 0%;
 }
 
 .cart-progress__milestone--shipping {
