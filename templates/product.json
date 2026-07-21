@@ -37,6 +37,10 @@
           "type": "quantity_selector",
           "settings": {}
         },
+        "essential_upsell_app_block_4VH6bi": {
+          "type": "shopify://apps/essential-upsell/blocks/app-block/50627fd9-24fd-4250-8614-accc12826d80",
+          "settings": {}
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -72,10 +76,6 @@
         },
         "essential_upsell_frequently_bought_together_app_block_VKg6qb": {
           "type": "shopify://apps/essential-upsell/blocks/frequently-bought-together-app-block/50627fd9-24fd-4250-8614-accc12826d80",
-          "settings": {}
-        },
-        "essential_upsell_app_block_4VH6bi": {
-          "type": "shopify://apps/essential-upsell/blocks/app-block/50627fd9-24fd-4250-8614-accc12826d80",
           "settings": {}
         },
         "custom_liquid_bKW7ba": {
@@ -172,13 +172,13 @@
         "price",
         "variant_picker",
         "quantity_selector",
+        "essential_upsell_app_block_4VH6bi",
         "buy_buttons",
         "delivery_timeline",
         "razorpay_affordability_widget_affordability_block_ENBKXY",
         "essential_upsell_product_addon_app_block_mLjkYd",
         "inventory_PcENLf",
         "essential_upsell_frequently_bought_together_app_block_VKg6qb",
-        "essential_upsell_app_block_4VH6bi",
         "custom_liquid_bKW7ba",
         "ns_estimated_delivery_date_nestscale_edd_product_Jp4UHz",
         "description",
