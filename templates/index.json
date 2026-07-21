@@ -209,6 +209,15 @@
             "title": "",
             "link": "shopify://collections/kokum"
           }
+        },
+        "category_dynBjW": {
+          "type": "category",
+          "settings": {
+            "collection": "begam",
+            "image": "shopify://shop_images/Sitarah1591copy.jpg",
+            "title": "",
+            "link": "shopify://collections/begam"
+          }
         }
       },
       "block_order": [
@@ -220,7 +229,8 @@
         "category_pagzM6",
         "category_XGrGzM",
         "category_hUUcmd",
-        "category_Xe4tC7"
+        "category_Xe4tC7",
+        "category_dynBjW"
       ],
       "name": "Categories Cards",
       "settings": {
