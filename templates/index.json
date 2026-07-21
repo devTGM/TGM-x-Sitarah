@@ -234,7 +234,7 @@
       ],
       "name": "Categories Cards",
       "settings": {
-        "title": "<strong>CATEGORIES</strong>",
+        "title": "<strong>OUR HANDPICKED COLLECTION</strong>",
         "heading_size": "h1",
         "heading_alignment": "center",
         "columns_desktop": 5,
