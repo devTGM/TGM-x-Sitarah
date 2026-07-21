@@ -168,6 +168,15 @@
         "category_U6YCzi": {
           "type": "category",
           "settings": {
+            "collection": "heer",
+            "image": "shopify://shop_images/086A1597.jpg",
+            "title": "HEER-EID EDIT",
+            "link": "shopify://collections/heer"
+          }
+        },
+        "category_pagzM6": {
+          "type": "category",
+          "settings": {
             "collection": "",
             "title": "",
             "link": ""
@@ -179,7 +188,8 @@
         "category_RYpWwC",
         "category_RYMd7D",
         "category_pzNRMY",
-        "category_U6YCzi"
+        "category_U6YCzi",
+        "category_pagzM6"
       ],
       "name": "Categories Cards",
       "settings": {
