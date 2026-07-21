@@ -159,7 +159,8 @@
         "category_pzNRMY": {
           "type": "category",
           "settings": {
-            "collection": "",
+            "collection": "kurta-sharara",
+            "image": "shopify://shop_images/Sitarah0566copy.jpg",
             "title": "FARSHI SALWAR SETS",
             "link": "/collections/farshi-salwar-sets"
           }
@@ -173,7 +174,7 @@
       ],
       "name": "Categories Cards",
       "settings": {
-        "title": "Categories",
+        "title": "<strong>CATEGORIES</strong>",
         "heading_size": "h1",
         "heading_alignment": "center",
         "columns_desktop": 4,
