@@ -143,7 +143,7 @@
           "settings": {
             "collection": "co-ord-sets",
             "image": "shopify://shop_images/0Q4A0913-1_a74302bb-8fa2-4abf-8daa-6274a926e502.jpg",
-            "title": "CO-ORD SETS",
+            "title": "<strong>CO-ORD SETS</strong>",
             "link": "/collections/co-ord-sets"
           }
         },
@@ -152,7 +152,7 @@
           "settings": {
             "collection": "sharara-set",
             "image": "shopify://shop_images/0Q4A1067-1_7cdf5a95-dffd-43bf-8004-4c287aaf9e67.jpg",
-            "title": "SHARARA SETS",
+            "title": "<strong>SHARARA SETS</strong>",
             "link": "shopify://collections/sharara-set"
           }
         },
