@@ -134,7 +134,7 @@
           "settings": {
             "collection": "anarkali",
             "image": "shopify://shop_images/Sitarah1591copy.jpg",
-            "title": "ANARKALI SETS",
+            "title": "<strong>ANARKALI SETS</strong>",
             "link": "/collections/anarkali"
           }
         },
@@ -179,6 +179,11 @@
         "heading_alignment": "center",
         "columns_desktop": 4,
         "color_scheme": "",
+        "title_font_size": 18,
+        "title_font_weight": "700",
+        "title_transform": "uppercase",
+        "title_color": "#121212",
+        "title_hover_color": "#58021e",
         "padding_top": 36,
         "padding_bottom": 36
       }
