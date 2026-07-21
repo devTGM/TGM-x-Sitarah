@@ -2432,12 +2432,12 @@ input[type='checkbox'] {
 .header__heading-logo {
   height: auto;
   max-width: 100%;
-  filter: invert(10%) sepia(85%) saturate(5000%) hue-rotate(338deg) brightness(75%) contrast(105%) !important;
+  filter: invert(20%) sepia(35%) saturate(1400%) hue-rotate(310deg) brightness(45%) contrast(90%) !important;
 }
 
 .header__heading-link,
 .header__heading-link .h2 {
-  color: #62080a !important;
+  color: #613639 !important;
 }
 
 .header__heading-logo-wrapper {
