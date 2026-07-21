@@ -132,55 +132,55 @@
         "category_zh8wAH": {
           "type": "category",
           "settings": {
-            "collection": "anarkali",
-            "image": "shopify://shop_images/Sitarah1591copy.jpg",
-            "title": "<strong>ANARKALI SETS</strong>",
-            "link": "/collections/anarkali"
+            "collection": "heer",
+            "image": "shopify://shop_images/086A1101.jpg",
+            "title": "<strong>HEER</strong>",
+            "link": "shopify://collections/heer"
           }
         },
         "category_RYpWwC": {
           "type": "category",
           "settings": {
-            "collection": "co-ord-sets",
-            "image": "shopify://shop_images/0Q4A0913-1_a74302bb-8fa2-4abf-8daa-6274a926e502.jpg",
-            "title": "<strong>CO-ORD SETS</strong>",
-            "link": "/collections/co-ord-sets"
+            "collection": "raag",
+            "image": "shopify://shop_images/086A2106-1.jpg",
+            "title": "<strong>RAAG</strong>",
+            "link": "shopify://collections/raag"
           }
         },
         "category_RYMd7D": {
           "type": "category",
           "settings": {
-            "collection": "sharara-set",
-            "image": "shopify://shop_images/0Q4A1067-1_7cdf5a95-dffd-43bf-8004-4c287aaf9e67.jpg",
-            "title": "<strong>SHARARA SETS</strong>",
-            "link": "shopify://collections/sharara-set"
+            "collection": "chandrika",
+            "image": "shopify://shop_images/0Q4A2137.jpg",
+            "title": "<strong>Chandrika</strong>",
+            "link": "shopify://collections/chandrika"
           }
         },
         "category_pzNRMY": {
           "type": "category",
           "settings": {
-            "collection": "kurta-sharara",
-            "image": "shopify://shop_images/Sitarah0566copy.jpg",
-            "title": "SUIT SETS",
-            "link": "shopify://collections/kurta-sharara"
+            "collection": "firdaus",
+            "image": "shopify://shop_images/Sitarah1698.jpg",
+            "title": "<strong>FIRDAUS</strong>",
+            "link": "shopify://collections/firdaus"
           }
         },
         "category_U6YCzi": {
           "type": "category",
           "settings": {
-            "collection": "heer",
-            "image": "shopify://shop_images/086A1597.jpg",
-            "title": "HEER-EID EDIT",
-            "link": "shopify://collections/heer"
+            "collection": "kesariya",
+            "image": "shopify://shop_images/69266A3B-B44A-4F42-ACE7-B618E527176A.jpg",
+            "title": "KESARIYA",
+            "link": "shopify://collections/kesariya"
           }
         },
         "category_pagzM6": {
           "type": "category",
-          "disabled": true,
           "settings": {
-            "collection": "",
-            "title": "",
-            "link": ""
+            "collection": "gulmohar",
+            "image": "shopify://shop_images/0Q4A0670-1_2cefd603-db86-416a-9f16-d45079e7bb0d.jpg",
+            "title": "<strong>GULMOHAR</strong>",
+            "link": "shopify://collections/gulmohar"
           }
         }
       },
@@ -192,7 +192,6 @@
         "category_U6YCzi",
         "category_pagzM6"
       ],
-      "disabled": true,
       "name": "Categories Cards",
       "settings": {
         "title": "<strong>CATEGORIES</strong>",
@@ -279,35 +278,6 @@
         "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": true,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "featured_collection_hegMgT": {
-      "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
-      "settings": {
-        "title": "<strong>HEER- EID EDIT</strong>",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "heer",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "full_width": true,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
         "enable_quick_add": true,
@@ -463,6 +433,35 @@
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 24,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_hegMgT": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "<strong>HEER- EID EDIT</strong>",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "heer",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
         "padding_bottom": 36
       }
     },
