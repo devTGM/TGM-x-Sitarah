@@ -44,24 +44,25 @@
 }
 
 .mega-menu__link {
-  color: #555555 !important;
+  color: #000000 !important;
   display: block;
-  line-height: 1.4;
-  padding-bottom: 0.4rem;
-  padding-top: 0.4rem;
+  line-height: 1.5;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
   text-decoration: none;
   text-transform: uppercase !important;
   letter-spacing: 0.08em !important;
-  font-size: 0.85rem !important;
-  font-weight: 500 !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
   transition: color var(--duration-short) ease;
   word-wrap: break-word;
 }
 
 .mega-menu__link--level-2 {
   font-weight: 700 !important;
-  color: #333333 !important;
-  padding-bottom: 0.6rem;
+  color: #000000 !important;
+  font-size: 1.15rem !important;
+  padding-bottom: 0.7rem;
 }
 
 .header--top-center .mega-menu__list {

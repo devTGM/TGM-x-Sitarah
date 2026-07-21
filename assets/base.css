@@ -2837,18 +2837,22 @@ details[open] > .header__menu-item .icon-caret {
   right: 2rem;
 }
 
-.header__submenu .header__menu-item {
+.header__submenu .header__menu-item,
+.header__submenu a,
+.mega-menu__content a {
   justify-content: space-between;
   padding: 0.6rem 2rem;
-  color: #555555 !important;
-  font-size: 0.85rem !important;
-  font-weight: 500 !important;
+  color: #000000 !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.08em !important;
   transition: color 0.2s ease;
 }
 
-.header__submenu .header__menu-item:hover {
+.header__submenu .header__menu-item:hover,
+.header__submenu a:hover,
+.mega-menu__content a:hover {
   color: #58021e !important;
   text-decoration-line: none;
 }
