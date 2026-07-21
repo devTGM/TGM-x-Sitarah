@@ -5,7 +5,6 @@
   ============================================================ */
 
   /* --- Transparent Header overlay ONLY at top (when NOT scrolled) --- */
-  /* --- Transparent Header overlay ONLY at top (when NOT scrolled) --- */
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) {
     position: absolute !important;
     top: 0;
@@ -36,8 +35,14 @@
     filter: {{ section.settings.logo_filter }} !important;
   }
 
-  /* --- Solid Header on Scroll Down --- */
-  .hero-banner-transparent-header .section-header.scrolled-past-header {
+  /* --- Hidden Header when Scrolling Down --- */
+  .section-header.shopify-section-header-hidden {
+    transform: translateY(-100%) !important;
+    transition: transform 0.3s ease-out !important;
+  }
+
+  /* --- Solid Sticky Header when Scrolling UP --- */
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) {
     position: fixed !important;
     top: 0;
     left: 0;
@@ -45,25 +50,26 @@
     z-index: 999;
     background-color: #ffffff !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transform: translateY(0) !important;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease !important;
   }
-  .hero-banner-transparent-header .section-header.scrolled-past-header .header-wrapper {
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header-wrapper {
     background-color: #ffffff !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
   }
-  .hero-banner-transparent-header .section-header.scrolled-past-header .header__heading-logo {
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__heading-logo {
     filter: none !important;
   }
-  .hero-banner-transparent-header .section-header.scrolled-past-header .header__heading-link,
-  .hero-banner-transparent-header .section-header.scrolled-past-header .header__icon,
-  .hero-banner-transparent-header .section-header.scrolled-past-header .header__menu-item,
-  .hero-banner-transparent-header .section-header.scrolled-past-header .list-menu__item,
-  .hero-banner-transparent-header .section-header.scrolled-past-header .header__menu-item span,
-  .hero-banner-transparent-header .section-header.scrolled-past-header nav a {
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__heading-link,
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon,
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__menu-item,
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .list-menu__item,
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__menu-item span,
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) nav a {
     color: #121212 !important;
   }
-  .hero-banner-transparent-header .section-header.scrolled-past-header .header__icon svg path,
-  .hero-banner-transparent-header .section-header.scrolled-past-header .header__icon svg circle {
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon svg path,
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon svg circle {
     stroke: #121212 !important;
     fill: #121212 !important;
   }
