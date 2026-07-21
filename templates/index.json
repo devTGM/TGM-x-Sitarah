@@ -197,7 +197,7 @@
         "title": "<strong>CATEGORIES</strong>",
         "heading_size": "h1",
         "heading_alignment": "center",
-        "columns_desktop": 6,
+        "columns_desktop": 4,
         "color_scheme": "",
         "title_font_size": 18,
         "title_font_weight": "700",
