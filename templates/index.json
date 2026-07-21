@@ -126,6 +126,62 @@
         "accessibility_info": ""
       }
     },
+    "categories_cards_7yMdGi": {
+      "type": "categories-cards",
+      "blocks": {
+        "category_zh8wAH": {
+          "type": "category",
+          "settings": {
+            "collection": "anarkali",
+            "image": "shopify://shop_images/Sitarah1591copy.jpg",
+            "title": "ANARKALI SETS",
+            "link": "/collections/anarkali"
+          }
+        },
+        "category_RYpWwC": {
+          "type": "category",
+          "settings": {
+            "collection": "co-ord-sets",
+            "image": "shopify://shop_images/0Q4A0913-1_a74302bb-8fa2-4abf-8daa-6274a926e502.jpg",
+            "title": "CO-ORD SETS",
+            "link": "/collections/co-ord-sets"
+          }
+        },
+        "category_RYMd7D": {
+          "type": "category",
+          "settings": {
+            "collection": "sharara-set",
+            "image": "shopify://shop_images/0Q4A1067-1_7cdf5a95-dffd-43bf-8004-4c287aaf9e67.jpg",
+            "title": "SHARARA SETS",
+            "link": "shopify://collections/sharara-set"
+          }
+        },
+        "category_pzNRMY": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": "FARSHI SALWAR SETS",
+            "link": "/collections/farshi-salwar-sets"
+          }
+        }
+      },
+      "block_order": [
+        "category_zh8wAH",
+        "category_RYpWwC",
+        "category_RYMd7D",
+        "category_pzNRMY"
+      ],
+      "name": "Categories Cards",
+      "settings": {
+        "title": "Categories",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "columns_desktop": 4,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "collection_list_FKik3G": {
       "type": "collection-list",
       "blocks": {
@@ -660,6 +716,7 @@
   },
   "order": [
     "4862cca1-87c2-43ba-be8e-985e5ed256c5",
+    "categories_cards_7yMdGi",
     "collection_list_FKik3G",
     "featured_collection_hegMgT",
     "featured_collection_JTww8M",
