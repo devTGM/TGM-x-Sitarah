@@ -164,13 +164,22 @@
             "title": "SUIT SETS",
             "link": "shopify://collections/kurta-sharara"
           }
+        },
+        "category_U6YCzi": {
+          "type": "category",
+          "settings": {
+            "collection": "",
+            "title": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
         "category_zh8wAH",
         "category_RYpWwC",
         "category_RYMd7D",
-        "category_pzNRMY"
+        "category_pzNRMY",
+        "category_U6YCzi"
       ],
       "name": "Categories Cards",
       "settings": {
@@ -185,7 +194,9 @@
         "title_color": "#121212",
         "title_hover_color": "#58021e",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "padding_side": 32,
+        "padding_side_mobile": 20
       }
     },
     "collection_list_FKik3G": {
