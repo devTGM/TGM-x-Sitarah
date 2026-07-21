@@ -1,0 +1,135 @@
+/* Categories Section - Styled matching Sitarah luxury design */
+.categories-section {
+  display: block;
+  width: 100%;
+}
+
+.categories-section__heading-wrapper {
+  margin-bottom: 2.5rem;
+}
+
+.categories-section__heading-wrapper.text-center {
+  text-align: center;
+}
+
+.categories-section__heading-wrapper.text-left {
+  text-align: left;
+}
+
+.categories-section__heading-wrapper.text-right {
+  text-align: right;
+}
+
+.categories-section__heading {
+  font-family: inherit;
+  font-size: 2.4rem;
+  font-weight: 500;
+  letter-spacing: 0.04rem;
+  margin: 0;
+  color: #121212;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6rem;
+}
+
+.categories-grid--2-col { grid-template-columns: repeat(2, 1fr); }
+.categories-grid--3-col { grid-template-columns: repeat(3, 1fr); }
+.categories-grid--4-col { grid-template-columns: repeat(4, 1fr); }
+.categories-grid--5-col { grid-template-columns: repeat(5, 1fr); }
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-card__link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.category-card__image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4.1;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  background-color: #f5f5f5;
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.category-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  display: block;
+}
+
+.category-card__placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #f0ecec;
+  fill: #aaa;
+}
+
+.category-card__link:hover .category-card__image {
+  transform: scale(1.06);
+}
+
+.category-card__link:hover .category-card__image-wrapper {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+}
+
+.category-card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 1.2rem;
+  margin-bottom: 0;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  color: #121212;
+  transition: color 0.3s ease;
+}
+
+.category-card__link:hover .category-card__title {
+  color: #58021e;
+}
+
+@media screen and (max-width: 989px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .categories-section__heading {
+    font-size: 2.1rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .category-card__image-wrapper {
+    border-radius: 12px;
+  }
+
+  .category-card__title {
+    font-size: 0.95rem;
+    margin-top: 0.8rem;
+  }
+
+  .categories-section__heading-wrapper {
+    margin-bottom: 1.6rem;
+  }
+}

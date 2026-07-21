@@ -594,10 +594,59 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
+    },
+    "categories_cards_main": {
+      "type": "categories-cards",
+      "blocks": {
+        "cat_kurta": {
+          "type": "category",
+          "settings": {
+            "title": "KURTA SETS",
+            "link": "/collections/kurta-sets"
+          }
+        },
+        "cat_coord": {
+          "type": "category",
+          "settings": {
+            "title": "CO-ORD SETS",
+            "link": "/collections/co-ord-sets"
+          }
+        },
+        "cat_farshi": {
+          "type": "category",
+          "settings": {
+            "title": "FARSHI SALWAR SETS",
+            "link": "/collections/farshi-salwar-sets"
+          }
+        },
+        "cat_anarkali": {
+          "type": "category",
+          "settings": {
+            "title": "ANARKALI SETS",
+            "link": "/collections/anarkali"
+          }
+        }
+      },
+      "block_order": [
+        "cat_kurta",
+        "cat_coord",
+        "cat_farshi",
+        "cat_anarkali"
+      ],
+      "settings": {
+        "title": "Categories",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
     }
   },
   "order": [
     "4862cca1-87c2-43ba-be8e-985e5ed256c5",
+    "categories_cards_main",
     "featured_collection_hegMgT",
     "featured_collection_nDBKaj",
     "175738555978e112fd",
