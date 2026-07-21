@@ -234,7 +234,7 @@
       ],
       "name": "Categories Cards",
       "settings": {
-        "title": "<strong>CURATED COLLECTION</strong>",
+        "title": "<strong>CRAFTED FOR YOU</strong>",
         "heading_size": "h1",
         "heading_alignment": "center",
         "columns_desktop": 5,
