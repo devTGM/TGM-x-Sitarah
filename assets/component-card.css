@@ -483,3 +483,19 @@
     clip-path: polygon(var(--shape--blob-5));
   }
 }
+
+/* Rounded Edges for Product Cards & Collection Cards in Featured Collections */
+.card__inner,
+.card__media,
+.card .media,
+.card .media img,
+.card__media img,
+.card--standard .card__inner,
+.card--card .card__inner,
+.card-wrapper .card__inner,
+.card-wrapper .card__media,
+.product-card-wrapper .card__inner,
+.product-card-wrapper .card__media {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
