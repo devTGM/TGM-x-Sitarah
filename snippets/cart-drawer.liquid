@@ -198,7 +198,7 @@
               </div>
 
               <!-- In-Cart Recommendations Section -->
-              {%- assign rec_collection = collections['best-sellers'] -%}
+              {%- assign rec_collection = collections['bestsellers'] -%}
               {%- if rec_collection == blank or rec_collection.products_count == 0 -%}
                 {%- assign rec_collection = collections['all'] -%}
               {%- endif -%}
