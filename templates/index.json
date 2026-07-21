@@ -138,40 +138,13 @@
             "link": "shopify://collections/heer"
           }
         },
-        "category_RYpWwC": {
-          "type": "category",
-          "settings": {
-            "collection": "raag",
-            "image": "shopify://shop_images/086A2155.jpg",
-            "title": "<strong>RAAG</strong>",
-            "link": "shopify://collections/raag"
-          }
-        },
         "category_RYMd7D": {
           "type": "category",
           "settings": {
             "collection": "chandrika",
-            "image": "shopify://shop_images/0Q4A2137.jpg",
+            "image": "shopify://shop_images/0Q4A1890.jpg",
             "title": "<strong>Chandrika</strong>",
             "link": "shopify://collections/chandrika"
-          }
-        },
-        "category_pzNRMY": {
-          "type": "category",
-          "settings": {
-            "collection": "firdaus",
-            "image": "shopify://shop_images/Sitarah1698.jpg",
-            "title": "<strong>FIRDAUS</strong>",
-            "link": "shopify://collections/firdaus"
-          }
-        },
-        "category_U6YCzi": {
-          "type": "category",
-          "settings": {
-            "collection": "kesariya",
-            "image": "shopify://shop_images/69266A3B-B44A-4F42-ACE7-B618E527176A.jpg",
-            "title": "KESARIYA",
-            "link": "shopify://collections/kesariya"
           }
         },
         "category_pagzM6": {
@@ -196,9 +169,18 @@
           "type": "category",
           "settings": {
             "collection": "marigold",
-            "image": "shopify://shop_images/0Q4A1207-1.jpg",
+            "image": "shopify://shop_images/0Q4A1301-1.jpg",
             "title": "",
             "link": "shopify://collections/marigold"
+          }
+        },
+        "category_RYpWwC": {
+          "type": "category",
+          "settings": {
+            "collection": "raag",
+            "image": "shopify://shop_images/086A2155.jpg",
+            "title": "<strong>RAAG</strong>",
+            "link": "shopify://collections/raag"
           }
         },
         "category_Xe4tC7": {
@@ -208,6 +190,24 @@
             "image": "shopify://shop_images/Sitarah0918copy_7abca9ae-6e9f-439f-bc55-2539800d736a.jpg",
             "title": "",
             "link": "shopify://collections/kokum"
+          }
+        },
+        "category_U6YCzi": {
+          "type": "category",
+          "settings": {
+            "collection": "kesariya",
+            "image": "shopify://shop_images/69266A3B-B44A-4F42-ACE7-B618E527176A.jpg",
+            "title": "KESARIYA",
+            "link": "shopify://collections/kesariya"
+          }
+        },
+        "category_pzNRMY": {
+          "type": "category",
+          "settings": {
+            "collection": "firdaus",
+            "image": "shopify://shop_images/Sitarah1698.jpg",
+            "title": "<strong>FIRDAUS</strong>",
+            "link": "shopify://collections/firdaus"
           }
         },
         "category_dynBjW": {
@@ -222,14 +222,14 @@
       },
       "block_order": [
         "category_zh8wAH",
-        "category_RYpWwC",
         "category_RYMd7D",
-        "category_pzNRMY",
-        "category_U6YCzi",
         "category_pagzM6",
         "category_XGrGzM",
         "category_hUUcmd",
+        "category_RYpWwC",
         "category_Xe4tC7",
+        "category_U6YCzi",
+        "category_pzNRMY",
         "category_dynBjW"
       ],
       "name": "Categories Cards",
