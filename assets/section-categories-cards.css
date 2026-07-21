@@ -21,6 +21,59 @@
   color: #121212;
 }
 
+.categories-grid-container {
+  position: relative;
+  width: 100%;
+}
+
+.category-slider__edge-arrow {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%) scale(0.85);
+  z-index: 12;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(18, 18, 18, 0.12);
+  color: #121212;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.category-slider__edge-arrow--prev {
+  left: 8px;
+}
+
+.category-slider__edge-arrow--next {
+  right: 8px;
+}
+
+/* Reveal arrows on hovering over the card slider container extremes */
+.categories-grid-container:hover .category-slider__edge-arrow {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(-50%) scale(1);
+}
+
+.category-slider__edge-arrow:hover {
+  background: #58021e !important;
+  color: #ffffff !important;
+  border-color: #58021e !important;
+  transform: translateY(-50%) scale(1.12) !important;
+  box-shadow: 0 10px 28px rgba(88, 2, 30, 0.35) !important;
+}
+
 .categories-grid {
   display: flex;
   flex-wrap: nowrap;

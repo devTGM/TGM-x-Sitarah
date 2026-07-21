@@ -38,45 +38,59 @@
         </div>
       {%- endif -%}
 
-      <div class="categories-grid categories-grid--{{ section.settings.columns_desktop }}-col">
-        {%- for block in section.blocks -%}
-          <div class="category-card" {{ block.shopify_attributes }}>
-            <a href="{{ block.settings.link | default: '#' }}" class="category-card__link">
-              <div class="category-card__image-wrapper">
-                {%- if block.settings.image != blank -%}
-                  <img
-                    src="{{ block.settings.image | image_url: width: 800 }}"
-                    alt="{{ block.settings.title | strip_html | escape }}"
-                    loading="lazy"
-                    width="800"
-                    height="1066"
-                    class="category-card__image"
-                  >
-                {%- elsif block.settings.collection != blank and block.settings.collection.featured_image != blank -%}
-                  <img
-                    src="{{ block.settings.collection.featured_image | image_url: width: 800 }}"
-                    alt="{{ block.settings.title | default: block.settings.collection.title | strip_html | escape }}"
-                    loading="lazy"
-                    width="800"
-                    height="1066"
-                    class="category-card__image"
-                  >
-                {%- else -%}
-                  {{ 'collection-1' | placeholder_svg_tag: 'category-card__image category-card__placeholder' }}
+      <div class="categories-grid-container">
+        <button type="button" class="category-slider__edge-arrow category-slider__edge-arrow--prev" aria-label="Previous categories">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="categories-grid categories-grid--{{ section.settings.columns_desktop }}-col">
+          {%- for block in section.blocks -%}
+            <div class="category-card" {{ block.shopify_attributes }}>
+              <a href="{{ block.settings.link | default: '#' }}" class="category-card__link">
+                <div class="category-card__image-wrapper">
+                  {%- if block.settings.image != blank -%}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 800 }}"
+                      alt="{{ block.settings.title | strip_html | escape }}"
+                      loading="lazy"
+                      width="800"
+                      height="1066"
+                      class="category-card__image"
+                    >
+                  {%- elsif block.settings.collection != blank and block.settings.collection.featured_image != blank -%}
+                    <img
+                      src="{{ block.settings.collection.featured_image | image_url: width: 800 }}"
+                      alt="{{ block.settings.title | default: block.settings.collection.title | strip_html | escape }}"
+                      loading="lazy"
+                      width="800"
+                      height="1066"
+                      class="category-card__image"
+                    >
+                  {%- else -%}
+                    {{ 'collection-1' | placeholder_svg_tag: 'category-card__image category-card__placeholder' }}
+                  {%- endif -%}
+                </div>
+                {%- assign card_title = block.settings.title -%}
+                {%- if card_title == blank and block.settings.collection != blank -%}
+                  {%- assign card_title = block.settings.collection.title -%}
                 {%- endif -%}
-              </div>
-              {%- assign card_title = block.settings.title -%}
-              {%- if card_title == blank and block.settings.collection != blank -%}
-                {%- assign card_title = block.settings.collection.title -%}
-              {%- endif -%}
-              {%- if card_title != blank -%}
-                <h3 class="category-card__title inline-richtext">
-                  {{ card_title }}
-                </h3>
-              {%- endif -%}
-            </a>
-          </div>
-        {%- endfor -%}
+                {%- if card_title != blank -%}
+                  <h3 class="category-card__title inline-richtext">
+                    {{ card_title }}
+                  </h3>
+                {%- endif -%}
+              </a>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <button type="button" class="category-slider__edge-arrow category-slider__edge-arrow--next" aria-label="Next categories">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
       </div>
     </categories-slider>
   </div>
@@ -87,8 +101,8 @@
     class CategoriesSlider extends HTMLElement {
       connectedCallback() {
         this.grid = this.querySelector('.categories-grid');
-        this.prevBtn = this.querySelector('.categories-slider__arrow--prev');
-        this.nextBtn = this.querySelector('.categories-slider__arrow--next');
+        this.prevBtn = this.querySelector('.category-slider__edge-arrow--prev');
+        this.nextBtn = this.querySelector('.category-slider__edge-arrow--next');
 
         if (!this.grid) return;
 
