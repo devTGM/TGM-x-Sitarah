@@ -1,16 +1,32 @@
 {%- comment -%}
-  Renders Multi-Tier Cart Progress Bar with Completion & Confetti Animations
+  Renders Multi-Tier Cart Progress Bar with Free Gift (Velvet Potli) Auto-Add System
   Milestones:
   - Start: ₹ 0 (0%)
   - Free Shipping: ₹ 4,999 (50%)
-  - Free Gift: ₹ 7,999 (100%)
+  - Free Gift: ₹ 7,999 (100%) - Velvet Potli (handle: velvet-potli)
 {%- endcomment -%}
 
 {%- liquid
   assign threshold_shipping = 499900
   assign threshold_gift = 799900
 
-  assign cart_total = cart.total_price
+  assign free_gift_product = all_products['velvet-potli']
+  assign free_gift_variant_id = free_gift_product.first_available_variant.id
+
+  assign gift_in_cart = false
+  assign gift_item_key = ''
+  assign cart_total_without_gift = 0
+
+  for item in cart.items
+    if item.product.handle == 'velvet-potli' or item.variant_id == free_gift_variant_id
+      assign gift_in_cart = true
+      assign gift_item_key = item.key
+    else
+      assign cart_total_without_gift = cart_total_without_gift | plus: item.final_line_price
+    endif
+  endfor
+
+  assign cart_total = cart_total_without_gift
 
   assign is_start_unlocked = false
   assign is_shipping_unlocked = false
@@ -67,6 +83,10 @@
   class="cart-progress-container"
   data-is-gift-unlocked="{% if is_gift_unlocked %}true{% else %}false{% endif %}"
   data-is-shipping-unlocked="{% if is_shipping_unlocked %}true{% else %}false{% endif %}"
+  data-gift-variant-id="{{ free_gift_variant_id }}"
+  data-gift-in-cart="{% if gift_in_cart %}true{% else %}false{% endif %}"
+  data-gift-item-key="{{ gift_item_key }}"
+  data-cart-non-gift-total="{{ cart_total_without_gift }}"
 >
   <!-- Top Banner -->
   <div class="cart-progress__subbanner">
@@ -146,12 +166,91 @@
     class CartProgressBar extends HTMLElement {
       connectedCallback() {
         const isGiftUnlocked = this.dataset.isGiftUnlocked === 'true';
+        const giftInCart = this.dataset.giftInCart === 'true';
+        const giftVariantId = this.dataset.giftVariantId;
+        const giftItemKey = this.dataset.giftItemKey;
+        const nonGiftTotal = parseInt(this.dataset.cartNonGiftTotal || '0', 10);
+
+        // Confetti animation
         if (isGiftUnlocked && !window._sitarahConfettiFired) {
           window._sitarahConfettiFired = true;
           this.triggerConfetti();
         } else if (!isGiftUnlocked) {
           window._sitarahConfettiFired = false;
         }
+
+        // Auto Add Free Gift (Velvet Potli) if non-gift cart total >= ₹ 7,999 (799900 paise)
+        if (nonGiftTotal >= 799900 && !giftInCart && giftVariantId && !window._sitarahGiftUpdating) {
+          window._sitarahGiftUpdating = true;
+          this.addFreeGift(giftVariantId);
+        }
+        // Auto Remove Free Gift if non-gift cart total drops below ₹ 7,999
+        else if (nonGiftTotal < 799900 && giftInCart && !window._sitarahGiftUpdating) {
+          window._sitarahGiftUpdating = true;
+          this.removeFreeGift(giftItemKey || giftVariantId);
+        }
+      }
+
+      addFreeGift(variantId) {
+        const routes = window.Shopify && window.Shopify.routes ? window.Shopify.routes.root : '/';
+        fetch(routes + 'cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: [{
+              id: variantId,
+              quantity: 1,
+              properties: { '_free_gift': 'true' }
+            }]
+          })
+        })
+        .then(res => res.json())
+        .then(() => {
+          this.refreshCart();
+        })
+        .catch(err => {
+          console.error('Error adding free gift:', err);
+          window._sitarahGiftUpdating = false;
+        });
+      }
+
+      removeFreeGift(itemKeyOrId) {
+        const routes = window.Shopify && window.Shopify.routes ? window.Shopify.routes.root : '/';
+        fetch(routes + 'cart/change.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: itemKeyOrId.toString(),
+            quantity: 0
+          })
+        })
+        .then(res => res.json())
+        .then(() => {
+          this.refreshCart();
+        })
+        .catch(err => {
+          console.error('Error removing free gift:', err);
+          window._sitarahGiftUpdating = false;
+        });
+      }
+
+      refreshCart() {
+        const routes = window.Shopify && window.Shopify.routes ? window.Shopify.routes.root : '/';
+        fetch(`${routes}cart?sections=cart-drawer,cart-icon-bubble`)
+          .then(res => res.json())
+          .then(parsedState => {
+            window._sitarahGiftUpdating = false;
+            const drawer = document.querySelector('cart-drawer');
+            if (drawer && typeof drawer.renderContents === 'function') {
+              drawer.renderContents(parsedState);
+            } else {
+              window.location.reload();
+            }
+          })
+          .catch(() => {
+            window._sitarahGiftUpdating = false;
+            window.location.reload();
+          });
       }
 
       triggerConfetti() {

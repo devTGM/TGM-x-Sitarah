@@ -141,6 +141,9 @@
 
                           <a href="{{ item.url }}" class="cart-item__name h4 break">
                             {{- item.product.title | escape -}}
+                            {%- if item.product.handle == 'velvet-potli' or item.properties._free_gift == 'true' -%}
+                              <span style="display:inline-block; background-color:#25D366; color:#ffffff; font-size:0.75rem; font-weight:700; padding:0.15rem 0.5rem; border-radius:10px; margin-left:0.4rem; vertical-align:middle;">FREE GIFT</span>
+                            {%- endif -%}
                           </a>
 
                           {%- if item.original_price != item.final_price -%}
