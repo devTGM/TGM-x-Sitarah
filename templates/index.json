@@ -15,7 +15,7 @@
         "slide_bQHCYE": {
           "type": "slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/Fill_White_Space_with_Matching_Shading_1.png",
+            "desktop_image": "shopify://shop_images/Sitarah-1_1.png",
             "mobile_image": "shopify://shop_images/Completed_Background_Design.png",
             "overlay_color": "#000000",
             "overlay_opacity": 35,
@@ -121,8 +121,6 @@
         "logo_filter": "brightness(0) invert(1)",
         "height_desktop": 80,
         "height_mobile": 80,
-        "slide_height_desktop": 80,
-        "slide_height_mobile": 80,
         "auto_rotate": true,
         "change_slides_speed": 5,
         "accessibility_info": ""
