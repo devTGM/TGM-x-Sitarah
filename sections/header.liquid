@@ -118,6 +118,48 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  /* Dropdown Menu Solid Black Text & Off-white Background Override */
+  .mega-menu__content,
+  .mega-menu__content.gradient,
+  .header__submenu {
+    background-color: #f3f3f3 !important;
+    background: #f3f3f3 !important;
+    --color-foreground: 0, 0, 0 !important;
+  }
+
+  .mega-menu__content *,
+  .mega-menu__content a,
+  .mega-menu__content span,
+  .mega-menu__content p,
+  .mega-menu__link,
+  .header__submenu *,
+  .header__submenu a,
+  .header__submenu span,
+  .header__submenu .header__menu-item {
+    color: #000000 !important;
+    fill: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    opacity: 1 !important;
+  }
+
+  .mega-menu__link,
+  .header__submenu a,
+  .header__submenu .header__menu-item {
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    line-height: 1.5 !important;
+  }
+
+  .mega-menu__link:hover,
+  .mega-menu__link--active,
+  .header__submenu a:hover,
+  .header__submenu .header__menu-item:hover {
+    color: #58021e !important;
+    -webkit-text-fill-color: #58021e !important;
+  }
 {%- endstyle -%}
 
 <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>

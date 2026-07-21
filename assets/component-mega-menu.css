@@ -43,8 +43,30 @@
   list-style: none;
 }
 
+/* Mega Menu Dropdown Colors & Typography Override */
+.mega-menu__content,
+.mega-menu__content.gradient,
+.header__submenu {
+  background-color: #f3f3f3 !important;
+  background: #f3f3f3 !important;
+  --color-foreground: 0, 0, 0 !important;
+}
+
+.mega-menu__content a,
+.mega-menu__content span,
+.mega-menu__content p,
+.mega-menu__link,
+.header__submenu a,
+.header__submenu span {
+  color: #000000 !important;
+  fill: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  opacity: 1 !important;
+}
+
 .mega-menu__link {
   color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
   display: block;
   line-height: 1.5;
   padding-bottom: 0.5rem;
@@ -61,6 +83,7 @@
 .mega-menu__link--level-2 {
   font-weight: 700 !important;
   color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
   font-size: 1.15rem !important;
   padding-bottom: 0.7rem;
 }
@@ -80,6 +103,7 @@
 .mega-menu__link:hover,
 .mega-menu__link--active {
   color: #58021e !important;
+  -webkit-text-fill-color: #58021e !important;
   text-decoration: none !important;
 }
 
