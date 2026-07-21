@@ -38,6 +38,7 @@
                         id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                         href="{{ childlink.url }}"
                         class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
+                        style="color: #000000 !important; font-size: 1.05rem !important; font-weight: 600 !important; text-transform: uppercase !important; letter-spacing: 0.08em !important; opacity: 1 !important;"
                         {% if childlink.current %}
                           aria-current="page"
                         {% endif %}
@@ -49,6 +50,7 @@
                         <summary
                           id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                           class="header__menu-item link link--text list-menu__item focus-inset caption-large"
+                          style="color: #000000 !important; font-size: 1.05rem !important; font-weight: 600 !important; text-transform: uppercase !important; letter-spacing: 0.08em !important; opacity: 1 !important;"
                         >
                           <span>{{ childlink.title | escape }}</span>
                           {% render 'icon-caret' %}
@@ -63,6 +65,7 @@
                                 id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                 href="{{ grandchildlink.url }}"
                                 class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
+                                style="color: #000000 !important; font-size: 1.05rem !important; font-weight: 600 !important; text-transform: uppercase !important; letter-spacing: 0.08em !important; opacity: 1 !important;"
                                 {% if grandchildlink.current %}
                                   aria-current="page"
                                 {% endif %}
