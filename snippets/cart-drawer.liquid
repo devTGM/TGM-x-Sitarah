@@ -259,6 +259,42 @@
                   </div>
                 </div>
               {%- endif -%}
+
+              <!-- "Make it special with" Section (Gift Wrapping / Boxing) -->
+              {%- assign gift_wrap_prod = all_products['gift-wrapping'] | default: all_products['gift-wrap'] -%}
+              <div class="cart-drawer__special-section">
+                <h3 class="cart-drawer__special-heading">Make it special with</h3>
+                <div class="cart-drawer__special-box">
+                  <div class="cart-drawer__special-media">
+                    {%- if gift_wrap_prod.featured_media -%}
+                      <img src="{{ gift_wrap_prod.featured_media | image_url: width: 150 }}" alt="Gift Wrapping" loading="lazy" width="55" height="55">
+                    {%- else -%}
+                      <div class="cart-drawer__special-icon-box">
+                        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#a3783a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="3" y="8" width="18" height="13" rx="2"></rect>
+                          <path d="M12 8v13"></path>
+                          <path d="M19 12H5"></path>
+                          <path d="M7.5 8C6 8 5 6.5 5 5s1.5-2 3-2 4 3 4 5"></path>
+                          <path d="M16.5 8c1.5 0 2.5-1.5 2.5-3s-1.5-2-3-2-4 3-4 5"></path>
+                        </svg>
+                      </div>
+                    {%- endif -%}
+                  </div>
+
+                  <div class="cart-drawer__special-details">
+                    <div class="cart-drawer__special-title">{{ gift_wrap_prod.title | default: 'Gift Wrapping/Boxing' }}</div>
+                    <div class="cart-drawer__special-price">{{ gift_wrap_prod.price | default: 15000 | money }}</div>
+                  </div>
+
+                  <button
+                    type="button"
+                    class="cart-drawer__special-add-btn"
+                    data-variant-id="{{ gift_wrap_prod.first_available_variant.id | default: '' }}"
+                  >
+                    + Add
+                  </button>
+                </div>
+              </div>
             {%- endif -%}
 
             <p id="CartDrawer-LiveRegionText" class="visually-hidden" role="status"></p>

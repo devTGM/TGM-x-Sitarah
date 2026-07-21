@@ -448,7 +448,84 @@ cart-drawer .quantity:before {
   background-color: #58021e;
 }
 
-/* 4. Multi-Tier Progress Bar (Above Subtotal Footer) */
+/* "Make it special with" Gift Wrapping Box */
+.cart-drawer__special-section {
+  padding: 1.2rem 1.8rem;
+  background-color: #ffffff;
+  border-top: 1px solid #f0f0f0;
+}
+
+.cart-drawer__special-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f2038;
+  margin: 0 0 0.8rem 0;
+}
+
+.cart-drawer__special-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  background-color: #f2f6fa;
+  border-radius: 8px;
+  border: 1px solid #e2ebf3;
+}
+
+.cart-drawer__special-media {
+  width: 55px;
+  height: 55px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-drawer__special-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-drawer__special-details {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cart-drawer__special-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f2038;
+}
+
+.cart-drawer__special-price {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555555;
+}
+
+.cart-drawer__special-add-btn {
+  background-color: #0f2038;
+  color: #ffffff;
+  border: none;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.cart-drawer__special-add-btn:hover {
+  background-color: #1a3358;
+}
 .cart-drawer__tier-container {
   padding: 3rem 1.8rem 1.4rem 1.8rem;
   background-color: #ffffff;
@@ -643,15 +720,36 @@ cart-drawer .quantity:before {
 
 /* Mobile Optimizations */
 @media screen and (max-width: 768px) {
+  .drawer {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
   .drawer__inner {
-    width: 100% !important;
-    max-width: 100% !important;
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
     height: 100% !important;
     max-height: 100dvh !important;
     padding: 0 !important;
+    margin: 0 !important;
     display: flex !important;
     flex-direction: column !important;
-    overflow: hidden !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    box-sizing: border-box !important;
   }
   
   .drawer__header {
