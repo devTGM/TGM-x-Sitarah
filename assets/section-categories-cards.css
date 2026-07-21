@@ -58,12 +58,14 @@
   right: 8px;
 }
 
-/* Reveal arrows on hovering over the card slider container extremes */
-.categories-grid-container:hover .category-slider__edge-arrow {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(-50%) scale(1);
+/* Reveal arrows ONLY on desktop hover */
+@media screen and (min-width: 990px) and (hover: hover) {
+  .categories-grid-container:hover .category-slider__edge-arrow {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(-50%) scale(1);
+  }
 }
 
 .category-slider__edge-arrow:hover {
@@ -72,6 +74,15 @@
   border-color: #58021e !important;
   transform: translateY(-50%) scale(1.12) !important;
   box-shadow: 0 10px 28px rgba(88, 2, 30, 0.35) !important;
+}
+
+@media screen and (max-width: 989px), (hover: none) {
+  .category-slider__edge-arrow {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 }
 
 .categories-grid {
