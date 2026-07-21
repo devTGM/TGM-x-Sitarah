@@ -335,9 +335,16 @@
             data-gift-item-key="{{ gift_item_key }}"
             data-cart-non-gift-total="{{ cart_total_without_gift }}"
           >
+            {%- assign clamped_pct = progress_percent -%}
+            {%- if clamped_pct < 10 -%}
+              {%- assign clamped_pct = 10 -%}
+            {%- elsif clamped_pct > 90 -%}
+              {%- assign clamped_pct = 90 -%}
+            {%- endif -%}
+
             <div class="cart-drawer__tier-track-box">
               <!-- Floating Pill showing current total -->
-              <div class="cart-drawer__tier-floating-pill" style="left: {{ progress_percent }}%;">
+              <div class="cart-drawer__tier-floating-pill" style="left: {{ clamped_pct }}%;">
                 {{ cart_total | money_without_trailing_zeros }}
                 <div class="cart-drawer__tier-arrow-down"></div>
               </div>
@@ -346,7 +353,7 @@
                 <div class="cart-drawer__tier-bar-fill" style="width: {{ progress_percent }}%;"></div>
 
                 <!-- Node 0: Start ₹0 -->
-                <div class="cart-drawer__tier-node unlocked" style="left: 0%;">
+                <div class="cart-drawer__tier-node cart-drawer__tier-node--start unlocked">
                   <div class="cart-drawer__tier-node-circle">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                   </div>
@@ -354,7 +361,7 @@
                 </div>
 
                 <!-- Node 1: Free Shipping ₹4,999 -->
-                <div class="cart-drawer__tier-node {% if is_shipping_unlocked %}unlocked{% endif %}" style="left: 50%;">
+                <div class="cart-drawer__tier-node cart-drawer__tier-node--shipping {% if is_shipping_unlocked %}unlocked{% endif %}">
                   <div class="cart-drawer__tier-node-circle">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
                   </div>
@@ -362,11 +369,11 @@
                 </div>
 
                 <!-- Node 2: Free Gift ₹7,999 -->
-                <div class="cart-drawer__tier-node {% if is_gift_unlocked %}unlocked{% endif %}" style="left: 100%;">
+                <div class="cart-drawer__tier-node cart-drawer__tier-node--gift {% if is_gift_unlocked %}unlocked{% endif %}">
                   <div class="cart-drawer__tier-node-circle">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
                   </div>
-                  <div class="cart-drawer__tier-node-label" style="right: 0; left: auto; transform: translateX(20%);">₹7,999 <span>FREE GIFT</span></div>
+                  <div class="cart-drawer__tier-node-label">₹7,999 <span>FREE GIFT</span></div>
                 </div>
               </div>
             </div>
