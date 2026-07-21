@@ -142,7 +142,7 @@
           "type": "category",
           "settings": {
             "collection": "raag",
-            "image": "shopify://shop_images/086A2106-1.jpg",
+            "image": "shopify://shop_images/086A2155.jpg",
             "title": "<strong>RAAG</strong>",
             "link": "shopify://collections/raag"
           }
@@ -234,7 +234,7 @@
       ],
       "name": "Categories Cards",
       "settings": {
-        "title": "<strong>OUR HANDPICKED COLLECTION</strong>",
+        "title": "<strong>CURATED COLLECTION</strong>",
         "heading_size": "h1",
         "heading_alignment": "center",
         "columns_desktop": 5,
