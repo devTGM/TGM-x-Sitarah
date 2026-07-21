@@ -285,9 +285,13 @@
             assign cart_total_without_gift = 0
 
             for item in cart.items
-              if item.product.handle == 'velvet-potli' or item.variant_id == free_gift_variant_id
+              assign item_title_lower = item.product.title | downcase
+              if item.product.handle == 'velvet-potli' or item.variant_id == free_gift_variant_id or item_title_lower contains 'potli'
                 assign gift_in_cart = true
                 assign gift_item_key = item.key
+                if free_gift_variant_id == blank
+                  assign free_gift_variant_id = item.variant_id
+                endif
               else
                 assign cart_total_without_gift = cart_total_without_gift | plus: item.final_line_price
               endif
@@ -437,9 +441,13 @@
       }
 
       checkPotliAutoAdd() {
+        if (window._isUpdatingPotli) return;
+
         if (this.nonGiftTotal >= this.giftThreshold && !this.giftInCart && this.giftVariantId) {
+          window._isUpdatingPotli = true;
           this.addFreeGift();
-        } else if (this.nonGiftTotal < this.giftThreshold && this.giftInCart && this.giftItemKey) {
+        } else if (this.nonGiftTotal < this.giftThreshold && this.giftInCart) {
+          window._isUpdatingPotli = true;
           this.removeFreeGift();
         } else if (this.nonGiftTotal >= this.giftThreshold) {
           this.triggerConfetti();
@@ -448,6 +456,8 @@
 
       addFreeGift() {
         const drawer = document.querySelector('cart-drawer');
+        const sectionsToRender = drawer ? drawer.getSectionsToRender().map(s => s.section) : ['cart-drawer'];
+
         fetch('/cart/add.js', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -455,37 +465,53 @@
             id: this.giftVariantId,
             quantity: 1,
             properties: { '_free_gift': 'true' },
-            sections: drawer ? drawer.getSectionsToRender().map(s => s.section) : ['cart-drawer']
+            sections: sectionsToRender
           })
         })
         .then(res => res.json())
         .then(data => {
+          window._isUpdatingPotli = false;
           this.triggerConfetti();
-          if (drawer) {
+          if (drawer && data.sections) {
             drawer.renderContents(data);
           }
         })
-        .catch(err => console.error('Error adding free gift:', err));
+        .catch(err => {
+          window._isUpdatingPotli = false;
+          console.error('Error adding free gift:', err);
+        });
       }
 
       removeFreeGift() {
         const drawer = document.querySelector('cart-drawer');
+        const sectionsToRender = drawer ? drawer.getSectionsToRender().map(s => s.section) : ['cart-drawer'];
+        const targetId = this.giftItemKey || this.giftVariantId;
+
+        if (!targetId) {
+          window._isUpdatingPotli = false;
+          return;
+        }
+
         fetch('/cart/change.js', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            id: this.giftItemKey,
+            id: targetId,
             quantity: 0,
-            sections: drawer ? drawer.getSectionsToRender().map(s => s.section) : ['cart-drawer']
+            sections: sectionsToRender
           })
         })
         .then(res => res.json())
         .then(data => {
-          if (drawer) {
+          window._isUpdatingPotli = false;
+          if (drawer && data.sections) {
             drawer.renderContents(data);
           }
         })
-        .catch(err => console.error('Error removing free gift:', err));
+        .catch(err => {
+          window._isUpdatingPotli = false;
+          console.error('Error removing free gift:', err);
+        });
       }
 
       triggerConfetti() {
