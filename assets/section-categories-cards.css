@@ -1,4 +1,4 @@
-/* Categories Section - Styled matching Sitarah luxury design */
+/* Categories Section - Single Horizontal Row Slider across all screens */
 .categories-section {
   display: block;
   width: 100%;
@@ -8,17 +8,9 @@
   margin-bottom: 2.5rem;
 }
 
-.categories-section__heading-wrapper.text-center {
-  text-align: center;
-}
-
-.categories-section__heading-wrapper.text-left {
-  text-align: left;
-}
-
-.categories-section__heading-wrapper.text-right {
-  text-align: right;
-}
+.categories-section__heading-wrapper.text-center { text-align: center; }
+.categories-section__heading-wrapper.text-left { text-align: left; }
+.categories-section__heading-wrapper.text-right { text-align: right; }
 
 .categories-section__heading {
   font-family: inherit;
@@ -30,17 +22,27 @@
 }
 
 .categories-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
   gap: 1.6rem;
+  padding-bottom: 0.8rem;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  scrollbar-width: none; /* Hide scrollbars for clean look */
 }
 
-.categories-grid--2-col { grid-template-columns: repeat(2, 1fr); }
-.categories-grid--3-col { grid-template-columns: repeat(3, 1fr); }
-.categories-grid--4-col { grid-template-columns: repeat(4, 1fr); }
-.categories-grid--5-col { grid-template-columns: repeat(5, 1fr); }
+.categories-grid::-webkit-scrollbar {
+  display: none;
+}
 
 .category-card {
+  flex: 0 0 calc(25% - 1.2rem);
+  min-width: 250px;
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
 }
@@ -99,22 +101,17 @@
   transition: color 0.3s ease;
 }
 
-.category-card__title strong {
-  font-weight: bold;
-}
-
-.category-card__title em {
-  font-style: italic;
-}
+.category-card__title strong { font-weight: bold; }
+.category-card__title em { font-style: italic; }
 
 .category-card__link:hover .category-card__title {
   color: var(--cat-title-hover-color, #58021e);
 }
 
-@media screen and (max-width: 989px) and (min-width: 750px) {
-  .categories-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.2rem;
+@media screen and (max-width: 989px) {
+  .category-card {
+    flex: 0 0 calc(42% - 1rem);
+    min-width: 210px;
   }
 
   .categories-section__heading {
@@ -122,39 +119,23 @@
   }
 }
 
-/* Slidable Single-Column Mobile Layout */
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 576px) {
   .categories-grid {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
     gap: 1.2rem;
-    padding-bottom: 0.8rem;
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
-    scrollbar-width: none;
-  }
-
-  .categories-grid::-webkit-scrollbar {
-    display: none;
   }
 
   .category-card {
-    flex: 0 0 84%;
-    max-width: 84%;
-    scroll-snap-align: start;
+    flex: 0 0 82%;
+    min-width: 0;
   }
-
+  
   .category-card__image-wrapper {
     border-radius: 14px;
   }
 
   .category-card__title {
     font-size: 1.05rem;
-    margin-top: 0.9rem;
+    margin-top: 0.8rem;
   }
 
   .categories-section__heading-wrapper {
