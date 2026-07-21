@@ -180,16 +180,16 @@
                             </cart-remove-button>
                           </div>
                         </quantity-popover>
+                        
+                        <div class="cart-drawer__item-price-col">
+                          {%- if item.original_line_price != item.final_line_price -%}
+                            <s class="cart-drawer__item-old-price">{{ item.original_line_price | money }}</s>
+                            <span class="cart-drawer__item-price">{{ item.final_line_price | money }}</span>
+                          {%- else -%}
+                            <span class="cart-drawer__item-price">{{ item.original_line_price | money }}</span>
+                          {%- endif -%}
+                        </div>
                       </div>
-                    </div>
-
-                    <div class="cart-drawer__item-price-col">
-                      {%- if item.original_line_price != item.final_line_price -%}
-                        <s class="cart-drawer__item-old-price">{{ item.original_line_price | money }}</s>
-                        <span class="cart-drawer__item-price">{{ item.final_line_price | money }}</span>
-                      {%- else -%}
-                        <span class="cart-drawer__item-price">{{ item.original_line_price | money }}</span>
-                      {%- endif -%}
                     </div>
                   </div>
                 {%- endfor -%}
