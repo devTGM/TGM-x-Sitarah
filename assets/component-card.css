@@ -484,7 +484,7 @@
   }
 }
 
-/* Rounded Edges for Product Cards & Collection Cards in Featured Collections */
+/* Rounded Edges & Exact Aspect Ratio Matching Category Images (3 / 4.1 aspect ratio) */
 .card__inner,
 .card__media,
 .card .media,
@@ -498,4 +498,29 @@
 .product-card-wrapper .card__media {
   border-radius: 16px !important;
   overflow: hidden !important;
+}
+
+.card-wrapper .card__inner.ratio,
+.card-wrapper .card__media,
+.product-card-wrapper .card__inner.ratio,
+.product-card-wrapper .card__media,
+.card-wrapper .media,
+.product-card-wrapper .media {
+  aspect-ratio: 3 / 4.1 !important;
+  width: 100% !important;
+}
+
+.card-wrapper .card__inner.ratio::before,
+.product-card-wrapper .card__inner.ratio::before {
+  display: none !important;
+}
+
+.card-wrapper .card__media img,
+.product-card-wrapper .card__media img,
+.card-wrapper .media img,
+.product-card-wrapper .media img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
 }
