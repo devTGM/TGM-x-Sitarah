@@ -133,10 +133,8 @@
     -webkit-overflow-scrolling: touch;
     gap: 1.2rem;
     padding-bottom: 0.8rem;
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
     scrollbar-width: none;
   }
 
