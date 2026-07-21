@@ -70,6 +70,10 @@
           {% render 'icon-close' %}
         </button>
       </div>
+
+      {%- if cart != empty -%}
+        {% render 'cart-progress-bar' %}
+      {%- endif -%}
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
