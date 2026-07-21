@@ -119,7 +119,7 @@
         "transparent_header": true,
         "transparent_header_color": "#ffffff",
         "logo_filter": "brightness(0) invert(1)",
-        "height_desktop": 80,
+        "height_desktop": 90,
         "height_mobile": 80,
         "auto_rotate": true,
         "change_slides_speed": 5,
