@@ -1273,11 +1273,10 @@ class FreeGiftManager {
     this.cachedVariantId = null;
     this.isUpdating = false;
 
-    // Intercept all native fetch calls to cart endpoints to catch updates in real time
     const originalFetch = window.fetch;
     window.fetch = (...args) => {
       const url = args[0];
-      return originalFetch.apply(window, args).then(response => {
+      return originalFetch(...args).then(response => {
         if (response.ok && typeof url === 'string' && (
           url.includes('/cart/add') ||
           url.includes('/cart/change') ||
