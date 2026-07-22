@@ -119,38 +119,12 @@
     }
   }
 
-  /* Dropdown Menu Solid Black Text & Off-white Background Override */
-  .mega-menu__content,
-  .mega-menu__content.gradient,
-  .header__submenu {
-    background-color: #f3f3f3 !important;
-    background: #f3f3f3 !important;
-    --color-foreground: 0, 0, 0 !important;
-  }
-
-  .mega-menu__content *,
-  .mega-menu__content a,
-  .mega-menu__content span,
-  .mega-menu__content p,
-  .mega-menu__link,
-  .header__submenu *,
-  .header__submenu a,
-  .header__submenu span,
-  .header__submenu .header__menu-item {
-    color: #000000 !important;
-    fill: #000000 !important;
-    -webkit-text-fill-color: #000000 !important;
-    opacity: 1 !important;
-  }
-
-  .mega-menu__link,
-  .header__submenu a,
-  .header__submenu .header__menu-item {
-    font-size: 1.05rem !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.08em !important;
-    line-height: 1.5 !important;
+  /* Solid Cream/White Header Bar matching reference UI */
+  .section-header,
+  .header-wrapper,
+  .header {
+    background-color: #fdfbf7 !important;
+    background: #fdfbf7 !important;
   }
 
   .header__heading-logo {
@@ -163,10 +137,28 @@
     color: #613639 !important;
   }
 
+  /* Main Nav Menu items (Top Bar) */
+  .header__menu-item,
+  .header__menu-item span,
+  .list-menu__item,
+  .list-menu__item span,
+  nav > ul > li > a,
+  .header__inline-menu > ul > li > a {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    opacity: 1 !important;
+  }
+
+  /* Hover & Active / Open Dropdown state */
   .header__menu-item:hover,
   .header__menu-item:hover span,
   .list-menu__item:hover,
   .list-menu__item:hover span,
+  nav > ul > li > a:hover,
   .mega-menu__link:hover,
   .mega-menu__link--active,
   .header__submenu a:hover,
@@ -177,6 +169,25 @@
     -webkit-text-fill-color: #613639 !important;
     text-decoration: underline !important;
     text-underline-offset: 0.3rem !important;
+  }
+
+  /* Header Icons & Currency Selector */
+  .header__icon,
+  .header__icon svg,
+  .localization-form__select,
+  .disclosure__button {
+    color: #121212 !important;
+  }
+
+  .header__icon svg path,
+  .header__icon svg circle,
+  .header__icon svg polyline,
+  .header__icon svg line,
+  .header__icon svg rect,
+  .localization-form svg path,
+  .icon-caret path {
+    stroke: #121212 !important;
+    fill: #121212 !important;
   }
 
   .header__menu-item:hover .icon-caret path,
