@@ -93,6 +93,46 @@ html.slideshow-transparent-header details > summary svg polyline,
 }
 
 /* Hover & Active/Open menu state in slideshow header */
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .header-wrapper,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):has(details[open]),
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .header-wrapper {
+  background-color: #fdfbf7 !important;
+  background: #fdfbf7 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .header__heading-logo,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .header__heading-logo {
+  filter: none !important;
+}
+
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .header__heading-link,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .header__icon,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .header__menu-item,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .list-menu__item,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .header__menu-item span,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover nav > ul > li > a,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .localization-form__select,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .disclosure__button,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .header__menu-item,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) nav > ul > li > a {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .header__icon svg path,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .header__icon svg circle,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .header__icon svg polyline,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .header__icon svg line,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .header__icon svg rect,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .localization-form svg path,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .icon-caret path,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .icon-caret path {
+  stroke: #121212 !important;
+  fill: #121212 !important;
+}
+
 .slideshow-transparent-header .header__menu-item:hover,
 .slideshow-transparent-header .header__menu-item:hover span,
 .slideshow-transparent-header .list-menu__item:hover,
@@ -104,12 +144,6 @@ html.slideshow-transparent-header details > summary svg polyline,
   -webkit-text-fill-color: #613639 !important;
   text-decoration: underline !important;
   text-underline-offset: 0.3rem !important;
-}
-
-.slideshow-transparent-header .header__menu-item:hover .icon-caret path,
-.slideshow-transparent-header details[open] > summary.header__menu-item .icon-caret path {
-  stroke: #613639 !important;
-  fill: #613639 !important;
 }
 
 /* ════════════════════════════════════════════════════════════

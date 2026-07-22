@@ -12,12 +12,16 @@
     right: 0;
     z-index: 100;
     background: transparent !important;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
   }
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header-wrapper {
     background: transparent !important;
     border-bottom: none !important;
     box-shadow: none !important;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
   }
+
+  /* DEFAULT TOP STATE (Transparent background, White text, White icons, White logo) */
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__heading-link,
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__icon,
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__menu-item,
@@ -28,6 +32,7 @@
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .disclosure__button {
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
+    transition: color 0.25s ease, -webkit-text-fill-color 0.25s ease !important;
   }
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__icon svg path,
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__icon svg circle,
@@ -38,29 +43,65 @@
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .icon-caret path {
     stroke: #ffffff !important;
     fill: #ffffff !important;
+    transition: stroke 0.25s ease, fill 0.25s ease !important;
   }
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__heading-logo {
     filter: brightness(0) invert(1) !important;
+    transition: filter 0.25s ease !important;
   }
 
-  /* Hover & Active/Open menu state on transparent header */
-  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__menu-item:hover,
-  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__menu-item:hover span,
-  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .list-menu__item:hover,
-  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .list-menu__item:hover span,
-  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) nav > ul > li > a:hover,
-  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) details[open] > summary.header__menu-item,
-  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) details[open] > summary.header__menu-item span {
+  /* HOVER / OPEN STATE AT TOP (Solid off-white background, Black text, Dark icons, Original maroon logo) */
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header-wrapper,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):has(details[open]),
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .header-wrapper {
+    background-color: #fdfbf7 !important;
+    background: #fdfbf7 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header__heading-logo,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .header__heading-logo {
+    filter: none !important;
+  }
+
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header__heading-link,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header__icon,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header__menu-item,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .list-menu__item,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header__menu-item span,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover nav > ul > li > a,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .localization-form__select,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .disclosure__button,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .header__menu-item,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) nav > ul > li > a {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+  }
+
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header__icon svg path,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header__icon svg circle,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header__icon svg polyline,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header__icon svg line,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header__icon svg rect,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .localization-form svg path,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .icon-caret path,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .icon-caret path {
+    stroke: #121212 !important;
+    fill: #121212 !important;
+  }
+
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header__menu-item:hover,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header__menu-item:hover span,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .list-menu__item:hover,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .list-menu__item:hover span,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover nav > ul > li > a:hover,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) details[open] > summary.header__menu-item,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) details[open] > summary.header__menu-item span {
     color: #613639 !important;
     -webkit-text-fill-color: #613639 !important;
     text-decoration: underline !important;
     text-underline-offset: 0.3rem !important;
-  }
-
-  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__menu-item:hover .icon-caret path,
-  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) details[open] > summary.header__menu-item .icon-caret path {
-    stroke: #613639 !important;
-    fill: #613639 !important;
   }
 
   /* --- Hidden Header when Scrolling Down --- */
