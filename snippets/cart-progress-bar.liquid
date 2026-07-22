@@ -1,16 +1,16 @@
 {%- comment -%}
-  Renders Multi-Tier Cart Progress Bar with Free Gift (Velvet Potli) Auto-Add System
+  Renders Multi-Tier Cart Progress Bar with Free Gift Auto-Add System
   Milestones:
   - Start: ₹ 0 (0%)
   - Free Shipping: ₹ 4,999 (50%)
-  - Free Gift: ₹ 7,999 (100%) - Velvet Potli (handle: velvet-potli)
+  - Free Gift: ₹ 7,999 (100%) - Potli Bags Free Gift (handle: potli-bags-free-gift)
 {%- endcomment -%}
 
 {%- liquid
   assign threshold_shipping = 499900
   assign threshold_gift = 799900
 
-  assign free_gift_product = all_products['velvet-potli']
+  assign free_gift_product = all_products['potli-bags-free-gift']
   assign free_gift_variant_id = free_gift_product.first_available_variant.id
 
   assign gift_in_cart = false
@@ -18,7 +18,7 @@
   assign cart_total_without_gift = 0
 
   for item in cart.items
-    if item.product.handle == 'velvet-potli' or item.variant_id == free_gift_variant_id
+    if item.product.handle == 'potli-bags-free-gift' or item.variant_id == free_gift_variant_id
       assign gift_in_cart = true
       assign gift_item_key = item.key
     else

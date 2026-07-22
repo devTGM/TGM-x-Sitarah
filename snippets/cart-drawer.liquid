@@ -281,7 +281,7 @@
             assign threshold_shipping = 499900
             assign threshold_gift = 799900
 
-            assign free_gift_product = all_products['velvet-potli']
+            assign free_gift_product = all_products['potli-bags-free-gift']
             assign free_gift_variant_id = free_gift_product.first_available_variant.id
 
             assign gift_in_cart = false
@@ -290,7 +290,7 @@
 
             for item in cart.items
               assign item_title_lower = item.product.title | downcase
-              if item.product.handle == 'velvet-potli' or item.variant_id == free_gift_variant_id or item_title_lower contains 'potli'
+              if item.product.handle == 'potli-bags-free-gift' or item.variant_id == free_gift_variant_id
                 assign gift_in_cart = true
                 assign gift_item_key = item.key
                 if free_gift_variant_id == blank
