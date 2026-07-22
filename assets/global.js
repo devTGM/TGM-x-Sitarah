@@ -1273,6 +1273,25 @@ class FreeGiftManager {
     this.cachedVariantId = null;
     this.isUpdating = false;
 
+    // Intercept all native fetch calls to cart endpoints to catch updates in real time
+    const originalFetch = window.fetch;
+    window.fetch = (...args) => {
+      const url = args[0];
+      return originalFetch.apply(window, args).then(response => {
+        if (response.ok && typeof url === 'string' && (
+          url.includes('/cart/add') ||
+          url.includes('/cart/change') ||
+          url.includes('/cart/update') ||
+          url.includes('/cart/clear')
+        )) {
+          if (!this.isUpdating) {
+            setTimeout(() => this.checkCart(), 150);
+          }
+        }
+        return response;
+      });
+    };
+
     // Listen for Shopify's pubsub cart update events
     if (window.subscribe) {
       subscribe(PUB_SUB_EVENTS.cartUpdate, (event) => {
