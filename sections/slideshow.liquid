@@ -84,9 +84,12 @@ html.slideshow-transparent-header details > summary svg polyline,
   color: #000 !important;
 }
 
-/* ── Logo filter ── */
-.slideshow-transparent-header .header__heading-logo {
-  filter: {{ section.settings.logo_filter }};
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__heading-logo {
+  filter: brightness(0) invert(1) !important;
+}
+
+.slideshow-transparent-header .section-header.scrolled-past-header .header__heading-logo {
+  filter: none !important;
 }
 
 /* ════════════════════════════════════════════════════════════

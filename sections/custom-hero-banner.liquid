@@ -23,16 +23,24 @@
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__menu-item,
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .list-menu__item,
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__menu-item span,
-  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) nav > ul > li > a {
-    color: {{ section.settings.transparent_header_text_color }} !important;
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) nav > ul > li > a,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .localization-form__select,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .disclosure__button {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
   }
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__icon svg path,
-  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__icon svg circle {
-    stroke: {{ section.settings.transparent_header_text_color }} !important;
-    fill: {{ section.settings.transparent_header_text_color }} !important;
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__icon svg circle,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__icon svg polyline,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__icon svg line,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__icon svg rect,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .localization-form svg path,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .icon-caret path {
+    stroke: #ffffff !important;
+    fill: #ffffff !important;
   }
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__heading-logo {
-    filter: {{ section.settings.logo_filter }} !important;
+    filter: brightness(0) invert(1) !important;
   }
 
   /* --- Hidden Header when Scrolling Down --- */
@@ -65,11 +73,19 @@
   .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__menu-item,
   .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .list-menu__item,
   .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__menu-item span,
-  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) nav > ul > li > a {
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) nav > ul > li > a,
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .localization-form__select,
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .disclosure__button {
     color: #121212 !important;
+    -webkit-text-fill-color: #121212 !important;
   }
   .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon svg path,
-  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon svg circle {
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon svg circle,
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon svg polyline,
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon svg line,
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon svg rect,
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .localization-form svg path,
+  .hero-banner-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .icon-caret path {
     stroke: #121212 !important;
     fill: #121212 !important;
   }
