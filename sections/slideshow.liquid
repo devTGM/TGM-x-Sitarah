@@ -92,6 +92,26 @@ html.slideshow-transparent-header details > summary svg polyline,
   filter: none !important;
 }
 
+/* Hover & Active/Open menu state in slideshow header */
+.slideshow-transparent-header .header__menu-item:hover,
+.slideshow-transparent-header .header__menu-item:hover span,
+.slideshow-transparent-header .list-menu__item:hover,
+.slideshow-transparent-header .list-menu__item:hover span,
+.slideshow-transparent-header nav > ul > li > a:hover,
+.slideshow-transparent-header details[open] > summary.header__menu-item,
+.slideshow-transparent-header details[open] > summary.header__menu-item span {
+  color: #613639 !important;
+  -webkit-text-fill-color: #613639 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 0.3rem !important;
+}
+
+.slideshow-transparent-header .header__menu-item:hover .icon-caret path,
+.slideshow-transparent-header details[open] > summary.header__menu-item .icon-caret path {
+  stroke: #613639 !important;
+  fill: #613639 !important;
+}
+
 /* ════════════════════════════════════════════════════════════
    BANNER WRAPPER
    Pull the banner UP by the header’s height so it sits flush

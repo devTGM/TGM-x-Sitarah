@@ -43,6 +43,26 @@
     filter: brightness(0) invert(1) !important;
   }
 
+  /* Hover & Active/Open menu state on transparent header */
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__menu-item:hover,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__menu-item:hover span,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .list-menu__item:hover,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .list-menu__item:hover span,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) nav > ul > li > a:hover,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) details[open] > summary.header__menu-item,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) details[open] > summary.header__menu-item span {
+    color: #613639 !important;
+    -webkit-text-fill-color: #613639 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 0.3rem !important;
+  }
+
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header__menu-item:hover .icon-caret path,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) details[open] > summary.header__menu-item .icon-caret path {
+    stroke: #613639 !important;
+    fill: #613639 !important;
+  }
+
   /* --- Hidden Header when Scrolling Down --- */
   .section-header.shopify-section-header-hidden {
     transform: translateY(-100%) !important;

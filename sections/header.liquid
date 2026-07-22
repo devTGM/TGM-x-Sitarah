@@ -163,12 +163,26 @@
     color: #613639 !important;
   }
 
+  .header__menu-item:hover,
+  .header__menu-item:hover span,
+  .list-menu__item:hover,
+  .list-menu__item:hover span,
   .mega-menu__link:hover,
   .mega-menu__link--active,
   .header__submenu a:hover,
-  .header__submenu .header__menu-item:hover {
+  .header__submenu .header__menu-item:hover,
+  details[open] > summary.header__menu-item,
+  details[open] > summary.header__menu-item span {
     color: #613639 !important;
     -webkit-text-fill-color: #613639 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 0.3rem !important;
+  }
+
+  .header__menu-item:hover .icon-caret path,
+  details[open] > summary.header__menu-item .icon-caret path {
+    stroke: #613639 !important;
+    fill: #613639 !important;
   }
 {%- endstyle -%}
 
