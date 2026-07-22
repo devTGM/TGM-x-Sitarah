@@ -4,21 +4,31 @@
      Transparent header + Image/Video Slideshow (up to 10 slides)
   ============================================================ */
 
-  /* --- Transparent Header overlay ONLY at top (when NOT scrolled) --- */
-  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) {
+  /* --- Transparent Header overlay ONLY at top (when NOT scrolled and NOT hovered) --- */
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):not(:hover):not(:has(details[open])),
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):not(:hover):not(:has(details[open])) .header-wrapper,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):not(:hover):not(:has(details[open])) .header,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):not(:hover):not(:has(details[open])) .header__inline-menu,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):not(:hover):not(:has(details[open])) .page-width {
     position: absolute !important;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
     background: transparent !important;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
-  }
-  .hero-banner-transparent-header .section-header:not(.scrolled-past-header) .header-wrapper {
-    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
     border-bottom: none !important;
     box-shadow: none !important;
     transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
+  }
+
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):not(:hover):not(:has(details[open])) .header-wrapper,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):not(:hover):not(:has(details[open])) .header {
+    position: relative !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
   }
 
   /* DEFAULT TOP STATE (Transparent background, White text, White icons, White logo) */
@@ -53,10 +63,13 @@
   /* HOVER / OPEN STATE AT TOP (Solid off-white background, Black text, Dark icons, Original maroon logo) */
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover,
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header-wrapper,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):hover .header,
   .hero-banner-transparent-header .section-header:not(.scrolled-past-header):has(details[open]),
-  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .header-wrapper {
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .header-wrapper,
+  .hero-banner-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .header {
     background-color: #fdfbf7 !important;
     background: #fdfbf7 !important;
+    background-image: none !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
   }
 
