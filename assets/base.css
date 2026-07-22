@@ -2432,7 +2432,8 @@ input[type='checkbox'] {
 .header__heading-logo {
   height: auto;
   max-width: 100%;
-  filter: invert(20%) sepia(35%) saturate(1400%) hue-rotate(310deg) brightness(45%) contrast(90%) !important;
+  filter: none !important;
+  display: block;
 }
 
 .header__heading-link,
