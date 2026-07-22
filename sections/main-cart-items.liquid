@@ -107,6 +107,9 @@
                       {%- endif -%}
 
                       <a href="{{ item.url }}" class="cart-item__name h4 break">{{ item.product.title | escape }}</a>
+                      {%- if item.product.handle == 'potli-bags-free-gift' -%}
+                        <span class="cart-drawer__gift-pill">FREE GIFT</span>
+                      {%- endif -%}
 
                       {%- if item.original_price != item.final_price -%}
                         <div class="cart-item__discounted-prices">
@@ -229,6 +232,9 @@
                       endif
                     -%}
                     <td class="cart-item__quantity{% if has_qty_rules or has_vol_pricing %} cart-item__quantity--info{% endif %}">
+                      {%- if item.product.handle == 'potli-bags-free-gift' -%}
+                        <span class="cart-drawer__free-gift-text" style="font-size: 1.2rem; font-weight: 600; color: #613639; text-transform: uppercase;">Free Gift</span>
+                      {%- else -%}
                       <quantity-popover>
                         <div class="cart-item__quantity-wrapper quantity-popover-wrapper">
                           <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
@@ -290,6 +296,7 @@
                             </a>
                           </cart-remove-button>
                         </div>
+                      {%- endif -%}
                         {%- if has_qty_rules or has_vol_pricing -%}
                           <button
                             type="button"

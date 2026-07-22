@@ -125,7 +125,7 @@
                     <div class="cart-drawer__item-details">
                       <a href="{{ item.url }}" class="cart-drawer__item-title">
                         {{ item.product.title | escape }}
-                        {%- if item.product.handle == 'velvet-potli' or item.properties._free_gift == 'true' -%}
+                        {%- if item.product.handle == 'potli-bags-free-gift' or item.product.handle == 'velvet-potli' or item.properties._free_gift == 'true' -%}
                           <span class="cart-drawer__gift-pill">FREE GIFT</span>
                         {%- endif -%}
                       </a>
@@ -140,46 +140,50 @@
                       {%- endif -%}
 
                       <div class="cart-drawer__item-bottom-actions">
-                        <quantity-popover>
-                          <div class="cart-drawer__qty-wrapper">
-                            <quantity-input class="quantity cart-quantity cart-drawer__qty-box">
-                              <button class="quantity__button" name="minus" type="button" aria-label="Decrease">
-                                <svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M0 1h10" stroke="currentColor" stroke-width="1.5"/></svg>
-                              </button>
-                              <input
-                                class="quantity__input"
-                                type="number"
-                                data-quantity-variant-id="{{ item.variant.id }}"
-                                name="updates[]"
-                                value="{{ item.quantity }}"
-                                min="0"
-                                id="Drawer-quantity-{{ item.index | plus: 1 }}"
+                        {%- if item.product.handle == 'potli-bags-free-gift' -%}
+                          <span class="cart-drawer__free-gift-text" style="font-size: 1.2rem; font-weight: 600; color: #613639; text-transform: uppercase; margin-bottom: 0.5rem; display: inline-block;">Free Gift</span>
+                        {%- else -%}
+                          <quantity-popover>
+                            <div class="cart-drawer__qty-wrapper">
+                              <quantity-input class="quantity cart-quantity cart-drawer__qty-box">
+                                <button class="quantity__button" name="minus" type="button" aria-label="Decrease">
+                                  <svg width="10" height="2" viewBox="0 0 10 2" fill="none"><path d="M0 1h10" stroke="currentColor" stroke-width="1.5"/></svg>
+                                </button>
+                                <input
+                                  class="quantity__input"
+                                  type="number"
+                                  data-quantity-variant-id="{{ item.variant.id }}"
+                                  name="updates[]"
+                                  value="{{ item.quantity }}"
+                                  min="0"
+                                  id="Drawer-quantity-{{ item.index | plus: 1 }}"
+                                  data-index="{{ item.index | plus: 1 }}"
+                                >
+                                <button class="quantity__button" name="plus" type="button" aria-label="Increase">
+                                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 0v10M0 5h10" stroke="currentColor" stroke-width="1.5"/></svg>
+                                </button>
+                              </quantity-input>
+
+                              <cart-remove-button
+                                id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
                                 data-index="{{ item.index | plus: 1 }}"
                               >
-                              <button class="quantity__button" name="plus" type="button" aria-label="Increase">
-                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 0v10M0 5h10" stroke="currentColor" stroke-width="1.5"/></svg>
-                              </button>
-                            </quantity-input>
-
-                            <cart-remove-button
-                              id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
-                              data-index="{{ item.index | plus: 1 }}"
-                            >
-                              <button
-                                type="button"
-                                class="cart-drawer__trash-btn"
-                                aria-label="Remove item"
-                                data-variant-id="{{ item.variant.id }}"
-                              >
-                                <svg width="16" height="18" viewBox="0 0 24 24" fill="none" stroke="#777777" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                  <path d="M3 6h18"></path>
-                                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-                                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-                                </svg>
-                              </button>
-                            </cart-remove-button>
-                          </div>
-                        </quantity-popover>
+                                <button
+                                  type="button"
+                                  class="cart-drawer__trash-btn"
+                                  aria-label="Remove item"
+                                  data-variant-id="{{ item.variant.id }}"
+                                >
+                                  <svg width="16" height="18" viewBox="0 0 24 24" fill="none" stroke="#777777" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 6h18"></path>
+                                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                  </svg>
+                                </button>
+                              </cart-remove-button>
+                            </div>
+                          </quantity-popover>
+                        {%- endif -%}
                         
                         <div class="cart-drawer__item-price-col">
                           {%- if item.original_line_price != item.final_line_price -%}

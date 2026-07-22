@@ -1264,3 +1264,203 @@ class ProductRecommendations extends HTMLElement {
 }
 
 customElements.define('product-recommendations', ProductRecommendations);
+
+// Automatic Free Gift Manager for "potli-bags-free-gift" (threshold: 7999 INR)
+class FreeGiftManager {
+  constructor() {
+    this.giftHandle = 'potli-bags-free-gift';
+    this.threshold = 799900; // 7999 INR in cents
+    this.cachedVariantId = null;
+    this.isUpdating = false;
+
+    // Listen for Shopify's pubsub cart update events
+    if (window.subscribe) {
+      subscribe(PUB_SUB_EVENTS.cartUpdate, (event) => {
+        if (event.source === 'free-gift-manager') return;
+        this.checkCart();
+      });
+    }
+
+    // Also run on DOMContentLoaded and page load
+    document.addEventListener('DOMContentLoaded', () => this.checkCart());
+    window.addEventListener('load', () => this.checkCart());
+  }
+
+  async getGiftVariantId() {
+    if (this.cachedVariantId) return this.cachedVariantId;
+    try {
+      const response = await fetch(`/products/${this.giftHandle}.js`);
+      if (!response.ok) throw new Error('Product not found');
+      const product = await response.json();
+      if (product.variants && product.variants.length > 0) {
+        this.cachedVariantId = product.variants[0].id;
+        return this.cachedVariantId;
+      }
+    } catch (e) {
+      console.error('Error fetching free gift variant ID:', e);
+    }
+    return null;
+  }
+
+  async checkCart() {
+    if (this.isUpdating) return;
+    try {
+      const response = await fetch('/cart.js');
+      if (!response.ok) return;
+      const cart = await response.json();
+
+      let subtotal = 0;
+      let giftItem = null;
+
+      for (const item of cart.items) {
+        if (item.handle === this.giftHandle) {
+          giftItem = item;
+        } else {
+          subtotal += item.line_price;
+        }
+      }
+
+      const variantId = await this.getGiftVariantId();
+      if (!variantId) return;
+
+      if (subtotal >= this.threshold) {
+        // Should have gift
+        if (!giftItem || giftItem.quantity !== 1) {
+          await this.addGift(variantId);
+        }
+      } else {
+        // Should NOT have gift
+        if (giftItem) {
+          await this.removeGift(variantId);
+        }
+      }
+    } catch (e) {
+      console.error('Error checking cart for free gift:', e);
+    }
+  }
+
+  getSectionsToRender() {
+    const sections = [];
+    
+    const cartDrawer = document.getElementById('CartDrawer');
+    if (cartDrawer) {
+      sections.push({
+        id: 'CartDrawer',
+        section: 'cart-drawer',
+        selector: '.drawer__inner'
+      });
+    }
+    
+    const mainCartItems = document.getElementById('main-cart-items');
+    if (mainCartItems) {
+      sections.push({
+        id: 'main-cart-items',
+        section: mainCartItems.dataset.id || 'main-cart-items',
+        selector: '.js-contents'
+      });
+    }
+
+    const mainCartFooter = document.getElementById('main-cart-footer');
+    if (mainCartFooter) {
+      sections.push({
+        id: 'main-cart-footer',
+        section: mainCartFooter.dataset.id || 'main-cart-footer',
+        selector: '.js-contents'
+      });
+    }
+
+    sections.push({
+      id: 'cart-icon-bubble',
+      section: 'cart-icon-bubble',
+      selector: '.shopify-section'
+    });
+
+    return sections;
+  }
+
+  async addGift(variantId) {
+    this.isUpdating = true;
+    const sectionsToRender = this.getSectionsToRender();
+    const body = JSON.stringify({
+      items: [{
+        id: variantId,
+        quantity: 1,
+        properties: {
+          'Gift': 'Free Gift',
+          '_free_gift': 'true'
+        }
+      }],
+      sections: sectionsToRender.map(s => s.section),
+      sections_url: window.location.pathname
+    });
+
+    try {
+      const response = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body
+      });
+      if (response.ok) {
+        const state = await response.json();
+        this.refreshCartUI(state, sectionsToRender);
+      }
+    } catch (e) {
+      console.error('Error adding free gift:', e);
+    } finally {
+      this.isUpdating = false;
+    }
+  }
+
+  async removeGift(variantId) {
+    this.isUpdating = true;
+    const sectionsToRender = this.getSectionsToRender();
+    const body = JSON.stringify({
+      id: variantId.toString(),
+      quantity: 0,
+      sections: sectionsToRender.map(s => s.section),
+      sections_url: window.location.pathname
+    });
+
+    try {
+      const response = await fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body
+      });
+      if (response.ok) {
+        const state = await response.json();
+        this.refreshCartUI(state, sectionsToRender);
+      }
+    } catch (e) {
+      console.error('Error removing free gift:', e);
+    } finally {
+      this.isUpdating = false;
+    }
+  }
+
+  refreshCartUI(state, sectionsToRender) {
+    sectionsToRender.forEach((section) => {
+      const elementToReplace = document.getElementById(section.id)?.querySelector(section.selector) || document.getElementById(section.id);
+      if (elementToReplace && state.sections && state.sections[section.section]) {
+        const html = new DOMParser().parseFromString(state.sections[section.section], 'text/html');
+        const source = html.querySelector(section.selector) || html.body;
+        elementToReplace.innerHTML = source.innerHTML;
+      }
+    });
+
+    // Make sure empty classes are toggled
+    const cartDrawerWrapper = document.querySelector('cart-drawer');
+    const cartItems = document.querySelector('cart-items') || document.querySelector('cart-drawer-items');
+    const cartFooter = document.getElementById('main-cart-footer');
+
+    if (cartItems) cartItems.classList.toggle('is-empty', state.item_count === 0);
+    if (cartFooter) cartFooter.classList.toggle('is-empty', state.item_count === 0);
+    if (cartDrawerWrapper) cartDrawerWrapper.classList.toggle('is-empty', state.item_count === 0);
+
+    if (window.publish) {
+      publish(PUB_SUB_EVENTS.cartUpdate, { source: 'free-gift-manager', cartData: state });
+    }
+  }
+}
+
+window.freeGiftManagerInstance = new FreeGiftManager();
