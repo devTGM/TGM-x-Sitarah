@@ -188,6 +188,22 @@
     }
   }
 
+  /* Landscape-only aspect ratio override for active video slides */
+  .sitarah-hero.sitarah-hero--video-active,
+  .sitarah-hero.sitarah-hero--video-active .sitarah-hero__track,
+  .sitarah-hero.sitarah-hero--video-active .sitarah-hero__slide {
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+  @media screen and (max-width: 749px) {
+    .sitarah-hero.sitarah-hero--video-active,
+    .sitarah-hero.sitarah-hero--video-active .sitarah-hero__track,
+    .sitarah-hero.sitarah-hero--video-active .sitarah-hero__slide {
+      height: auto !important;
+      aspect-ratio: 16 / 9 !important;
+    }
+  }
+
   /* --- Slider track --- */
   .sitarah-hero__track {
     display: flex;
@@ -502,6 +518,7 @@
         {{ block.shopify_attributes }}
         aria-label="Slide {{ forloop.index }} of {{ forloop.length }}"
         role="group"
+        data-slide-type="{{ block.type }}"
       >
         {%- comment %} ---- MEDIA ---- {%- endcomment %}
         <div class="sitarah-hero__media">
@@ -750,6 +767,12 @@
     dots[current]?.classList.add('sitarah-hero__dot--active');
     dots[current]?.setAttribute('aria-selected', 'true');
 
+    if (slides[current].dataset.slideType === 'video_slide') {
+      hero.classList.add('sitarah-hero--video-active');
+    } else {
+      hero.classList.remove('sitarah-hero--video-active');
+    }
+
     // Restart progress bar
     if (autoplay && !paused && progressBar) {
       startProgress();
@@ -785,6 +808,11 @@
   /* ---- Init ---- */
   function init() {
     slides[0].classList.add('sitarah-hero__slide--active');
+    if (slides[0] && slides[0].dataset.slideType === 'video_slide') {
+      hero.classList.add('sitarah-hero--video-active');
+    } else {
+      hero.classList.remove('sitarah-hero--video-active');
+    }
     if (autoplay && total > 1) {
       startTimer();
       startProgress();
