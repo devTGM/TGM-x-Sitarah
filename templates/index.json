@@ -14,6 +14,7 @@
       "blocks": {
         "video_slide_8Kbk9G": {
           "type": "video_slide",
+          "disabled": true,
           "settings": {
             "video": "shopify://files/videos/FASHION ATLIER (1).mp4",
             "overlay_color": "#000000",
@@ -32,7 +33,6 @@
         },
         "slide_bQHCYE": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/Sitarah-1_1.png",
             "mobile_image": "shopify://shop_images/mobile-1_3.png",
@@ -52,7 +52,6 @@
         },
         "slide_F7XhLz": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/Chandrik2-1.png",
             "mobile_image": "shopify://shop_images/chandrika-banner.png",
@@ -72,7 +71,6 @@
         },
         "slide_UXwhUi": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/Heer-2.png",
             "mobile_image": "shopify://shop_images/An_ode_to_refined_craftsmanship_and_contemporary_charm..png",
@@ -92,7 +90,6 @@
         },
         "template--21720340824375__4862cca1-87c2-43ba-be8e-985e5ed256c5-slide-1": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/SITARAH_BANNERS.png",
             "mobile_image": "shopify://shop_images/SITARAH_BANNERS.png1.png",
