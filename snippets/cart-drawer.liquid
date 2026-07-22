@@ -388,10 +388,10 @@
 
             <div class="cart-drawer__tier-message">
               {%- if is_gift_unlocked -%}
-                🎉 Congratulations! You unlocked <strong>FREE SHIPPING & FREE GIFT (Velvet Potli)</strong>!
+                🎉 Congratulations! You unlocked <strong>FREE SHIPPING & FREE GIFT</strong>!
               {%- elsif is_shipping_unlocked -%}
                 {%- assign rem = threshold_gift | minus: cart_total -%}
-                Add items worth <strong>{{ rem | money }}</strong> more & unlock <strong>FREE GIFT (Velvet Potli)</strong>!
+                Add items worth <strong>{{ rem | money }}</strong> more & unlock <strong>FREE GIFT</strong>!
               {%- else -%}
                 {%- assign rem = threshold_shipping | minus: cart_total -%}
                 Add items worth <strong>{{ rem | money }}</strong> more & unlock <strong>FREE SHIPPING</strong>!
@@ -570,10 +570,15 @@
             body: JSON.stringify({
               id: variantId,
               quantity: 1,
-              sections: drawer ? drawer.getSectionsToRender().map(s => s.section) : ['cart-drawer']
+              sections: ['cart-drawer', 'cart-icon-bubble']
             })
           })
-          .then(res => res.json())
+          .then(res => {
+            if (!res.ok) {
+              return res.json().then(err => { throw new Error(err.description || 'Error adding to cart'); });
+            }
+            return res.json();
+          })
           .then(data => {
             if (drawer) {
               drawer.renderContents(data);
