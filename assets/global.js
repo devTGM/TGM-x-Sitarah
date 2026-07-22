@@ -1381,21 +1381,17 @@ class FreeGiftManager {
   async addGift(variantId) {
     this.isUpdating = true;
     const sectionsToRender = this.getSectionsToRender();
+    const updates = {};
+    updates[variantId] = 1;
+
     const body = JSON.stringify({
-      items: [{
-        id: variantId,
-        quantity: 1,
-        properties: {
-          'Gift': 'Free Gift',
-          '_free_gift': 'true'
-        }
-      }],
+      updates: updates,
       sections: sectionsToRender.map(s => s.section),
       sections_url: window.location.pathname
     });
 
     try {
-      const response = await fetch('/cart/add.js', {
+      const response = await fetch('/cart/update.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body
