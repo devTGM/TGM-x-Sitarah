@@ -135,7 +135,18 @@
     color: #613639;
   }
 
-  /* Main Nav Menu items (Default Solid State) */
+  /* Main Nav Menu items (All States) */
+  .header__menu-item,
+  .list-menu__item,
+  nav > ul > li > a,
+  .header__inline-menu > ul > li > a {
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  /* Default Solid State Text Colors */
   html:not(.hero-banner-transparent-header):not(.slideshow-transparent-header) .header__menu-item,
   html:not(.hero-banner-transparent-header):not(.slideshow-transparent-header) .header__menu-item span,
   html:not(.hero-banner-transparent-header):not(.slideshow-transparent-header) .list-menu__item,
@@ -144,10 +155,6 @@
   html:not(.hero-banner-transparent-header):not(.slideshow-transparent-header) .header__inline-menu > ul > li > a {
     color: #000000;
     -webkit-text-fill-color: #000000;
-    font-size: 0.95rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
   }
 
   /* Hover & Active / Open Dropdown state */
@@ -176,6 +183,9 @@
     color: #000000 !important;
     -webkit-text-fill-color: #000000 !important;
     text-decoration: none !important;
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
   }
 
   .header__submenu a:hover,
@@ -188,6 +198,7 @@
     -webkit-text-fill-color: #613639 !important;
     text-decoration: underline !important;
     text-underline-offset: 0.3rem !important;
+    font-size: 1.15rem !important;
   }
 
   /* Header Icons & Currency Selector */
