@@ -119,38 +119,35 @@
     }
   }
 
-  /* Solid Cream/White Header Bar matching reference UI */
-  .section-header,
-  .header-wrapper,
-  .header {
-    background-color: #fdfbf7 !important;
-    background: #fdfbf7 !important;
+  /* Base Header Bar Styles */
+  html:not(.hero-banner-transparent-header) .section-header,
+  html:not(.hero-banner-transparent-header) .header-wrapper,
+  html:not(.hero-banner-transparent-header) .header {
+    background-color: #fdfbf7;
   }
 
   .header__heading-logo {
-    filter: none !important;
     display: block;
   }
 
   .header__heading-link,
   .header__heading-link .h2 {
-    color: #613639 !important;
+    color: #613639;
   }
 
-  /* Main Nav Menu items (Top Bar) */
-  .header__menu-item,
-  .header__menu-item span,
-  .list-menu__item,
-  .list-menu__item span,
-  nav > ul > li > a,
-  .header__inline-menu > ul > li > a {
-    color: #000000 !important;
-    -webkit-text-fill-color: #000000 !important;
-    font-size: 0.95rem !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.06em !important;
-    opacity: 1 !important;
+  /* Main Nav Menu items (Default Solid State) */
+  html:not(.hero-banner-transparent-header) .header__menu-item,
+  html:not(.hero-banner-transparent-header) .header__menu-item span,
+  html:not(.hero-banner-transparent-header) .list-menu__item,
+  html:not(.hero-banner-transparent-header) .list-menu__item span,
+  html:not(.hero-banner-transparent-header) nav > ul > li > a,
+  html:not(.hero-banner-transparent-header) .header__inline-menu > ul > li > a {
+    color: #000000;
+    -webkit-text-fill-color: #000000;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 
   /* Hover & Active / Open Dropdown state */
@@ -172,22 +169,22 @@
   }
 
   /* Header Icons & Currency Selector */
-  .header__icon,
-  .header__icon svg,
-  .localization-form__select,
-  .disclosure__button {
-    color: #121212 !important;
+  html:not(.hero-banner-transparent-header) .header__icon,
+  html:not(.hero-banner-transparent-header) .header__icon svg,
+  html:not(.hero-banner-transparent-header) .localization-form__select,
+  html:not(.hero-banner-transparent-header) .disclosure__button {
+    color: #121212;
   }
 
-  .header__icon svg path,
-  .header__icon svg circle,
-  .header__icon svg polyline,
-  .header__icon svg line,
-  .header__icon svg rect,
-  .localization-form svg path,
-  .icon-caret path {
-    stroke: #121212 !important;
-    fill: #121212 !important;
+  html:not(.hero-banner-transparent-header) .header__icon svg path,
+  html:not(.hero-banner-transparent-header) .header__icon svg circle,
+  html:not(.hero-banner-transparent-header) .header__icon svg polyline,
+  html:not(.hero-banner-transparent-header) .header__icon svg line,
+  html:not(.hero-banner-transparent-header) .header__icon svg rect,
+  html:not(.hero-banner-transparent-header) .localization-form svg path,
+  html:not(.hero-banner-transparent-header) .icon-caret path {
+    stroke: #121212;
+    fill: #121212;
   }
 
   .header__menu-item:hover .icon-caret path,
