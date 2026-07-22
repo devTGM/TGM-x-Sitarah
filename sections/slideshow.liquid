@@ -18,62 +18,69 @@
 
 /* Keep section-header in normal flow so it renders BELOW the
    announcement bar.  We only make its background transparent. */
-.slideshow-transparent-header .section-header {
-  position: sticky;           /* keep default sticky, don't go absolute */
-  z-index: 100;
+/* --- Transparent Header overlay ONLY at top (when NOT scrolled and NOT hovered) --- */
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):not(:hover):not(:has(details[open])),
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):not(:hover):not(:has(details[open])) .header-wrapper,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):not(:hover):not(:has(details[open])) .header,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):not(:hover):not(:has(details[open])) .header__inline-menu,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):not(:hover):not(:has(details[open])) .page-width {
   background: transparent !important;
-  border-bottom: none !important;
-  margin-bottom: 0 !important;
-}
-.slideshow-transparent-header .header-wrapper {
-  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
   border-bottom: none !important;
   box-shadow: none !important;
 }
 
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):not(:hover):not(:has(details[open])) .header-wrapper,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):not(:hover):not(:has(details[open])) .header {
+  position: relative !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
 /* ── Regular nav links (no submenu) ── */
-.slideshow-transparent-header .header__heading-link,
-.slideshow-transparent-header .header__heading-link span,
-.slideshow-transparent-header .header__heading-link .h2,
-.slideshow-transparent-header .header__icon,
-.slideshow-transparent-header .header__active-menu-item,
-.slideshow-transparent-header .list-menu__item--link,
-.slideshow-transparent-header nav > ul > li > a,
-.slideshow-transparent-header .header__inline-menu > ul > li > a {
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__heading-link,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__icon,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__menu-item,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .list-menu__item,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__menu-item span,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) nav > ul > li > a,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .localization-form__select,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .disclosure__button {
   color: {{ section.settings.transparent_header_color }} !important;
 }
 
-/* ── Submenu triggers: <details> > <summary> (e.g. COLLECTIONS, CATEGORIES, OCCASION)
-      Use html. prefix for maximum specificity to beat theme color-scheme overrides ── */
-html.slideshow-transparent-header .header__menu-item,
-html.slideshow-transparent-header summary.header__menu-item,
-html.slideshow-transparent-header summary.list-menu__item,
-html.slideshow-transparent-header details > summary,
-html.slideshow-transparent-header details > summary > span,
-html.slideshow-transparent-header header-menu > details > summary,
-html.slideshow-transparent-header header-menu > details > summary > span,
-html.slideshow-transparent-header .header__inline-menu details > summary,
-html.slideshow-transparent-header .header__inline-menu details > summary > span,
-html.slideshow-transparent-header .header__inline-menu details > summary .header__active-menu-item,
-html.slideshow-transparent-header .mega-menu details > summary,
-html.slideshow-transparent-header .mega-menu details > summary > span {
+/* ── Submenu triggers ── */
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__menu-item,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) summary.header__menu-item,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) summary.list-menu__item,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) details > summary,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) details > summary > span,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) header-menu > details > summary,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) header-menu > details > summary > span,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__inline-menu details > summary,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__inline-menu details > summary > span,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__inline-menu details > summary .header__active-menu-item,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) .mega-menu details > summary,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) .mega-menu details > summary > span {
   color: {{ section.settings.transparent_header_color }} !important;
 }
 
-/* ── ALL SVG icons: cart, search, account + caret arrows on submenu items ── */
-.slideshow-transparent-header .header__icon svg path,
-.slideshow-transparent-header .header__icon svg circle,
-.slideshow-transparent-header .header__icon svg polyline,
-.slideshow-transparent-header .header__icon svg rect,
-.slideshow-transparent-header .header__icon svg line,
-.slideshow-transparent-header .header__inline-menu svg path,
-.slideshow-transparent-header .header__inline-menu svg polyline,
-.slideshow-transparent-header .header__inline-menu svg line,
-html.slideshow-transparent-header header-menu svg path,
-html.slideshow-transparent-header header-menu svg polyline,
-html.slideshow-transparent-header details > summary svg path,
-html.slideshow-transparent-header details > summary svg polyline,
-.slideshow-transparent-header .icon-caret {
+/* ── ALL SVG icons ── */
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__icon svg path,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__icon svg circle,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__icon svg polyline,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__icon svg rect,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__icon svg line,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__inline-menu svg path,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__inline-menu svg polyline,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .header__inline-menu svg line,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) header-menu svg path,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) header-menu svg polyline,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) details > summary svg path,
+html.slideshow-transparent-header .section-header:not(.scrolled-past-header) details > summary svg polyline,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header) .icon-caret {
   stroke: {{ section.settings.transparent_header_color }} !important;
   fill: none !important;
 }
@@ -88,17 +95,16 @@ html.slideshow-transparent-header details > summary svg polyline,
   filter: brightness(0) invert(1) !important;
 }
 
-.slideshow-transparent-header .section-header.scrolled-past-header .header__heading-logo {
-  filter: none !important;
-}
-
 /* Hover & Active/Open menu state in slideshow header */
 .slideshow-transparent-header .section-header:not(.scrolled-past-header):hover,
 .slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .header-wrapper,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .header,
 .slideshow-transparent-header .section-header:not(.scrolled-past-header):has(details[open]),
-.slideshow-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .header-wrapper {
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .header-wrapper,
+.slideshow-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .header {
   background-color: #fdfbf7 !important;
   background: #fdfbf7 !important;
+  background-image: none !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
 }
 
@@ -129,6 +135,49 @@ html.slideshow-transparent-header details > summary svg polyline,
 .slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .localization-form svg path,
 .slideshow-transparent-header .section-header:not(.scrolled-past-header):hover .icon-caret path,
 .slideshow-transparent-header .section-header:not(.scrolled-past-header):has(details[open]) .icon-caret path {
+  stroke: #121212 !important;
+  fill: #121212 !important;
+}
+
+/* ── Solid Sticky Header when Scrolling UP ── */
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: #fdfbf7 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(0) !important;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease !important;
+}
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header-wrapper,
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header {
+  background-color: #fdfbf7 !important;
+  background: #fdfbf7 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+}
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__heading-logo {
+  filter: none !important;
+}
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__heading-link,
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon,
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__menu-item,
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .list-menu__item,
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__menu-item span,
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) nav > ul > li > a,
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .localization-form__select,
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .disclosure__button {
+  color: #121212 !important;
+  -webkit-text-fill-color: #121212 !important;
+}
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon svg path,
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon svg circle,
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon svg polyline,
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon svg line,
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .header__icon svg rect,
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .localization-form svg path,
+.slideshow-transparent-header .section-header.scrolled-past-header:not(.shopify-section-header-hidden) .icon-caret path {
   stroke: #121212 !important;
   fill: #121212 !important;
 }
