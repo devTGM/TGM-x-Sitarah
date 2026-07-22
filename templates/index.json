@@ -139,7 +139,7 @@
       ],
       "custom_css": [],
       "settings": {
-        "transparent_header": true,
+        "transparent_header": false,
         "transparent_header_color": "#ffffff",
         "logo_filter": "brightness(0) invert(1)",
         "height_desktop": 100,
