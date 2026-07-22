@@ -2808,7 +2808,7 @@ details[open] > .header__menu-item .icon-caret {
 
 .header__submenu {
   transition: opacity var(--duration-default) ease, transform var(--duration-default) ease;
-  background-color: #f3f3f3 !important;
+  background-color: #fdfbf7 !important;
   border: 1px solid #e0e0e0 !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
 }
@@ -2819,7 +2819,7 @@ details[open] > .header__menu-item .icon-caret {
   border-color: #e0e0e0;
   border-style: solid;
   border-width: 1px;
-  background-color: #f3f3f3 !important;
+  background-color: #fdfbf7 !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   z-index: -1;
 }
@@ -2829,7 +2829,7 @@ details[open] > .header__menu-item .icon-caret {
 }
 
 .header__submenu .header__submenu {
-  background-color: #e8e8e8 !important;
+  background-color: #fdfbf7 !important;
   padding: 0.8rem 0;
   margin: 0.5rem 0;
 }
