@@ -80,6 +80,7 @@
         },
         "essential_upsell_frequently_bought_together_app_block_VKg6qb": {
           "type": "shopify://apps/essential-upsell/blocks/frequently-bought-together-app-block/50627fd9-24fd-4250-8614-accc12826d80",
+          "disabled": true,
           "settings": {}
         },
         "custom_liquid_bKW7ba": {
