@@ -182,7 +182,7 @@
         "enable_country": false,
         "show_payment_icon": false,
         "show_policy": true,
-        "copyright_text": "<p>© <strong>Sitarah</strong> | A brand by Ethereal · Delhi, India | Designed & Developed by <a href=\"https://thinkgrowmedia.com\" target=\"_blank\" title=\"https://thinkgrowmedia.com\">Think Grow Media</a></p>",
+        "copyright_text": "<p>© <strong>Sitarah</strong> | A brand by Ethereal · Delhi, India </p>",
         "color_scheme": "scheme_9",
         "padding_top": 50,
         "padding_bottom": 50
