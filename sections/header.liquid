@@ -168,6 +168,28 @@
     text-underline-offset: 0.3rem !important;
   }
 
+  /* Ensure submenu/dropdown and mega menu links default to black, and turn maroon on hover or when active */
+  .header__submenu a:not(.mega-menu__link--active):not(.list-menu__item--active),
+  .header__submenu .header__menu-item:not(.mega-menu__link--active):not(.list-menu__item--active),
+  .mega-menu__link:not(.mega-menu__link--active):not(.list-menu__item--active),
+  .mega-menu__content a:not(.mega-menu__link--active):not(.list-menu__item--active) {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    text-decoration: none !important;
+  }
+
+  .header__submenu a:hover,
+  .header__submenu .header__menu-item:hover,
+  .mega-menu__link:hover,
+  .mega-menu__link--active,
+  .list-menu__item--active,
+  .mega-menu__content a:hover {
+    color: #613639 !important;
+    -webkit-text-fill-color: #613639 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 0.3rem !important;
+  }
+
   /* Header Icons & Currency Selector */
   html:not(.hero-banner-transparent-header):not(.slideshow-transparent-header) .header__icon,
   html:not(.hero-banner-transparent-header):not(.slideshow-transparent-header) .header__icon svg,
