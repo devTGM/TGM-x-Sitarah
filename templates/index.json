@@ -12,8 +12,27 @@
     "4862cca1-87c2-43ba-be8e-985e5ed256c5": {
       "type": "slideshow",
       "blocks": {
+        "video_slide_8Kbk9G": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/FASHION ATLIER (1).mp4",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "eyebrow": "",
+            "heading": "",
+            "subheading": "",
+            "box_align": "bottom-left",
+            "banner_link": "",
+            "button_1_label": "",
+            "button_1_link": "",
+            "button_2_label": "",
+            "button_2_link": ""
+          }
+        },
         "slide_bQHCYE": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/Sitarah-1_1.png",
             "mobile_image": "shopify://shop_images/mobile-1_3.png",
@@ -33,6 +52,7 @@
         },
         "slide_F7XhLz": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/Chandrik2-1.png",
             "mobile_image": "shopify://shop_images/chandrika-banner.png",
@@ -52,6 +72,7 @@
         },
         "slide_UXwhUi": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/Heer-2.png",
             "mobile_image": "shopify://shop_images/An_ode_to_refined_craftsmanship_and_contemporary_charm..png",
@@ -71,6 +92,7 @@
         },
         "template--21720340824375__4862cca1-87c2-43ba-be8e-985e5ed256c5-slide-1": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/SITARAH_BANNERS.png",
             "mobile_image": "shopify://shop_images/SITARAH_BANNERS.png1.png",
@@ -108,6 +130,7 @@
         }
       },
       "block_order": [
+        "video_slide_8Kbk9G",
         "slide_bQHCYE",
         "slide_F7XhLz",
         "slide_UXwhUi",
@@ -119,7 +142,7 @@
         "transparent_header": true,
         "transparent_header_color": "#ffffff",
         "logo_filter": "brightness(0) invert(1)",
-        "height_desktop": 90,
+        "height_desktop": 100,
         "height_mobile": 80,
         "auto_rotate": true,
         "change_slides_speed": 5,
