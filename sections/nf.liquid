@@ -765,34 +765,15 @@ smi-button-wrapper-over
     </smi-localization-form>
 {% endif %} {% endif %}
       <style>
-        .smi-section-footer-1{
+        .smi-section-footer-1 {
           --country-size: {% if localization.available_countries.size > 7 %} 7.5 {% else %} {{ localization.available_countries.size }} {% endif %};
           --language-size: {{ localization.available_languages.size }};
-        }
-        .footer__mural {
-          width: 100%;
-          max-width: 100%;
-          margin: 3rem 0 0 0;
-          padding: 0;
-          display: block;
-          line-height: 0;
-          background-color: transparent;
-          overflow: hidden;
+          background-image: url('https://cdn.shopify.com/s/files/1/0901/2156/8550/files/footer_design.png?v=1753011354') !important;
+          background-position: bottom center !important;
+          background-repeat: no-repeat !important;
+          background-size: 100% auto !important;
+          background-color: #ffffff !important;
           position: relative;
-          z-index: 1;
-        }
-        .footer__mural img {
-          width: 100%;
-          height: auto;
-          display: block;
-          max-height: 220px;
-          object-fit: cover;
-          object-position: bottom center;
-        }
-        @media screen and (max-width: 749px) {
-          .footer__mural img {
-            max-height: 120px;
-          }
         }
       </style>
     </div>
@@ -833,9 +814,6 @@ smi-button-wrapper-over
       {%- endfor -%}
     </div>
   {% endif %}
-</div>
-<div class="footer__mural">
-  <img src="https://cdn.shopify.com/s/files/1/0901/2156/8550/files/footer_design.png?v=1753011354" alt="Footer Mural" loading="lazy" width="1600" height="834">
 </div>
   </div>
 </div>
