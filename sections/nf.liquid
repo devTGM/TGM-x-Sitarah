@@ -769,6 +769,8 @@ smi-button-wrapper-over
           --country-size: {% if localization.available_countries.size > 7 %} 7.5 {% else %} {{ localization.available_countries.size }} {% endif %};
           --language-size: {{ localization.available_languages.size }};
           position: relative;
+          background-image: none !important;
+          background-color: #ffffff !important;
         }
         .footer__mural {
           width: 100%;

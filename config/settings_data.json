@@ -559,9 +559,6 @@
     }
   },
   "platform_customizations": {
-    "custom_css": [
-      ".smi-sections--23576688689446__nf_WcbQBR {background-image: url(https://cdn.shopify.com/s/files/1/0901/2156/8550/files/footer_design.png?v=1753011354); background-position: bottom; background-size: contain; background-repeat: repeat; background-color: #ebe9e2 !important;}",
-      "@media only screen and (max-width: 700px) {.smi-sections--23576688689446__nf_WcbQBR {background-color: #ebe9e2 !important; background-image: url(https://cdn.shopify.com/s/files/1/0901/2156/8550/files/23_footer.png?v=1753012021) !important; background-position: bottom !important; background-size: contain !important; background-repeat: no-repeat !important; }}"
-    ]
+    "custom_css": []
   }
 }
