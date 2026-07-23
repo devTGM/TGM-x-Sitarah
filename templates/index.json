@@ -156,7 +156,7 @@
           "type": "category",
           "settings": {
             "collection": "heer",
-            "image": "shopify://shop_images/086A1101.jpg",
+            "image": "shopify://shop_images/086A1769_f0b3189c-af2c-4ba2-8ae1-fc477db86083.jpg",
             "title": "<strong>HEER</strong>",
             "link": "shopify://collections/heer"
           }
@@ -165,7 +165,7 @@
           "type": "category",
           "settings": {
             "collection": "gulmohar",
-            "image": "shopify://shop_images/0Q4A0710-1_12029788-b1ec-49e4-b61e-25f852106f3a.jpg",
+            "image": "shopify://shop_images/0Q4A0334-1_75e42dad-2636-48d0-bccf-f5b797b51e99.jpg",
             "title": "<strong>GULMOHAR</strong>",
             "link": "shopify://collections/gulmohar"
           }
@@ -174,16 +174,25 @@
           "type": "category",
           "settings": {
             "collection": "chandrika",
-            "image": "shopify://shop_images/0Q4A1890.jpg",
+            "image": "shopify://shop_images/0Q4A2115_ba3ba149-8b33-44d9-96d5-62e7a3537832.jpg",
             "title": "<strong>Chandrika</strong>",
             "link": "shopify://collections/chandrika"
+          }
+        },
+        "category_hUUcmd": {
+          "type": "category",
+          "settings": {
+            "collection": "marigold",
+            "image": "shopify://shop_images/0Q4A1243-1_85bcf31d-bb86-4ea9-be1c-878b67fa3fb9.jpg",
+            "title": "",
+            "link": "shopify://collections/marigold"
           }
         },
         "category_XGrGzM": {
           "type": "category",
           "settings": {
             "collection": "kiran",
-            "image": "shopify://shop_images/15th_June_-_1679.jpg",
+            "image": "shopify://shop_images/15th_June_-_1740_9bb7ca8e-9c06-42ff-8f2d-b318c702cad9.jpg",
             "title": "",
             "link": ""
           }
@@ -195,15 +204,6 @@
             "image": "shopify://shop_images/Sitarah0918copy_7abca9ae-6e9f-439f-bc55-2539800d736a.jpg",
             "title": "",
             "link": "shopify://collections/kokum"
-          }
-        },
-        "category_hUUcmd": {
-          "type": "category",
-          "settings": {
-            "collection": "marigold",
-            "image": "shopify://shop_images/0Q4A1301-1.jpg",
-            "title": "",
-            "link": "shopify://collections/marigold"
           }
         },
         "category_pzNRMY": {
@@ -247,9 +247,9 @@
         "category_zh8wAH",
         "category_pagzM6",
         "category_RYMd7D",
+        "category_hUUcmd",
         "category_XGrGzM",
         "category_Xe4tC7",
-        "category_hUUcmd",
         "category_pzNRMY",
         "category_RYpWwC",
         "category_U6YCzi",
