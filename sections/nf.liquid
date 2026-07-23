@@ -771,9 +771,16 @@ smi-button-wrapper-over
           background-image: url('https://cdn.shopify.com/s/files/1/0901/2156/8550/files/footer_design.png?v=1753011354') !important;
           background-position: bottom center !important;
           background-repeat: no-repeat !important;
-          background-size: 100% auto !important;
+          background-size: auto 300px !important;
           background-color: #ffffff !important;
           position: relative;
+          padding-bottom: 180px !important;
+        }
+        @media screen and (max-width: 749px) {
+          .smi-section-footer-1 {
+            background-size: auto 180px !important;
+            padding-bottom: 110px !important;
+          }
         }
       </style>
     </div>
