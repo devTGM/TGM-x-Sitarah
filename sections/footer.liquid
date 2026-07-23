@@ -12,7 +12,7 @@
 
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-bottom: 0px;
   }
 
   @media screen and (min-width: 750px) {
@@ -22,14 +22,14 @@
 
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-bottom: 0px;
     }
   }
 
   .footer__mural {
     width: 100%;
     max-width: 100%;
-    margin: 3rem 0 -{{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px 0;
+    margin: 3rem 0 0 0;
     padding: 0;
     display: block;
     line-height: 0;
@@ -46,12 +46,6 @@
     max-height: 220px;
     object-fit: cover;
     object-position: bottom center;
-  }
-
-  @media screen and (min-width: 750px) {
-    .footer__mural {
-      margin-bottom: -{{ section.settings.padding_bottom }}px;
-    }
   }
 
   @media screen and (max-width: 749px) {
