@@ -544,72 +544,71 @@
       customElements.define('cart-progress-bar', CartProgressBar);
     }
 
-    function initCartDrawerRecs() {
-      const recTrack = document.querySelector('.cart-drawer__rec-slider');
-      const prevBtn = document.querySelector('.cart-drawer__rec-arrow--prev');
-      const nextBtn = document.querySelector('.cart-drawer__rec-arrow--next');
-
-      if (recTrack && prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', () => {
-          recTrack.scrollBy({ left: -180, behavior: 'smooth' });
-        });
-        nextBtn.addEventListener('click', () => {
-          recTrack.scrollBy({ left: 180, behavior: 'smooth' });
-        });
+    // Use Event Delegation to ensure clicks work even after AJAX refreshes the cart drawer HTML
+    document.addEventListener('click', function(e) {
+      // 1. Slider Next/Prev Arrows
+      const prevBtn = e.target.closest('.cart-drawer__rec-arrow--prev');
+      if (prevBtn) {
+        const section = prevBtn.closest('.cart-drawer__rec-section');
+        const recTrack = section ? section.querySelector('.cart-drawer__rec-slider') : null;
+        if (recTrack) recTrack.scrollBy({ left: -180, behavior: 'smooth' });
+        return;
       }
 
-      document.querySelectorAll('.cart-rec-item__add-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          const card = this.closest('.cart-rec-item');
-          const select = card.querySelector('.cart-rec-item__select');
-          const variantId = select ? select.value : this.getAttribute('data-variant-id');
-          if (!variantId) return;
+      const nextBtn = e.target.closest('.cart-drawer__rec-arrow--next');
+      if (nextBtn) {
+        const section = nextBtn.closest('.cart-drawer__rec-section');
+        const recTrack = section ? section.querySelector('.cart-drawer__rec-slider') : null;
+        if (recTrack) recTrack.scrollBy({ left: 180, behavior: 'smooth' });
+        return;
+      }
 
-          this.classList.add('loading');
-          this.disabled = true;
+      // 2. Add to Cart button
+      const addBtn = e.target.closest('.cart-rec-item__add-btn');
+      if (addBtn) {
+        e.preventDefault();
+        const card = addBtn.closest('.cart-rec-item');
+        const select = card ? card.querySelector('.cart-rec-item__select') : null;
+        const variantId = select ? select.value : addBtn.getAttribute('data-variant-id');
+        if (!variantId) return;
 
-          const drawer = document.querySelector('cart-drawer');
+        addBtn.classList.add('loading');
+        addBtn.disabled = true;
 
-          fetch('/cart/add.js', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-              id: variantId,
-              quantity: 1,
-              sections: ['cart-drawer', 'cart-icon-bubble']
-            })
+        const drawer = document.querySelector('cart-drawer');
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            id: variantId,
+            quantity: 1,
+            sections: ['cart-drawer', 'cart-icon-bubble']
           })
-          .then(res => {
-            if (!res.ok) {
-              return res.json().then(err => { throw new Error(err.description || 'Error adding to cart'); });
-            }
-            return res.json();
-          })
-          .then(data => {
-            if (drawer) {
-              drawer.renderContents(data);
-              drawer.open();
-            } else {
-              window.location.reload();
-            }
-          })
-          .catch(err => {
-            console.error('Error adding recommendation to cart:', err);
-            this.disabled = false;
-            this.classList.remove('loading');
-          });
+        })
+        .then(res => {
+          if (!res.ok) {
+            return res.json().then(err => { throw new Error(err.description || 'Error adding to cart'); });
+          }
+          return res.json();
+        })
+        .then(data => {
+          if (drawer) {
+            drawer.renderContents(data);
+            drawer.open();
+          } else {
+            window.location.reload();
+          }
+        })
+        .catch(err => {
+          console.error('Error adding recommendation to cart:', err);
+          addBtn.disabled = false;
+          addBtn.classList.remove('loading');
         });
-      });
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initCartDrawerRecs);
-    } else {
-      initCartDrawerRecs();
-    }
+      }
+    });
   })();
 </script>
