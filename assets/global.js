@@ -1274,30 +1274,117 @@ class FreeGiftManager {
     this.isUpdating = false;
 
     const originalFetch = window.fetch;
-    window.fetch = (...args) => {
+    window.fetch = async (...args) => {
       const url = args[0];
-      return originalFetch(...args).then(response => {
-        if (response.ok && typeof url === 'string' && (
-          url.includes('/cart/add') ||
-          url.includes('/cart/change') ||
-          url.includes('/cart/update') ||
-          url.includes('/cart/clear')
-        )) {
-          if (!this.isUpdating) {
-            setTimeout(() => this.checkCart(), 150);
+      const response = await originalFetch(...args);
+
+      if (!response.ok || typeof url !== 'string' || this.isUpdating) {
+        return response;
+      }
+
+      const isCartAction = url.includes('/cart/add') ||
+                           url.includes('/cart/change') ||
+                           url.includes('/cart/update') ||
+                           url.includes('/cart/clear');
+
+      if (!isCartAction) {
+        return response;
+      }
+
+      try {
+        // Clone the response to parse cart without consuming the stream
+        const cartData = await response.clone().json();
+        
+        let cart = cartData;
+        if (url.includes('/cart/add')) {
+          const cartRes = await originalFetch('/cart.js');
+          if (cartRes.ok) {
+            cart = await cartRes.json();
+          } else {
+            return response;
           }
         }
-        return response;
-      });
-    };
 
-    // Listen for Shopify's pubsub cart update events
-    if (window.subscribe) {
-      subscribe(PUB_SUB_EVENTS.cartUpdate, (event) => {
-        if (event.source === 'free-gift-manager') return;
-        this.checkCart();
-      });
-    }
+        let subtotal = 0;
+        let giftItem = null;
+
+        for (const item of cart.items || []) {
+          if (item.handle === this.giftHandle) {
+            giftItem = item;
+          } else {
+            subtotal += item.line_price;
+          }
+        }
+
+        const variantId = await this.getGiftVariantId();
+        if (!variantId) return response;
+
+        let giftChanged = false;
+        let finalResponse = response;
+
+        if (subtotal >= this.threshold) {
+          if (!giftItem || giftItem.quantity !== 1) {
+            giftChanged = true;
+            this.isUpdating = true;
+
+            const sectionsToRender = this.getSectionsToRender();
+            const updates = {};
+            updates[variantId] = 1;
+
+            const addRes = await originalFetch('/cart/update.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                updates: updates,
+                sections: sectionsToRender.map(s => s.section),
+                sections_url: window.location.pathname
+              })
+            });
+
+            if (addRes.ok) {
+              finalResponse = addRes;
+            }
+            this.isUpdating = false;
+          }
+        } else {
+          if (giftItem) {
+            giftChanged = true;
+            this.isUpdating = true;
+
+            const sectionsToRender = this.getSectionsToRender();
+            const removeRes = await originalFetch('/cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                id: variantId.toString(),
+                quantity: 0,
+                sections: sectionsToRender.map(s => s.section),
+                sections_url: window.location.pathname
+              })
+            });
+
+            if (removeRes.ok) {
+              finalResponse = removeRes;
+            }
+            this.isUpdating = false;
+          }
+        }
+
+        if (giftChanged) {
+          const finalState = await finalResponse.clone().json();
+          this.refreshCartUI(finalState, this.getSectionsToRender());
+
+          if (window.publish) {
+            publish(PUB_SUB_EVENTS.cartUpdate, { source: 'free-gift-manager', cartData: finalState });
+          }
+        }
+
+        return finalResponse;
+      } catch (e) {
+        console.error('Error in FreeGiftManager fetch interceptor:', e);
+        return response;
+      }
+    };
 
     // Also run on DOMContentLoaded and page load
     document.addEventListener('DOMContentLoaded', () => this.checkCart());
