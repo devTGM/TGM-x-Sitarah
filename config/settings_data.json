@@ -197,18 +197,6 @@
         "disabled": false,
         "settings": {}
       },
-      "15683396631634586217": {
-        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
-        "disabled": false,
-        "settings": {
-          "greeting_message": "Hi there! 👋 Welcome to Sitarah — where elegance meets everyday wear. \nHow may I help you today?",
-          "button_color": "#58021e",
-          "button_icon": "question_mark",
-          "button_text": "no_text",
-          "button_horizontal_position": "bottom_left",
-          "button_vertical_position": "higher"
-        }
-      },
       "18197795979873361081": {
         "type": "shopify://apps/ta-banner-pop-up/blocks/bss-banner-popup/2db47c8b-7637-4260-aa84-586b08e92aea",
         "disabled": true,
@@ -292,6 +280,32 @@
         "type": "shopify://apps/microsoft-clarity/blocks/brandAgents_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
         "disabled": true,
         "settings": {}
+      },
+      "15683396631634586217": {
+        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "disabled": false,
+        "settings": {
+          "greeting_message": "Hi there! 👋 Welcome to Sitarah — where elegance meets everyday wear. \nHow may I help you today?",
+          "show_featured_products": true,
+          "featured_products": [
+            "noor-black-mirror-emb-suit-set",
+            "harshita-in-khubani-green-suit-set",
+            "harshita-in-inaya-royal-blue-velvet-garara-suit-set"
+          ],
+          "background_color": "#FFFFFF",
+          "font_color": "#000000",
+          "agent_invert_activator_colors": false,
+          "button_color": "#58021e",
+          "button_icon": "question_mark",
+          "button_text": "no_text",
+          "button_horizontal_position": "bottom_right",
+          "button_vertical_position": "highest",
+          "agent_inherit_fonts": true,
+          "agent_font": "system_ui_n4",
+          "agent_font_size": 14,
+          "agent_activator_font_size": 13,
+          "agent_border_radius": 16
+        }
       }
     },
     "color_schemes": {
