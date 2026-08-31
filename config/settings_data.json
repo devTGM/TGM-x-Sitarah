@@ -276,15 +276,15 @@
           "font_color": "#121212",
           "agent_invert_activator_colors": false,
           "button_color": "#58021e",
-          "button_icon": "question_mark",
-          "button_text": "no_text",
+          "button_icon": "chat_bubble",
+          "button_text": "ask_anything",
           "button_horizontal_position": "bottom_left",
           "button_vertical_position": "higher",
           "agent_inherit_fonts": true,
           "agent_font": "system_ui_n4",
           "agent_font_size": 14,
           "agent_activator_font_size": 13,
-          "agent_border_radius": 11
+          "agent_border_radius": 10
         }
       }
     },
