@@ -176,22 +176,6 @@
         "disabled": false,
         "settings": {}
       },
-      "16510219240223340300": {
-        "type": "shopify://apps/whatmore-shoppable-videos/blocks/app-embed/20db8a72-315a-4364-8885-64219ee48303",
-        "disabled": false,
-        "settings": {
-          "minimized_video_position": "right",
-          "horizontal-padding": 5,
-          "vertical-padding": 150,
-          "app-size": 50,
-          "minimized_video_position_landscape": "right",
-          "horizontal-padding-landscape": 5,
-          "vertical-padding-landscape": 150,
-          "app-size-landscape": 50,
-          "video-title": "",
-          "use-variant": "false"
-        }
-      },
       "776302416715791028": {
         "type": "shopify://apps/bucks/blocks/app-embed/4f0a9b06-9da4-4a49-b378-2de9d23a3af3",
         "disabled": false,
@@ -261,9 +245,25 @@
         "disabled": true,
         "settings": {}
       },
+      "16510219240223340300": {
+        "type": "shopify://apps/whatmore-shoppable-videos/blocks/app-embed/20db8a72-315a-4364-8885-64219ee48303",
+        "disabled": true,
+        "settings": {
+          "minimized_video_position": "right",
+          "horizontal-padding": 5,
+          "vertical-padding": 150,
+          "app-size": 50,
+          "minimized_video_position_landscape": "right",
+          "horizontal-padding-landscape": 5,
+          "vertical-padding-landscape": 150,
+          "app-size-landscape": 50,
+          "video-title": "",
+          "use-variant": "false"
+        }
+      },
       "15683396631634586217": {
         "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "greeting_message": "Hi there! 👋 Welcome to Sitarah — where elegance meets everyday wear. \nHow may I help you today?",
           "show_featured_products": true,
