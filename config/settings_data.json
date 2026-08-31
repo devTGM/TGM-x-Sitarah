@@ -212,26 +212,6 @@
         "disabled": true,
         "settings": {}
       },
-      "8035815586522894503": {
-        "type": "shopify://apps/salepify-gifts-upsell/blocks/free-gift.embed/f616e94d-36ae-45cb-9d98-57804196c7a7",
-        "disabled": true,
-        "settings": {}
-      },
-      "15714838451323730227": {
-        "type": "shopify://apps/salepify-gifts-upsell/blocks/advanced-free-gift/f616e94d-36ae-45cb-9d98-57804196c7a7",
-        "disabled": true,
-        "settings": {}
-      },
-      "1319389761260360297": {
-        "type": "shopify://apps/salepify-gifts-upsell/blocks/product-bundle.embed/f616e94d-36ae-45cb-9d98-57804196c7a7",
-        "disabled": true,
-        "settings": {}
-      },
-      "15247839323734551960": {
-        "type": "shopify://apps/salepify-gifts-upsell/blocks/cart-goal.embed/f616e94d-36ae-45cb-9d98-57804196c7a7",
-        "disabled": true,
-        "settings": {}
-      },
       "144831480468751239": {
         "type": "shopify://apps/essential-upsell/blocks/app-embed/50627fd9-24fd-4250-8614-accc12826d80",
         "disabled": false,
@@ -283,7 +263,7 @@
       },
       "15683396631634586217": {
         "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "greeting_message": "Hi there! 👋 Welcome to Sitarah — where elegance meets everyday wear. \nHow may I help you today?",
           "show_featured_products": true,
@@ -292,7 +272,7 @@
             "harshita-in-khubani-green-suit-set",
             "harshita-in-inaya-royal-blue-velvet-garara-suit-set"
           ],
-          "background_color": "#FFFFFF",
+          "background_color": "#ffffff",
           "font_color": "#000000",
           "agent_invert_activator_colors": false,
           "button_color": "#58021e",
