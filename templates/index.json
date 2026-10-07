@@ -12,17 +12,18 @@
     "4862cca1-87c2-43ba-be8e-985e5ed256c5": {
       "type": "slideshow",
       "blocks": {
-        "video_slide_8Kbk9G": {
-          "type": "video_slide",
+        "slide_KifMHx": {
+          "type": "slide",
           "settings": {
-            "video": "shopify://files/videos/FASHION ATLIER (1).mp4",
+            "desktop_image": "shopify://shop_images/4.png",
+            "mobile_image": "shopify://shop_images/4_59aeac32-a514-4523-9796-e132708d1a43.png",
             "overlay_color": "#000000",
-            "overlay_opacity": 30,
+            "overlay_opacity": 35,
             "text_color": "#ffffff",
             "eyebrow": "",
             "heading": "",
             "subheading": "",
-            "box_align": "bottom-left",
+            "box_align": "middle-center",
             "banner_link": "",
             "button_1_label": "",
             "button_1_link": "",
@@ -32,10 +33,9 @@
         },
         "slide_bQHCYE": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "desktop_image": "shopify://shop_images/Sitarah-1_1.png",
-            "mobile_image": "shopify://shop_images/mobile-1_3.png",
+            "desktop_image": "shopify://shop_images/1.png",
+            "mobile_image": "shopify://shop_images/2_46e9e753-7cb2-430d-a306-27df15482d5a.png",
             "overlay_color": "#000000",
             "overlay_opacity": 35,
             "text_color": "#ffffff",
@@ -52,10 +52,9 @@
         },
         "slide_F7XhLz": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "desktop_image": "shopify://shop_images/Chandrik2-1.png",
-            "mobile_image": "shopify://shop_images/chandrika-banner.png",
+            "desktop_image": "shopify://shop_images/2.png",
+            "mobile_image": "shopify://shop_images/1_98852ccf-5cde-4d0b-a21e-02441fe38789.png",
             "overlay_color": "#000000",
             "overlay_opacity": 35,
             "text_color": "#ffffff",
@@ -72,10 +71,9 @@
         },
         "slide_UXwhUi": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "desktop_image": "shopify://shop_images/Heer-2.png",
-            "mobile_image": "shopify://shop_images/An_ode_to_refined_craftsmanship_and_contemporary_charm..png",
+            "desktop_image": "shopify://shop_images/3.png",
+            "mobile_image": "shopify://shop_images/3_03c792bf-f827-46e7-975c-99a91ecc7596.png",
             "overlay_color": "#000000",
             "overlay_opacity": 35,
             "text_color": "#ffffff",
@@ -92,10 +90,9 @@
         },
         "template--21720340824375__4862cca1-87c2-43ba-be8e-985e5ed256c5-slide-1": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "desktop_image": "shopify://shop_images/SITARAH_BANNERS.png",
-            "mobile_image": "shopify://shop_images/SITARAH_BANNERS.png1.png",
+            "desktop_image": "shopify://shop_images/5.png",
+            "mobile_image": "shopify://shop_images/5_4fc36ac0-ad5d-4c47-baba-961fbf0ff137.png",
             "overlay_color": "#000000",
             "overlay_opacity": 35,
             "text_color": "#ffffff",
@@ -109,33 +106,14 @@
             "button_2_label": "",
             "button_2_link": ""
           }
-        },
-        "slide_KifMHx": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "overlay_color": "#000000",
-            "overlay_opacity": 35,
-            "text_color": "#ffffff",
-            "eyebrow": "",
-            "heading": "",
-            "subheading": "",
-            "box_align": "middle-center",
-            "banner_link": "",
-            "button_1_label": "",
-            "button_1_link": "",
-            "button_2_label": "",
-            "button_2_link": ""
-          }
         }
       },
       "block_order": [
-        "video_slide_8Kbk9G",
+        "slide_KifMHx",
         "slide_bQHCYE",
         "slide_F7XhLz",
         "slide_UXwhUi",
-        "template--21720340824375__4862cca1-87c2-43ba-be8e-985e5ed256c5-slide-1",
-        "slide_KifMHx"
+        "template--21720340824375__4862cca1-87c2-43ba-be8e-985e5ed256c5-slide-1"
       ],
       "custom_css": [],
       "settings": {
@@ -421,10 +399,13 @@
           "type": "shopify://apps/whatmore-shoppable-videos/blocks/app-block/20db8a72-315a-4364-8885-64219ee48303",
           "settings": {
             "heading": "Shop the Collection Live",
+            "subheading": "W",
             "widget-identity": "wgt_default",
             "template-type": "template-f",
             "title-font-size": 20,
             "title-font-size-portrait": 23,
+            "subtitle-font-size": 18,
+            "subtitle-font-size-portrait": 14,
             "landscape-padding": 40,
             "top-bottom-padding": 20,
             "scroll-video-tile-size": 80,
