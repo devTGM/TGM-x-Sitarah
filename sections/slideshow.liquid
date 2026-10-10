@@ -319,7 +319,8 @@ html.slideshow-transparent-header .sitarah-slideshow-section {
 .sitarah-slideshow__content {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 4;
+  pointer-events: none;
   display: flex;
   flex-direction: column;
   /* The banner slides up behind the transparent header.
@@ -328,6 +329,34 @@ html.slideshow-transparent-header .sitarah-slideshow-section {
   overflow: hidden;
   box-sizing: border-box;
 }
+
+/* Fix: Make banner clickable without blocking CTA buttons */
+.sitarah-slideshow__full-link {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 3;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+.sitarah-slideshow__content {
+  z-index: 4;
+  pointer-events: none;
+}
+
+.sitarah-slideshow__buttons,
+.sitarah-slideshow__buttons a {
+  pointer-events: auto;
+}
+
+.sitarah-slideshow__arrow,
+.sitarah-slideshow__dots,
+.sitarah-slideshow__pause {
+  z-index: 10;
+  pointer-events: auto;
+}
+
 .sitarah-slideshow__content--top-left    { align-items: flex-start; justify-content: flex-start; text-align: left; }
 .sitarah-slideshow__content--top-center  { align-items: center;     justify-content: flex-start; text-align: center; }
 .sitarah-slideshow__content--top-right   { align-items: flex-end;   justify-content: flex-start; text-align: right; }
@@ -851,12 +880,44 @@ html.slideshow-transparent-header .sitarah-slideshow-section {
   });
 
   /* ─── Touch swipe ─── */
-  let sx = 0;
-  wrap.addEventListener('touchstart', e => { sx = e.changedTouches[0].screenX; }, { passive: true });
-  wrap.addEventListener('touchend', e => {
-    const dx = sx - e.changedTouches[0].screenX;
-    if (Math.abs(dx) > 50) { stopTimer(); dx > 0 ? next() : prev(); startTimer(); }
-  }, { passive: true });
+  
+/* ─── Touch swipe with accidental click prevention ─── */
+let sx = 0;
+let sy = 0;
+let swipeDetected = false;
+
+wrap.addEventListener('touchstart', e => {
+  sx = e.changedTouches[0].screenX;
+  sy = e.changedTouches[0].screenY;
+  swipeDetected = false;
+}, { passive: true });
+
+wrap.addEventListener('touchend', e => {
+  const dx = sx - e.changedTouches[0].screenX;
+  const dy = sy - e.changedTouches[0].screenY;
+
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+    swipeDetected = true;
+    stopTimer();
+
+    if (dx > 0) {
+      next();
+    } else {
+      prev();
+    }
+
+    startTimer();
+  }
+}, { passive: true });
+
+wrap.addEventListener('click', e => {
+  if (swipeDetected && e.target.closest('.sitarah-slideshow__full-link')) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  swipeDetected = false;
+}, true);
+
 
   /* ─── Keyboard ─── */
   wrap.setAttribute('tabindex', '0');
