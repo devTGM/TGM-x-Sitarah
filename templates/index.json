@@ -24,7 +24,7 @@
             "heading": "",
             "subheading": "",
             "box_align": "middle-center",
-            "banner_link": "",
+            "banner_link": "shopify://collections/tyohar",
             "button_1_label": "",
             "button_1_link": "",
             "button_2_label": "",
@@ -90,6 +90,7 @@
         },
         "template--21720340824375__4862cca1-87c2-43ba-be8e-985e5ed256c5-slide-1": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/5.png",
             "mobile_image": "shopify://shop_images/5_4fc36ac0-ad5d-4c47-baba-961fbf0ff137.png",
