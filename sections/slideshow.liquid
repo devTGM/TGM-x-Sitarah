@@ -559,6 +559,45 @@ html.slideshow-transparent-header .sitarah-slideshow-section {
 .sitarah-slideshow__progress,
 .sitarah-slideshow__pause { display: none !important; }
 {% endif %}
+
+/* SITARAH BANNER CLICK FIX */
+
+.sitarah-slideshow__slide {
+  position: relative;
+}
+
+.sitarah-slideshow__media,
+.sitarah-slideshow__overlay {
+  pointer-events: none;
+}
+
+.sitarah-slideshow__full-link {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: block;
+  cursor: pointer;
+}
+
+.sitarah-slideshow__content {
+  pointer-events: none;
+  z-index: 6;
+}
+
+.sitarah-slideshow__buttons,
+.sitarah-slideshow__buttons a {
+  pointer-events: auto;
+  position: relative;
+  z-index: 7;
+}
+
+.sitarah-slideshow__arrow,
+.sitarah-slideshow__dots,
+.sitarah-slideshow__pause {
+  z-index: 10;
+  pointer-events: auto;
+}
+
 {%- endstyle -%}
 
 {%- if section.settings.transparent_header -%}
@@ -793,6 +832,69 @@ html.slideshow-transparent-header .sitarah-slideshow-section {
   const nextBtn  = wrap.querySelector('[data-ss-next]');
   const pauseBtn = wrap.querySelector('[data-ss-pause]');
   const progFill = wrap.querySelector('.sitarah-slideshow__progress-fill');
+  
+/* =========================================
+   SITARAH - FULL BANNER CLICK FIX
+   ========================================= */
+
+slides.forEach((slide) => {
+  const bannerLink = slide.querySelector(
+    '.sitarah-slideshow__full-link'
+  );
+
+  if (!bannerLink) return;
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchMoved = false;
+
+  slide.style.cursor = 'pointer';
+
+  slide.addEventListener('touchstart', (event) => {
+    touchStartX = event.changedTouches[0].clientX;
+    touchStartY = event.changedTouches[0].clientY;
+    touchMoved = false;
+  }, { passive: true });
+
+  slide.addEventListener('touchmove', (event) => {
+    const deltaX = Math.abs(
+      event.changedTouches[0].clientX - touchStartX
+    );
+    const deltaY = Math.abs(
+      event.changedTouches[0].clientY - touchStartY
+    );
+
+    if (deltaX > 15 || deltaY > 15) {
+      touchMoved = true;
+    }
+  }, { passive: true });
+
+  slide.addEventListener('click', (event) => {
+
+    if (touchMoved) {
+      event.preventDefault();
+      touchMoved = false;
+      return;
+    }
+
+    if (event.target.closest(
+      'a, button, input, select, textarea'
+    )) {
+      return;
+    }
+
+    if (window.Shopify && Shopify.designMode) {
+      return;
+    }
+
+    const destination = bannerLink.getAttribute('href');
+
+    if (destination && destination !== '#') {
+      window.location.assign(destination);
+    }
+
+  });
+});
 
   const total    = slides.length;
   const autoplay = wrap.dataset.autoplay === 'true';
