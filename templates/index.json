@@ -18,7 +18,7 @@
             "desktop_image": "shopify://shop_images/4.png",
             "mobile_image": "shopify://shop_images/4_59aeac32-a514-4523-9796-e132708d1a43.png",
             "overlay_color": "#000000",
-            "overlay_opacity": 35,
+            "overlay_opacity": 0,
             "text_color": "#ffffff",
             "eyebrow": "",
             "heading": "",
